@@ -7,4 +7,4 @@ Project members:
  * Pete Wilcox pcwilcox@ucsc.edu
  * Daniel Williams daswilli@ucsc.edu
  * Michael Lanthier malanthi@ucsc.edu
-
+ * Kian Moghtaderi kmoghtad@ucsc.edu
