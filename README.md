@@ -5,3 +5,4 @@ This is a project for CMPS-115 Introduction to Software Engineering at UC Santa 
 
 Project members:
  * Pete Wilcox pcwilcox@ucsc.edu
+ * Daniel Williams daswilli@ucsc.edu
