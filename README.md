@@ -8,3 +8,4 @@ Project members:
  * Daniel Williams daswilli@ucsc.edu
  * Michael Lanthier malanthi@ucsc.edu
  * Kian Moghtaderi kmoghtad@ucsc.edu
+ * Minghao Liu mliu40@ucsc.edu
