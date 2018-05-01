@@ -1,0 +1,47 @@
+{
+"users":{
+	"user1":{
+	  "id": "0001",
+	  "type": "student",
+	  "name": "Kian M",
+	  "email": "kmoghtad@ucsc.edu",
+	  "classes":
+			[
+			  { "id": "1001", "info": "101" },
+			  { "id": "1002", "info": "102" },
+			  { "id": "1003", "info": "110" },
+			  { "id": "1004", "info": "115" }
+			],
+	  "groups":
+		[{ "id": "5001"}]
+	}	
+},
+"groups":{
+	"group1":{
+	  "id": "0001",
+	  "class":"0002",
+	  "name": "101-1",
+	  "students":
+			[
+			  {  "id":"0001", "name":"kian"}
+			]
+	}
+},
+
+"classes":{
+	  "class1":{
+	  "id": "0001",
+	   "students":
+			[
+			  { "id": "1001", "name": "Michael" },
+			  { "id": "1002", "name": "Mike" },
+			  { "id": "1003", "name": "Daniel" },
+			  { "id": "1004", "name": "Pete" }
+			],
+	  "groups":
+		[{ "id": "5001"}]
+
+	}
+
+}
+}
