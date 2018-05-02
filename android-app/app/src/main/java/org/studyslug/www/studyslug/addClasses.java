@@ -54,7 +54,7 @@ public class addClasses extends AppCompatActivity {
                     listOfClasses.add(courseName);
                 }
 
-                initRecycler();
+                //initRecycler();
             }
 
             @Override
@@ -78,7 +78,7 @@ public class addClasses extends AppCompatActivity {
 
         initRecycler();
     }
-    */
+
     private void initRecycler()
     {
         Log.d(TAG, "initRecycler:initRecyler ");
@@ -88,4 +88,5 @@ public class addClasses extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); //format
 
     }
+    */
 }
