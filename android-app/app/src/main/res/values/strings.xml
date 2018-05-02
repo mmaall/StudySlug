@@ -21,4 +21,11 @@
     <string name= "prompt_course_number">Enter Course Number</string>
     <string name= "prompt_section">Enter Course Section</string>
     <string name= "action_addClasses_info">Submit</string>
+
+    <!-- navView Strings -->
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_maps">Maps</string>
+    <string name="nav_settings">Settings</string>
 </resources>
