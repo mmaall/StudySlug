@@ -14,5 +14,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name= "addClassesMessgae">Select Your Classes</string>
+
+    <!-- addClasses Strings -->
+    <string name= "findClassesMSG">Find Your Classes</string>
+    <string name= "prompt_department">Enter Department</string>
+    <string name= "prompt_course_number">Enter Course Number</string>
+    <string name= "prompt_section">Enter Course Section</string>
+    <string name= "action_addClasses_info">Submit</string>
 </resources>
