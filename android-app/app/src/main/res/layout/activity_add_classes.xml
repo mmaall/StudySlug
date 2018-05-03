@@ -22,7 +22,6 @@
     <ImageView
         android:layout_width="97dp"
         android:layout_height="74dp"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/main" />
 
@@ -56,6 +55,7 @@
                android:id="@+id/user_department"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
+               android:inputType="text"
                android:text="@string/prompt_department"
                />
 
@@ -64,11 +64,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/prompt_course_number"
+                android:inputType="number"
                 />
             <EditText
                 android:id="@+id/user_course_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:text="@string/prompt_section"
                 />
 
