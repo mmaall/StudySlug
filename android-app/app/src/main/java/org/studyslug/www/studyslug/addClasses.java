@@ -54,7 +54,12 @@ public class addClasses extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Course newCourse = new Course();
+                newCourse.addStudent("test this one");
+                newCourse.setDepartment(user_department.getText().toString());
+                newCourse.setNumber(user_course_number.getText().toString());
+                newCourse.setSection(user_course_section.getText().toString());
+                mDatabaseReference.child("classes").push().setValue(newCourse);
             }
         });
 

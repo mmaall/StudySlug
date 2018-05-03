@@ -26,7 +26,8 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:exported="true"></activity>
-        <activity android:name=".addClasses"></activity>
+        <activity android:name=".addClasses"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
