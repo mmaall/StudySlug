@@ -22,7 +22,7 @@
     <ImageView
         android:layout_width="97dp"
         android:layout_height="74dp"
-        android:layout_centerHorizontal="true"
+
         android:src="@mipmap/main" />
 
 
@@ -48,16 +48,22 @@
             android:orientation="vertical"
             android:paddingTop="128dp">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-           <EditText
-               android:id="@+id/user_department"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:inputType="text"
-               android:text="@string/prompt_department"
-               />
+
+
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/user_department"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addclasses_dept"
+                android:text="@string/prompt_department"
+                android:inputType="text"
+               android:textColor="@color/colorSecondary"/>
+
 
             <EditText
                 android:id="@+id/user_course_number"
@@ -65,22 +71,27 @@
                 android:layout_height="wrap_content"
                 android:text="@string/prompt_course_number"
                 android:inputType="number"
+                android:hint="@string/addclasses_number"
+                android:textColor="@color/colorSecondary"
                 />
+
             <EditText
                 android:id="@+id/user_course_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:text="@string/prompt_section"
-                />
+                android:hint="@string/addclasses_section"
+                android:textColor="@color/colorSecondary"/>
+
 
             <Button
                 android:id="@+id/addClasses_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:shadowColor="@color/colorPrimary"
                 android:text="@string/action_addClasses_info"
-                android:textStyle="bold"
-                android:shadowColor="@color/colorPrimary"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
