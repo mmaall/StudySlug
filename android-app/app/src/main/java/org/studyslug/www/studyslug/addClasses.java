@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.support.v7.widget.RecyclerView;
 
@@ -24,13 +27,14 @@ public class addClasses extends AppCompatActivity {
     private  static final String TAG = "addClasses";
 
     /// list components
-    private RecyclerView classList;
-    private RecyclerView.Adapter classAdapter;
-    private RecyclerView.LayoutManager classLayoutManager;
     private ArrayList<String> listOfClasses;
 
     // Firebase stuff
     private DatabaseReference mDatabaseReference;
+    private EditText user_department;
+    private EditText user_course_number;
+    private EditText user_course_section;
+    private Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,30 +42,22 @@ public class addClasses extends AppCompatActivity {
         setContentView(R.layout.activity_add_classes);
         Log.d(TAG, "onCreate: started");
 
-        // TODO: Clean up old testing code
-        // sampleFillList();
-
         // Initialize database interactions
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
-        mDatabaseReference.child("classes").addListenerForSingleValueEvent(new ValueEventListener() {
+        // Get references to input form
+        user_department = findViewById(R.id.user_department);
+        user_course_number = findViewById(R.id.user_course_number);
+        user_course_section = findViewById(R.id.user_course_section);
+        submit = findViewById(R.id.addClasses_button);
+
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot courseEntry : dataSnapshot.getChildren()) {
-                    String courseName = courseEntry.getKey().toString();
-                    Log.d("Course:", courseName);
-                    listOfClasses.add(courseName);
-                }
-
-                //initRecycler();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onClick(View v) {
 
             }
         });
+
     }
 
     /*

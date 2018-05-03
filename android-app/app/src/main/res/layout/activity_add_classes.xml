@@ -49,36 +49,38 @@
             android:orientation="vertical"
             android:paddingTop="128dp">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-           <EditText
-               android:id="@+id/user_department"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="@string/prompt_department"
-               />
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/user_department"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addclasses_dept"
+                android:text="@string/prompt_department" />
 
             <EditText
                 android:id="@+id/user_course_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prompt_course_number"
-                />
+                android:hint="@string/addclasses_number"
+                android:text="@string/prompt_course_number" />
+
             <EditText
                 android:id="@+id/user_course_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prompt_section"
-                />
+                android:hint="@string/addclasses_section"
+                android:text="@string/prompt_section" />
 
             <Button
                 android:id="@+id/addClasses_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:shadowColor="@color/colorPrimary"
                 android:text="@string/action_addClasses_info"
-                android:textStyle="bold"
-                android:shadowColor="@color/colorPrimary"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
