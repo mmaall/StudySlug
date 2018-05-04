@@ -49,38 +49,32 @@
             android:paddingTop="128dp">
 
 
-
-
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
             <EditText
                 android:id="@+id/user_department"
+                style="@style/Base.TextAppearance.AppCompat.Inverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/addclasses_dept"
-                android:text="@string/prompt_department"
                 android:inputType="text"
-               android:textColor="@color/colorSecondary"/>
+                android:textColor="@color/colorSecondary" />
 
 
             <EditText
                 android:id="@+id/user_course_number"
+                style="@style/Base.TextAppearance.AppCompat.Inverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/prompt_course_number"
-                android:inputType="number"
+                android:inputType="text"
                 android:hint="@string/addclasses_number"
                 android:textColor="@color/colorSecondary"
                 />
 
             <EditText
                 android:id="@+id/user_course_section"
+                style="@style/Base.TextAppearance.AppCompat.Inverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="@string/prompt_section"
+                android:inputType="text"
                 android:hint="@string/addclasses_section"
                 android:textColor="@color/colorSecondary"/>
 
