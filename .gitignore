@@ -225,4 +225,4 @@ TSWLatexianTemp*
 # Firebase API key
 google-services.json
 build_file_checksums.ser
-.idea/*
+android-app/.idea/*
