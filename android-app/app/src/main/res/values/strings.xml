@@ -22,4 +22,21 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <!-- addClasses Strings -->
+    <string name= "findClassesMSG">Find Your Classes</string>
+    <string name= "prompt_department">Enter Department</string>
+    <string name= "prompt_course_number">Enter Course Number</string>
+    <string name= "prompt_section">Enter Course Section</string>
+    <string name= "action_addClasses_info">Submit</string>
+
+    <!-- navView Strings -->
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_maps">Maps</string>
+    <string name="nav_settings">Settings</string>
+    <string name="addclasses_dept">Enter department</string>
+    <string name="addclasses_number">Enter course number</string>
+    <string name="addclasses_section">Enter section number</string>
 </resources>
