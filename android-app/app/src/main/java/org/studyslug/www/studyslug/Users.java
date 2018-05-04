@@ -1,4 +1,4 @@
-package org.studyslug.just_findpeople;
+package org.studyslug.www.studyslug;
 import java.util.ArrayList;
 
 public class Users {
