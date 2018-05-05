@@ -24,13 +24,15 @@ public class addClasses extends AppCompatActivity {
     // Firebase stuff
     private DatabaseReference mDatabaseReference;
     private FirebaseUser user;
+    private DatabaseReference user_ref;
+    private DatabaseReference classes_ref;
+    private ArrayList<Course> list_of_classes;
 
     // User info
     // private String user_name;
     private String user_email;
-    private ArrayList<String> listOfClasses;
     private String user_key;
-    private DatabaseReference user_ref;
+
 
 
     // Form info
@@ -76,22 +78,51 @@ public class addClasses extends AppCompatActivity {
             }
         });
 
-        // Get references to input form
+        // save some time by saving a reference to the user's entry in the db
+        user_ref = mDatabaseReference.child("users").child(user_key);
+
+        // Get references to input form - for now I don't care about error checking
         user_department = findViewById(R.id.user_department);
         user_course_number = findViewById(R.id.user_course_number);
         user_course_section = findViewById(R.id.user_course_section);
         submit = findViewById(R.id.addClasses_button);
 
+        // Get reference to the classes tree
+        classes_ref = mDatabaseReference.child("classes");
+
+        // Construct list of classes already in the db
+        classes_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot db_class : dataSnapshot.getChildren()) {
+                    list_of_classes.add(db_class.getValue(Course.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                               
+                // Construct a class using the info the user submitted
                 Course newCourse = new Course();
-                newCourse.addStudent("test this one");
+                newCourse.addStudent(user_key);
                 newCourse.setDepartment(user_department.getText().toString());
                 newCourse.setNumber(user_course_number.getText().toString());
                 newCourse.setSection(user_course_section.getText().toString());
-                mDatabaseReference.child("classes").push().setValue(newCourse);
+                newCourse.addStudent(user_key);
+
+                // Check to see if this course is listed in the db already
+                // If it is, just add this student key, otherwise push a new course
+                if (list_of_classes.contains(newCourse)) {
+                    
+                } else {
+                    mDatabaseReference.child("classes").push().setValue(newCourse);
+                }
             }
         });
 

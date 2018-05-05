@@ -50,6 +50,12 @@ public class Course {
         this.students.add(student);
     }
 
+    public boolean equals(Course other) {
+        return this.department.equals(other.getDepartment()) &&
+                this.number.equals(other.getNumber()) &&
+                this.section.equals(other.getSection());
+    }
+
     public ArrayList<String> getStudents() {
         return this.students;
     }
