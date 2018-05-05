@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openMain(){
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
+        Intent mainIntent = new Intent(this, MainActivity2.class);
+        startActivity(mainIntent);
     }
 
     @Override
