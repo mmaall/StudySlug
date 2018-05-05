@@ -119,7 +119,7 @@ public class addClasses extends AppCompatActivity {
                 // Check to see if this course is listed in the db already
                 // If it is, just add this student key, otherwise push a new course
                 if (list_of_classes.contains(newCourse)) {
-                    
+
                 } else {
                     mDatabaseReference.child("classes").push().setValue(newCourse);
                 }
