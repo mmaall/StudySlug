@@ -1,4 +1,4 @@
-package org.studyslug.just_findpeople;
+package org.studyslug.www.studyslug;
 
 import android.content.Context;
 import android.os.Bundle;

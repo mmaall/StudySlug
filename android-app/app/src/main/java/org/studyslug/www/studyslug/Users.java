@@ -1,9 +1,11 @@
-package org.studyslug.just_findpeople;
+package org.studyslug.www.studyslug;
 import java.util.ArrayList;
 
 public class Users {
 
-    public String name, status;
+    private String name;
+    private String status;
+    private String email;
     private ArrayList<String> classes;
     private ArrayList<String> groups;
 
@@ -26,6 +28,10 @@ public class Users {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public void setEmail(String email) { this.email = email; }
+
+    public String getEmail() { return this.email; }
 
     public Users(String name, String image, String status) {
         this.name = name;

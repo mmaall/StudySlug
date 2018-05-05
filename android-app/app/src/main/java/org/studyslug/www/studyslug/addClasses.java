@@ -7,19 +7,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import java.util.ArrayList;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class addClasses extends AppCompatActivity {
 
     private  static final String TAG = "addClasses";
 
-    /// list components
-    private ArrayList<String> listOfClasses;
-
     // Firebase stuff
     private DatabaseReference mDatabaseReference;
+    private FirebaseUser user;
+
+    // User info
+    // private String user_name;
+    private String user_email;
+    private ArrayList<String> listOfClasses;
+    private String user_key;
+    private DatabaseReference user_ref;
+
+
+    // Form info
     private EditText user_department;
     private EditText user_course_number;
     private EditText user_course_section;
@@ -31,8 +45,36 @@ public class addClasses extends AppCompatActivity {
         setContentView(R.layout.activity_add_classes);
         Log.d(TAG, "onCreate: started");
 
-        // Initialize database interactions
+        // Initialize database interactions and setup user info
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // user_name = user.getDisplayName();
+            user_email = user.getEmail();
+        } else {
+            // TODO fix this so we go back to the login page
+        }
+
+        // Create reference to users tree
+        DatabaseReference user_tree = mDatabaseReference.child("users");
+
+        // Iterate through that tree to find reference to our user
+        user_tree.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    String email = userSnapshot.getValue(Users.class).getEmail();
+                    if (email.equals(user_email)) {
+                        user_key = userSnapshot.getKey();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         // Get references to input form
         user_department = findViewById(R.id.user_department);
@@ -43,6 +85,7 @@ public class addClasses extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                               
                 Course newCourse = new Course();
                 newCourse.addStudent("test this one");
                 newCourse.setDepartment(user_department.getText().toString());
