@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -84,13 +85,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        buttonSignIn= (Button) findViewById(R.id.email_sign_in_button);
+        buttonSignIn= findViewById(R.id.email_sign_in_button);
         firebaseAuth= FirebaseAuth.getInstance();
         signInProgress = new ProgressDialog(this);
 
         // Set up the login form.
-        mEmailView =  (EditText) findViewById(R.id.email);
-        mPasswordView=  (EditText) findViewById(R.id.password);
+        mEmailView =  findViewById(R.id.email);
+        mPasswordView=  findViewById(R.id.password);
 
         buttonSignIn.setOnClickListener(this);
 
@@ -147,6 +148,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             //user is registerd succesfully and logged in
                             Toast.makeText(LoginActivity.this, "Registered Succesfully",Toast.LENGTH_SHORT).show();
+
                         }
                         else{
                             Toast.makeText(LoginActivity.this, "Could not register", Toast.LENGTH_SHORT).show();
@@ -161,7 +163,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(view == buttonSignIn){
             registerUser();
         }
-
+        if(firebaseAuth.getCurrentUser() != null) {
+            Intent mainIntent = new Intent(this, MainActivity2.class);
+            startActivity(mainIntent);
+        }
     }
 
     /*
