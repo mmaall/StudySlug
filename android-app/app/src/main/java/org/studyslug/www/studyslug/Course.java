@@ -7,6 +7,8 @@ public class Course {
     private String number;
     private String section;
     private ArrayList<String> students;
+    private ArrayList<String> student_keys;
+
 
     public Course() {
         this.students = new ArrayList<>();
@@ -59,4 +61,10 @@ public class Course {
     public ArrayList<String> getStudents() {
         return this.students;
     }
+
+    public void addStudentKey(String key) { student_keys.add(key); }
+
+    }
+
+
 }
