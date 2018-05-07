@@ -38,6 +38,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -79,7 +81,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonSignIn;
     private Button googleSignIn;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
     private ProgressDialog signInProgress;
+    private String userDataKey;
 
 
     @Override
@@ -110,6 +114,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email= mEmailView.getText().toString().trim();
         String password= mPasswordView.getText().toString().trim();
 
+
         if(TextUtils.isEmpty(email)){
             return;//no email
         }
@@ -129,7 +134,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             //user is registerd succesfully and logged in
                             Toast.makeText(LoginActivity.this, "Registered Succesfully",Toast.LENGTH_SHORT).show();
+                            if(firebaseAuth == null) {
+                                userDataKey = firebaseAuth.getUid();
+                                databaseReference.child("users").child(userDataKey).push();
 
+                            }
                         }
                         else{
                             Toast.makeText(LoginActivity.this, "Could not register", Toast.LENGTH_SHORT).show();
