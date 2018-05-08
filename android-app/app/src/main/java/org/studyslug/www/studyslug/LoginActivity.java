@@ -123,15 +123,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .requestEmail()
                 .build();
 
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-
-
-
     }
-
-
 
     private void signIn() {
         System.out.println("Entered signin\n");
@@ -170,6 +163,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            // I assume we should go to main here
+                            if(firebaseAuth.getCurrentUser() != null) {
+                                Intent mainIntent = new Intent(LoginActivity.this, addClasses.class);
+                                startActivity(mainIntent);
+                            } else {
+                                return;
+                            }
+
      //                       updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

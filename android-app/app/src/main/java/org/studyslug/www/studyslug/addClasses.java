@@ -32,7 +32,7 @@ public class addClasses extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference user_ref;
     private DatabaseReference classes_ref;
-    private DatabaseReference db_course_ref;
+    private String db_course_ref;
 
     // User info
     // private String user_name;
@@ -76,9 +76,6 @@ public class addClasses extends AppCompatActivity {
                 newCourse.setNumber(user_course_number.getText().toString().toUpperCase());
                 newCourse.setSection(user_course_section.getText().toString().toUpperCase());
 
-                final ArrayList<String> existing_key = new ArrayList<>();
-                final ArrayList<Course> existing_class = new ArrayList<>();
-
                 // Scan db to see if this class already exists
                 classes_ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -87,8 +84,11 @@ public class addClasses extends AppCompatActivity {
                             for (DataSnapshot db_class : dataSnapshot.getChildren()) {
                                 Course temp = db_class.getValue(Course.class);
                                 if (temp.equals(newCourse)) {
-                                    existing_key.add(db_class.getKey());
-                                    existing_class.add(temp);
+                                    db_course_ref = db_class.getKey();
+                                    temp.addStudent(user_key);
+                                    user_ref.child("classes").push().setValue(db_course_ref);
+                                    mDatabaseReference.child("classes").child(db_course_ref).setValue(temp);
+                                    break;
                                 }
                             }
                         } else {
@@ -101,13 +101,7 @@ public class addClasses extends AppCompatActivity {
 
                     }
                 });
-                if (existing_key.size() > 0) {
-                    // The course already exists in the list so just add this student
-                    Course updated_course = existing_class.get(0);
-                    updated_course.addStudent(user_key);
-                    mDatabaseReference.child("classes").child(existing_key.get(0)).setValue(updated_course);
-                    user_ref.child("classes").push().setValue(existing_key.get(0));
-                } else {
+                if (db_course_ref == null) {
                     // This is a new course
                     DatabaseReference newCourseRef = mDatabaseReference.child("classes").push();
                     newCourseRef.setValue(newCourse);
