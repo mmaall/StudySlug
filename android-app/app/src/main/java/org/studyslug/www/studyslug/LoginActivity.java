@@ -45,6 +45,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -90,8 +94,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonSignIn;
     private SignInButton googleSignIn;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
     private ProgressDialog signInProgress;
+
+    private String userDataKey;
+
+
     private GoogleSignInClient mGoogleSignInClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +187,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email= mEmailView.getText().toString().trim();
         String password= mPasswordView.getText().toString().trim();
 
+
         if(TextUtils.isEmpty(email)){
             return;//no email
         }
@@ -196,7 +207,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             //user is registerd succesfully and logged in
                             Toast.makeText(LoginActivity.this, "Registered Succesfully",Toast.LENGTH_SHORT).show();
+                            if(firebaseAuth == null) {
+                                userDataKey = firebaseAuth.getUid();
+                                databaseReference.child("users").child(userDataKey).push();
 
+                            }
                         }
                         else{
                             Toast.makeText(LoginActivity.this, "Could not register", Toast.LENGTH_SHORT).show();
