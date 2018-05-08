@@ -32,14 +32,12 @@ public class addClasses extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference user_ref;
     private DatabaseReference classes_ref;
-    private HashMap<Course, String> dict_of_classes;
+    private DatabaseReference db_course_ref;
 
     // User info
     // private String user_name;
     private String user_email;
     private String user_key;
-
-
 
     // Form info
     private EditText user_department;
@@ -68,65 +66,54 @@ public class addClasses extends AppCompatActivity {
         // Get reference to the classes tree
         classes_ref = mDatabaseReference.child("classes");
 
-        // Construct list of classes already in the db
-        classes_ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot != null) {
-                    for (DataSnapshot db_class : dataSnapshot.getChildren()) {
-                        Course temp = db_class.getValue(Course.class);
-                        String temp_key = db_class.getKey();
-                        dict_of_classes.put(temp, temp_key);
-                        Toast.makeText(addClasses.this, "Found db_class: " + temp.getDepartment(),Toast.LENGTH_SHORT).show();
-
-                        /*
-                        if (db_class != null) {
-                            Course temp_course = db_class.getValue(Course.class);
-                            String temp_key = db_class.getKey();
-                            if (temp_course != null && temp_key != null) {
-                                dict_of_classes.put(temp_course, temp_key);
-                            }
-                        } else {
-                            Log.d(TAG, "db_class not found");
-                        }
-                        */
-
-                    }
-                } else {
-                    Log.d(TAG, "dataSnaphot not found");
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Construct a class object using the info the user submitted
-                Course newCourse = new Course();
+                final Course newCourse = new Course();
                 newCourse.addStudent(user_key);
-                newCourse.setDepartment(user_department.getText().toString());
-                newCourse.setNumber(user_course_number.getText().toString());
-                newCourse.setSection(user_course_section.getText().toString());
+                newCourse.setDepartment(user_department.getText().toString().toUpperCase());
+                newCourse.setNumber(user_course_number.getText().toString().toUpperCase());
+                newCourse.setSection(user_course_section.getText().toString().toUpperCase());
 
-                // Check to see if this course is listed in the db already
-                // If it is, just add this student key, otherwise push a new course
-                if (dict_of_classes != null && dict_of_classes.containsKey(newCourse)) {
-                    // mDatabaseReference.child("classes").child("students").setValue(user_key);
-                       String class_key = dict_of_classes.get(newCourse);
-                       mDatabaseReference.child("classes").child(class_key).setValue(newCourse);
+                final ArrayList<String> existing_key = new ArrayList<>();
+                final ArrayList<Course> existing_class = new ArrayList<>();
 
+                // Scan db to see if this class already exists
+                classes_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot != null) {
+                            for (DataSnapshot db_class : dataSnapshot.getChildren()) {
+                                Course temp = db_class.getValue(Course.class);
+                                if (temp.equals(newCourse)) {
+                                    existing_key.add(db_class.getKey());
+                                    existing_class.add(temp);
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "dataSnaphot not found");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                if (existing_key.size() > 0) {
+                    // The course already exists in the list so just add this student
+                    Course updated_course = existing_class.get(0);
+                    updated_course.addStudent(user_key);
+                    mDatabaseReference.child("classes").child(existing_key.get(0)).setValue(updated_course);
+                    user_ref.child("classes").push().setValue(existing_key.get(0));
                 } else {
-                    mDatabaseReference.child("classes").push().setValue(newCourse);
+                    // This is a new course
+                    DatabaseReference newCourseRef = mDatabaseReference.child("classes").push();
+                    newCourseRef.setValue(newCourse);
+                    user_ref.child("classes").push().setValue(newCourseRef.getKey());
                 }
             }
         });
-
     }
-
-
 }
