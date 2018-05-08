@@ -38,6 +38,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -91,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //private View mProgressView;
     //private View mLoginFormView;
     private Button buttonSignIn;
-    private Button googleSignIn;
+    private SignInButton googleSignIn;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ProgressDialog signInProgress;
@@ -116,19 +117,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mPasswordView=  findViewById(R.id.password);
 
         buttonSignIn.setOnClickListener(this);
+        googleSignIn.setOnClickListener(this);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
 
+
     }
 
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build();
+
 
     private void signIn() {
+        System.out.println("Entered signin\n");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -226,7 +232,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //updateUI(currentUser);
     }
 
-    public void onClick(View view){
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.g_sign_in_button:
+                signIn();
+                break;
+            case R.id.email_sign_in_button:
+                System.out.println("register\n");
+                registerUser();
+                break;
+        }
+    }
+
+    /*public void onClick(View view){
         if(view == buttonSignIn){
             registerUser();
         }
@@ -234,7 +252,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent mainIntent = new Intent(this, MainActivity2.class);
             startActivity(mainIntent);
         }
-    }
+    }*/
 
 
 }
