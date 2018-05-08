@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mPasswordView=  findViewById(R.id.password);
 
         buttonSignIn.setOnClickListener(this);
-
+        googleSignIn.setOnClickListener(this);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -134,6 +134,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void signIn() {
+        System.out.println("Entered signin\n");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -234,7 +235,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.g_sign_in_button:
                 signIn();
                 break;
-            // ...
+            case R.id.email_sign_in_button:
+                System.out.println("register\n");
+                registerUser();
+                break;
         }
     }
 
