@@ -1,26 +1,28 @@
 package org.studyslug.www.studyslug;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Course {
     private String department;
     private String number;
     private String section;
-    private ArrayList<String> students;
+    private HashMap<String, String> students;
 
 
     public Course() {
-        this.students = new ArrayList<>();
+        this.students = new HashMap<String, String>();
     }
 
-    public Course(String department, String number, String section, ArrayList<String> students) {
+    public Course(String department, String number, String section, HashMap<String, String> students) {
         this.department = department;
         this.number = number;
         this.section = section;
         if (this.students == null) {
-            this.students = new ArrayList<>();
+            this.students = new HashMap<String, String>(students);
+        } else {
+            this.students = students;
         }
-        this.students = students;
     }
 
     public String getDepartment() {
@@ -48,7 +50,8 @@ public class Course {
     }
 
     public void addStudent(String student) {
-        this.students.add(student);
+        String next = "ID " + String.valueOf(students.size());
+        this.students.put(next, student);
     }
 
     public boolean equals(Course other) {
@@ -57,10 +60,18 @@ public class Course {
                 this.section.equals(other.getSection());
     }
 
-    public ArrayList<String> getStudents() {
-        return this.students;
+    public HashMap<String, String> getStudents() {
+        HashMap<String, String> student_list = new HashMap<>(this.students);
+        return student_list;
     }
 
-    public void addStudentKey(String key) { students.add(key); }
-
+    public void setStudents(HashMap<String, String> students) {
+        if (this.students == null) {
+            this.students = new HashMap<>(students);
+        } else {
+            this.students.clear();
+            this.students.putAll(students);
+        }
     }
+
+}

@@ -8,7 +8,11 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +32,7 @@ public class addClasses extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference user_ref;
     private DatabaseReference classes_ref;
-    private ArrayList<Course> list_of_classes;
+    private HashMap<Course, String> dict_of_classes;
 
     // User info
     // private String user_name;
@@ -52,37 +56,7 @@ public class addClasses extends AppCompatActivity {
         // Initialize database interactions and setup user info
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // user_name = user.getDisplayName();
-            user_email = user.getEmail();
-        } else {
-            // TODO fix this so we go back to the login page
-            // user isn't auth'd, so return them back to login
-            Intent user_login_intent = new Intent(this,LoginActivity.class);
-        }
-
-        // Create reference to users tree
-        DatabaseReference user_tree = mDatabaseReference.child("users");
-
-        // Iterate through that tree to find reference to our user
-        user_tree.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    String email = userSnapshot.getValue(Users.class).getEmail();
-                    if (email.equals(user_email)) {
-                        user_key = userSnapshot.getKey();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        // save some time by saving a reference to the user's entry in the db
+        user_key = FirebaseAuth.getInstance().getCurrentUser().getUid();
         user_ref = mDatabaseReference.child("users").child(user_key);
 
         // Get references to input form - for now I don't care about error checking
@@ -98,8 +72,28 @@ public class addClasses extends AppCompatActivity {
         classes_ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot db_class : dataSnapshot.getChildren()) {
-                    list_of_classes.add(db_class.getValue(Course.class));
+                if (dataSnapshot != null) {
+                    for (DataSnapshot db_class : dataSnapshot.getChildren()) {
+                        Course temp = db_class.getValue(Course.class);
+                        String temp_key = db_class.getKey();
+                        dict_of_classes.put(temp, temp_key);
+                        Toast.makeText(addClasses.this, "Found db_class: " + temp.getDepartment(),Toast.LENGTH_SHORT).show();
+
+                        /*
+                        if (db_class != null) {
+                            Course temp_course = db_class.getValue(Course.class);
+                            String temp_key = db_class.getKey();
+                            if (temp_course != null && temp_key != null) {
+                                dict_of_classes.put(temp_course, temp_key);
+                            }
+                        } else {
+                            Log.d(TAG, "db_class not found");
+                        }
+                        */
+
+                    }
+                } else {
+                    Log.d(TAG, "dataSnaphot not found");
                 }
             }
 
@@ -112,20 +106,19 @@ public class addClasses extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Construct a class using the info the user submitted
+                // Construct a class object using the info the user submitted
                 Course newCourse = new Course();
                 newCourse.addStudent(user_key);
                 newCourse.setDepartment(user_department.getText().toString());
                 newCourse.setNumber(user_course_number.getText().toString());
                 newCourse.setSection(user_course_section.getText().toString());
-                newCourse.addStudent(user_key);
 
                 // Check to see if this course is listed in the db already
                 // If it is, just add this student key, otherwise push a new course
-                if (list_of_classes.contains(newCourse)) {
+                if (dict_of_classes != null && dict_of_classes.containsKey(newCourse)) {
                     // mDatabaseReference.child("classes").child("students").setValue(user_key);
-                       newCourse.addStudentKey(user_key);
-                       mDatabaseReference.child("classes").push().setValue(newCourse);
+                       String class_key = dict_of_classes.get(newCourse);
+                       mDatabaseReference.child("classes").child(class_key).setValue(newCourse);
 
                 } else {
                     mDatabaseReference.child("classes").push().setValue(newCourse);

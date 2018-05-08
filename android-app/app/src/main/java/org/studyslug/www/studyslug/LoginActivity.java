@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             registerUser();
         }
         if(firebaseAuth.getCurrentUser() != null) {
-            Intent mainIntent = new Intent(this, findPeople.class);
+            Intent mainIntent = new Intent(this, addClasses.class);
             startActivity(mainIntent);
         }
     }
