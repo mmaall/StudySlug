@@ -202,9 +202,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             //user is registerd succesfully and logged in
                             Toast.makeText(LoginActivity.this, "Registered Succesfully",Toast.LENGTH_SHORT).show();
-                            if(firebaseAuth == null) {
+                            if(task.getResult().getAdditionalUserInfo().isNewUser()) {
                                 userDataKey = firebaseAuth.getUid();
                                 databaseReference.child("users").child(userDataKey).push();
+                            }
+                            else{
 
                             }
                         }
