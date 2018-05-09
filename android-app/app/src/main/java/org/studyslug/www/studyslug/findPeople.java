@@ -35,7 +35,6 @@ public class findPeople extends AppCompatActivity {
     private EditText mSearchField;
     private ImageButton mSearchBtn;
     private ImageButton imageButton;
-    private ImageButton nSearchBtn;
 
     private String text;
     private RecyclerView mResultList;
@@ -55,7 +54,6 @@ public class findPeople extends AppCompatActivity {
         mUserDatabase = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("classes");
 
         mSearchBtn = (ImageButton) findViewById(R.id.imageButton4);
-        nSearchBtn = (ImageButton) findViewById(R.id.nSearchBtn);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         mResultList = (RecyclerView) findViewById(R.id.result_list);
         mResultList.setHasFixedSize(true);

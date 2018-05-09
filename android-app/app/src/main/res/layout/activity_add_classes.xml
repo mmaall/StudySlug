@@ -40,7 +40,8 @@
     <ScrollView
         android:id="@+id/addClasses_form"
         android:layout_width="357dp"
-        android:layout_height="642dp">
+        android:layout_height="642dp"
+        android:layout_marginLeft="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,38 +65,37 @@
                 style="@style/Base.TextAppearance.AppCompat.Inverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:hint="@string/addclasses_number"
-                android:textColor="@color/colorPrimaryDark"
-                />
+                android:inputType="text"
+                android:textColor="@color/colorPrimaryDark" />
 
             <EditText
                 android:id="@+id/user_course_section"
                 style="@style/Base.TextAppearance.AppCompat.Inverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:hint="@string/addclasses_section"
-                android:textColor="@color/colorSecondary"/>
+                android:inputType="text"
+                android:textColor="@color/colorSecondary" />
 
 
             <Button
                 android:id="@+id/addClasses_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorSecondary"
                 android:shadowColor="@color/colorPrimary"
                 android:text="@string/action_addClasses_info"
-                android:textStyle="bold"
-                android:background="@color/colorSecondary"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cancel_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorSecondary"
                 android:shadowColor="@color/colorPrimary"
                 android:text="@string/cancel_button"
-                android:textStyle="bold"
-                android:background="@color/colorSecondary" />
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
