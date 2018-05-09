@@ -107,6 +107,8 @@ public class addClasses extends AppCompatActivity {
                     newCourseRef.setValue(newCourse);
                     user_ref.child("classes").push().setValue(newCourseRef.getKey());
                 }
+                Intent returnIntent = new Intent(addClasses.this, findPeople.class);
+                startActivity(returnIntent);
             }
         });
     }
