@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="128dp">
+            android:paddingTop="16dp">
 
 
             <EditText
@@ -88,8 +88,18 @@
                 android:textStyle="bold"
                 android:background="@color/colorSecondary"/>
 
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/colorPrimary"
+                android:text="@string/cancel_button"
+                android:textStyle="bold"
+                android:background="@color/colorSecondary" />
+
         </LinearLayout>
     </ScrollView>
+
     <!-- TODO: NAV VIEW NEEDS MORE WORK DONE
     <android.support.design.widget.NavigationView
         android:layout_width="151dp"

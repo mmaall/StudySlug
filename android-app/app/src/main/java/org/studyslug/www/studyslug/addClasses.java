@@ -44,6 +44,7 @@ public class addClasses extends AppCompatActivity {
     private EditText user_course_number;
     private EditText user_course_section;
     private Button submit;
+    private Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class addClasses extends AppCompatActivity {
         user_course_number = findViewById(R.id.user_course_number);
         user_course_section = findViewById(R.id.user_course_section);
         submit = findViewById(R.id.addClasses_button);
+        cancel = findViewById(R.id.cancel_button);
 
         // Get reference to the classes tree
         classes_ref = mDatabaseReference.child("classes");
@@ -112,5 +114,13 @@ public class addClasses extends AppCompatActivity {
                 startActivity(returnIntent);
             }
         });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent returnIntent = new Intent(addClasses.this, findPeople.class);
+                startActivity(returnIntent);
+            }
+        });
+
     }
 }
