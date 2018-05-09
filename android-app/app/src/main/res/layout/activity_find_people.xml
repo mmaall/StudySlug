@@ -31,7 +31,7 @@
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="255dp"
+        android:layout_width="230dp"
         android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -39,15 +39,5 @@
         android:layout_marginTop="9dp"
         android:background="#818079"
         android:visibility="visible" />
-
-    <ImageButton
-        android:id="@+id/nSearchBtn"
-        android:layout_width="57dp"
-        android:layout_height="49dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="102dp"
-        android:visibility="invisible"
-        app:srcCompat="@android:color/background_light" />
 
 </RelativeLayout>
