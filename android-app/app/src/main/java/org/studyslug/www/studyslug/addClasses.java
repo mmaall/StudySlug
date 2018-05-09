@@ -86,7 +86,7 @@ public class addClasses extends AppCompatActivity {
                                 Course temp = db_class.getValue(Course.class);
                                 if (temp.equals(newCourse)) {
                                     db_course_ref = db_class.getKey();
-                                    temp.addStudent(user_key);
+                                    temp.addStudent(user_email);
                                     user_ref.child("classes").push().setValue(db_course_ref);
                                     mDatabaseReference.child("classes").child(db_course_ref).setValue(temp);
                                     break;
