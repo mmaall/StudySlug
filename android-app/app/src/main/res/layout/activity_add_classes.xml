@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/colorBackground"
     tools:context=".addClasses"
     android:gravity="center_horizontal"
     android:paddingTop="16dp"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:hint="@string/addclasses_number"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorPrimaryDark"
                 />
 
             <EditText
@@ -85,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/colorPrimary"
                 android:text="@string/action_addClasses_info"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@color/colorSecondary"/>
 
         </LinearLayout>
     </ScrollView>

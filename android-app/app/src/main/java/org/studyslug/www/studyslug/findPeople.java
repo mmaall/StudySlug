@@ -59,9 +59,7 @@ public class findPeople extends AppCompatActivity {
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
 
-        /*
         FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
-
 
                 Users.class,
                 R.layout.list_layout,
@@ -79,7 +77,7 @@ public class findPeople extends AppCompatActivity {
         };
 
         mResultList.setAdapter(firebaseRecyclerAdapter);
-        */
+
     }
 
 
@@ -95,7 +93,7 @@ public class findPeople extends AppCompatActivity {
             mView = itemView;
 
         }
-/*
+
         public void setDetails(Context ctx, String userName, String userStatus){
 
             TextView user_name = (TextView) mView.findViewById(R.id.User1_name);
@@ -108,7 +106,7 @@ public class findPeople extends AppCompatActivity {
 
         }
 
-*/
+
 
 
     }

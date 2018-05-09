@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="@color/colorBackground">
 
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:text="Firebase Search"
-        android:textColor="#555555"
+        android:textColor="#3F51B5"
         android:textSize="24sp" />
 
     <EditText
@@ -36,7 +36,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp"
-        android:textColor="#999999"
+        android:textColor="@color/colorSecondary"
         android:textSize="16sp" />
 
     <ImageButton
@@ -47,7 +47,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/search_field"
         android:layout_marginRight="30dp"
-        android:background="@android:color/background_light"
+        android:background="@color/colorBackground"
         app:srcCompat="@mipmap/search_button" />
 
 

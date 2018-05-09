@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/colorBackground">
 
 
     <!-- Login progress -->
@@ -44,7 +46,8 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/colorSecondary"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -62,7 +65,10 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/colorSecondary"
+                    android:textColorHint="@color/colorSecondary"
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -73,13 +79,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@color/colorSecondary"/>
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/g_sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp" />
 
 
         </LinearLayout>
