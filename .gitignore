@@ -221,3 +221,8 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+
+# Firebase API key
+google-services.json
+build_file_checksums.ser
+android-app/.idea/*

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".addClasses"
+    android:gravity="center_horizontal"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    >
+
+
+    <ImageView
+        android:layout_width="97dp"
+        android:layout_height="74dp"
+
+        android:src="@mipmap/main" />
+
+
+    <!--
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="75dp"
+        android:layout_marginTop="161dp"
+        android:text="@string/findClassesMSG"
+        android:textColor="@color/colorSecondary"
+        android:typeface="monospace" />
+      -->
+
+    <ScrollView
+        android:id="@+id/addClasses_form"
+        android:layout_width="357dp"
+        android:layout_height="642dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+
+            <EditText
+                android:id="@+id/user_department"
+                style="@style/Base.TextAppearance.AppCompat.Inverse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/addclasses_dept"
+                android:inputType="text"
+                android:textColor="@color/colorSecondary" />
+
+
+            <EditText
+                android:id="@+id/user_course_number"
+                style="@style/Base.TextAppearance.AppCompat.Inverse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/addclasses_number"
+                android:textColor="@color/colorPrimaryDark"
+                />
+
+            <EditText
+                android:id="@+id/user_course_section"
+                style="@style/Base.TextAppearance.AppCompat.Inverse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/addclasses_section"
+                android:textColor="@color/colorSecondary"/>
+
+
+            <Button
+                android:id="@+id/addClasses_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/colorPrimary"
+                android:text="@string/action_addClasses_info"
+                android:textStyle="bold"
+                android:background="@color/colorSecondary"/>
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/colorPrimary"
+                android:text="@string/cancel_button"
+                android:textStyle="bold"
+                android:background="@color/colorSecondary" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- TODO: NAV VIEW NEEDS MORE WORK DONE
+    <android.support.design.widget.NavigationView
+        android:layout_width="151dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorSecondary"
+        app:headerLayout="@layout/header"
+        app:menu="@xml/drawermenu"
+        />
+     -->
+</LinearLayout>
