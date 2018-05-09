@@ -10,9 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="19dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="135dp"
         android:text="Name"
         android:textColor="#555555"
         android:textSize="16sp" />
@@ -24,7 +23,6 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/User1.name"
         android:layout_marginStart="121dp"
-        android:text="Bio"
         android:textColor="#999999"
         android:textSize="14sp" />
 
@@ -38,13 +36,4 @@
         android:contentDescription="user1.pic"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-    <EditText
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="38dp"
-        android:ems="10"
-        android:inputType="numberSigned"
-        android:text="%" />
 </RelativeLayout>

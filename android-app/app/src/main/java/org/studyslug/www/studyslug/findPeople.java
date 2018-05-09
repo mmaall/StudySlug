@@ -1,6 +1,7 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,68 +11,115 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import android.content.Intent;
+
+import java.util.List;
+import java.util.ArrayList;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class findPeople extends AppCompatActivity {
-
+    private String class_key = "";
     private EditText mSearchField;
     private ImageButton mSearchBtn;
+    private ImageButton imageButton;
+    private ImageButton nSearchBtn;
 
+    private String text;
     private RecyclerView mResultList;
+    private List<String> areas;
 
     private DatabaseReference mUserDatabase;
+    private DatabaseReference mClassDatabase;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_people);
+        final Spinner areaSpinner = (Spinner) findViewById(R.id.spinner2);
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("users").child("user1").child("classes");
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("users");
-
-
-        mSearchField = (EditText) findViewById(R.id.search_field);
-        mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
-
+        mSearchBtn = (ImageButton) findViewById(R.id.imageButton4);
+        nSearchBtn = (ImageButton) findViewById(R.id.nSearchBtn);
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
         mResultList = (RecyclerView) findViewById(R.id.result_list);
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(this));
 
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                areas = new ArrayList<String>();
+                for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
+                    String areaName = areaSnapshot.child("id").getValue(String.class);
+                    areas.add(areaName);
+                }
+
+                ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(findPeople.this, android.R.layout.simple_spinner_item, areas);
+                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                areaSpinner.setAdapter(areasAdapter);
+
+
+
+                class_key = areaSpinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String searchText = mSearchField.getText().toString();
-
+                String searchText = areaSpinner.getSelectedItem().toString();
                 firebaseUserSearch(searchText);
-
             }
         });
 
-    }
+        ImageButton addClasses = (ImageButton) findViewById(R.id.imageButton2);
 
+        addClasses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(findPeople.this, addClasses.class));
+            }
+        });
+      }
     private void firebaseUserSearch(String searchText) {
 
-        Toast.makeText(findPeople.this, "Started Search", Toast.LENGTH_LONG).show();
 
-        Query firebaseSearchQuery = mUserDatabase.orderByChild("name").startAt(searchText).endAt(searchText + "\uf8ff");
+        Toast.makeText(findPeople.this, "Started Slug Search!", Toast.LENGTH_LONG).show();
+        mClassDatabase = FirebaseDatabase.getInstance().getReference("classes").child(searchText).child("students");
+        Query firebaseSearchQuery = mClassDatabase.orderByChild("email");
 
-        FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
+        FirebaseRecyclerAdapter<String, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<String, UsersViewHolder>(
 
-                Users.class,
+                String.class,
                 R.layout.list_layout,
                 UsersViewHolder.class,
                 firebaseSearchQuery
 
         ) {
             @Override
-            protected void populateViewHolder(UsersViewHolder viewHolder, Users model, int position) {
+            protected void populateViewHolder(UsersViewHolder viewHolder, String model, int position) {
 
 
-                viewHolder.setDetails(getApplicationContext(), model.getName(), model.getStatus());
+                viewHolder.setDetails(getApplicationContext(), model);
 
             }
         };
@@ -94,20 +142,15 @@ public class findPeople extends AppCompatActivity {
 
         }
 
-        public void setDetails(Context ctx, String userName, String userStatus){
+        public void setDetails(Context ctx, String userName){
 
             TextView user_name = (TextView) mView.findViewById(R.id.User1_name);
-            TextView user_status = (TextView) mView.findViewById(R.id.status_text);
 
             user_name.setText(userName);
-            user_status.setText(userStatus);
 
 
 
         }
-
-
-
 
     }
 
