@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class findPeople extends AppCompatActivity {
 
-    private String class_key = "";
+    private String class_key;
     private EditText mSearchField;
     private ImageButton mSearchBtn;
     private ImageButton imageButton;
@@ -59,6 +59,7 @@ public class findPeople extends AppCompatActivity {
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         mResultList = (RecyclerView) findViewById(R.id.result_list);
         mResultList.setHasFixedSize(true);
+        
         mResultList.setLayoutManager(new LinearLayoutManager(this));
 
         mUserDatabase.addValueEventListener(new ValueEventListener() {
@@ -76,8 +77,8 @@ public class findPeople extends AppCompatActivity {
                 areaSpinner.setAdapter(areasAdapter);
 
 
-
                 class_key = areaSpinner.getSelectedItem().toString();
+
             }
 
             @Override
