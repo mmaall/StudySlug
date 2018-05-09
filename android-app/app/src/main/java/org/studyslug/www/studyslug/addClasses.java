@@ -114,7 +114,7 @@ public class addClasses extends AppCompatActivity {
                 startActivity(returnIntent);
             }
         });
-        submit.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent returnIntent = new Intent(addClasses.this, findPeople.class);

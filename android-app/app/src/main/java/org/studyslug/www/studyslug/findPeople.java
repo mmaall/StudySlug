@@ -19,6 +19,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +30,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class findPeople extends AppCompatActivity {
+
     private String class_key = "";
     private EditText mSearchField;
     private ImageButton mSearchBtn;
@@ -48,7 +52,7 @@ public class findPeople extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_people);
         final Spinner areaSpinner = (Spinner) findViewById(R.id.spinner2);
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("users").child("user1").child("classes");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("classes");
 
         mSearchBtn = (ImageButton) findViewById(R.id.imageButton4);
         nSearchBtn = (ImageButton) findViewById(R.id.nSearchBtn);
@@ -63,7 +67,7 @@ public class findPeople extends AppCompatActivity {
 
                 areas = new ArrayList<String>();
                 for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
-                    String areaName = areaSnapshot.child("id").getValue(String.class);
+                    String areaName = areaSnapshot.getValue(String.class);
                     areas.add(areaName);
                 }
 
@@ -99,7 +103,7 @@ public class findPeople extends AppCompatActivity {
                 startActivity(new Intent(findPeople.this, addClasses.class));
             }
         });
-      }
+    }
     private void firebaseUserSearch(String searchText) {
 
 

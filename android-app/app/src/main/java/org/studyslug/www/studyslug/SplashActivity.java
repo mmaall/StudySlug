@@ -116,7 +116,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             // I assume we should go to main here
                             if(firebaseAuth.getCurrentUser() != null) {
-                                Intent mainIntent = new Intent(SplashActivity.this, addClasses.class);
+                                Intent mainIntent = new Intent(SplashActivity.this, findPeople.class);
                                 startActivity(mainIntent);
                             } else {
                                 return;
