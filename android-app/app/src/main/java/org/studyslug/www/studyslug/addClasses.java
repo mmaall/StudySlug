@@ -56,6 +56,7 @@ public class addClasses extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         user_key = FirebaseAuth.getInstance().getCurrentUser().getUid();
         user_ref = mDatabaseReference.child("users").child(user_key);
+        user_email = user.getEmail();
 
         // Get references to input form - for now I don't care about error checking
         user_department = findViewById(R.id.user_department);
@@ -71,7 +72,7 @@ public class addClasses extends AppCompatActivity {
             public void onClick(View v) {
                 // Construct a class object using the info the user submitted
                 final Course newCourse = new Course();
-                newCourse.addStudent(user_key);
+                newCourse.addStudent(user_email);
                 newCourse.setDepartment(user_department.getText().toString().toUpperCase());
                 newCourse.setNumber(user_course_number.getText().toString().toUpperCase());
                 newCourse.setSection(user_course_section.getText().toString().toUpperCase());
@@ -85,7 +86,7 @@ public class addClasses extends AppCompatActivity {
                                 Course temp = db_class.getValue(Course.class);
                                 if (temp.equals(newCourse)) {
                                     db_course_ref = db_class.getKey();
-                                    temp.addStudent(user_key);
+                                    temp.addStudent(user_email);
                                     user_ref.child("classes").push().setValue(db_course_ref);
                                     mDatabaseReference.child("classes").child(db_course_ref).setValue(temp);
                                     break;
