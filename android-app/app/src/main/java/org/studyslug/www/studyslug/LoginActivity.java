@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private     void registerUser(){
+    private void registerUser(){
         String email= mEmailView.getText().toString().trim();
         String password= mPasswordView.getText().toString().trim();
 

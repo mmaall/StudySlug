@@ -75,9 +75,15 @@ public class findPeople extends AppCompatActivity {
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 areaSpinner.setAdapter(areasAdapter);
 
+                try {
+                    class_key = areaSpinner.getSelectedItem().toString();
+                }
+                catch(Exception e){
+                    System.out.printf("No classes in spinner");
+                    Intent mainIntent = new Intent(findPeople.this, addClasses.class);
+                    startActivity(mainIntent);
 
-
-                class_key = areaSpinner.getSelectedItem().toString();
+                }
             }
 
             @Override
