@@ -27,19 +27,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class findPeople extends AppCompatActivity {
+public class FindPeopleActivity extends AppCompatActivity {
 
-    private String class_key;
-    private EditText mSearchField;
-    private ImageButton mSearchBtn;
+    private String classKey;
+    private EditText searchField;
+    private ImageButton searchButton;
     private ImageButton imageButton;
 
     private String text;
-    private RecyclerView mResultList;
+    private RecyclerView resultList;
     private List<String> areas;
 
-    private DatabaseReference mUserDatabase;
-    private DatabaseReference mClassDatabase;
+    private DatabaseReference dbUserReference;
+    private DatabaseReference dbCourseReference;
 
 
 
@@ -49,16 +49,16 @@ public class findPeople extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_people);
         final Spinner areaSpinner = (Spinner) findViewById(R.id.spinner2);
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("classes");
+        dbUserReference = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("classes");
 
-        mSearchBtn = (ImageButton) findViewById(R.id.imageButton4);
+        searchButton = (ImageButton) findViewById(R.id.imageButton4);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
-        mResultList = (RecyclerView) findViewById(R.id.result_list);
-        mResultList.setHasFixedSize(true);
+        resultList = (RecyclerView) findViewById(R.id.result_list);
+        resultList.setHasFixedSize(true);
         
-        mResultList.setLayoutManager(new LinearLayoutManager(this));
+        resultList.setLayoutManager(new LinearLayoutManager(this));
 
-        mUserDatabase.addValueEventListener(new ValueEventListener() {
+        dbUserReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -68,16 +68,16 @@ public class findPeople extends AppCompatActivity {
                     areas.add(areaName);
                 }
 
-                ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(findPeople.this, android.R.layout.simple_spinner_item, areas);
+                ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(FindPeopleActivity.this, android.R.layout.simple_spinner_item, areas);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 areaSpinner.setAdapter(areasAdapter);
 
                 try {
-                    class_key = areaSpinner.getSelectedItem().toString();
+                    classKey = areaSpinner.getSelectedItem().toString();
                 }
                 catch(Exception e){
                     System.out.printf("No classes in spinner");
-                    Intent mainIntent = new Intent(findPeople.this, addCoursesActivity.class);
+                    Intent mainIntent = new Intent(FindPeopleActivity.this, AddCoursesActivity.class);
                     startActivity(mainIntent);
 
                 }
@@ -91,7 +91,7 @@ public class findPeople extends AppCompatActivity {
 
         });
 
-        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String searchText = areaSpinner.getSelectedItem().toString();
@@ -104,16 +104,16 @@ public class findPeople extends AppCompatActivity {
         addClasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(findPeople.this, addCoursesActivity.class));
+                startActivity(new Intent(FindPeopleActivity.this, AddCoursesActivity.class));
             }
         });
     }
     private void firebaseUserSearch(String searchText) {
 
 
-        Toast.makeText(findPeople.this, "Started Slug Search!", Toast.LENGTH_LONG).show();
-        mClassDatabase = FirebaseDatabase.getInstance().getReference("classes").child(searchText).child("students");
-        Query firebaseSearchQuery = mClassDatabase.orderByChild("email");
+        Toast.makeText(FindPeopleActivity.this, "Started Slug Search!", Toast.LENGTH_LONG).show();
+        dbCourseReference = FirebaseDatabase.getInstance().getReference("classes").child(searchText).child("students");
+        Query firebaseSearchQuery = dbCourseReference.orderByChild("email");
 
         FirebaseRecyclerAdapter<String, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<String, UsersViewHolder>(
 
@@ -132,7 +132,7 @@ public class findPeople extends AppCompatActivity {
             }
         };
 
-        mResultList.setAdapter(firebaseRecyclerAdapter);
+        resultList.setAdapter(firebaseRecyclerAdapter);
 
     }
 

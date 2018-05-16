@@ -41,19 +41,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private final static int RC_SIGN_IN = 2;
 
     // UI references.
-    private EditText  mEmailView;
-    private EditText mPasswordView;
+    private EditText emailView;
+    private EditText passwordView;
     private Button buttonSignIn;
     private SignInButton googleSignIn;
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
+    private DatabaseReference dbReference;
     private ProgressDialog signInProgress;
     private String userDataKey;
-
-
     private GoogleSignInClient mGoogleSignInClient;
-
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +60,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInProgress = new ProgressDialog(this);
 
         // Set up the login form.
-        mEmailView =  findViewById(R.id.email);
-        mPasswordView=  findViewById(R.id.password);
+        emailView =  findViewById(R.id.email);
+        passwordView =  findViewById(R.id.password);
 
         buttonSignIn.setOnClickListener(this);
         googleSignIn.setOnClickListener(this);
@@ -116,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             // I assume we should go to main here
                             if(firebaseAuth.getCurrentUser() != null) {
-                                Intent mainIntent = new Intent(LoginActivity.this, addCoursesActivity.class);
+                                Intent mainIntent = new Intent(LoginActivity.this, AddCoursesActivity.class);
                                 startActivity(mainIntent);
                             } else {
                                 return;
@@ -137,8 +133,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void registerUser(){
-        String email= mEmailView.getText().toString().trim();
-        String password= mPasswordView.getText().toString().trim();
+        String email= emailView.getText().toString().trim();
+        String password= passwordView.getText().toString().trim();
 
 
         if(TextUtils.isEmpty(email)){
@@ -162,7 +158,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "Registered Succesfully",Toast.LENGTH_SHORT).show();
                             if(task.getResult().getAdditionalUserInfo().isNewUser()) {
                                 userDataKey = firebaseAuth.getUid();
-                                databaseReference.child("users").child(userDataKey).push();
+                                dbReference.child("users").child(userDataKey).push();
                             }
                             else{
 
@@ -206,7 +202,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             registerUser();
         }
         if(firebaseAuth.getCurrentUser() != null) {
-            Intent mainIntent = new Intent(this, addCoursesActivity.class);
+            Intent mainIntent = new Intent(this, AddCoursesActivity.class);
             startActivity(mainIntent);
         }
     }*/

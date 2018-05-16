@@ -17,9 +17,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class addCoursesActivity extends AppCompatActivity {
+public class AddCoursesActivity extends AppCompatActivity {
 
-    private  static final String TAG = "addCoursesActivity";
+    private  static final String TAG = "AddCoursesActivity";
 
     // Firebase stuff
     private DatabaseReference dbReference;
@@ -104,14 +104,14 @@ public class addCoursesActivity extends AppCompatActivity {
                     newCourseRef.setValue(newCourse);
                     dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
                 }
-                Intent returnIntent = new Intent(addCoursesActivity.this, findPeople.class);
+                Intent returnIntent = new Intent(AddCoursesActivity.this, FindPeopleActivity.class);
                 startActivity(returnIntent);
             }
         });
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent returnIntent = new Intent(addCoursesActivity.this, findPeople.class);
+                Intent returnIntent = new Intent(AddCoursesActivity.this, FindPeopleActivity.class);
                 startActivity(returnIntent);
             }
         });

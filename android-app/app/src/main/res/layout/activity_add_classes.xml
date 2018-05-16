@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context=".addCoursesActivity"
+    tools:context=".AddCoursesActivity"
     android:gravity="center_horizontal"
     android:paddingTop="16dp"
     android:paddingRight="16dp"

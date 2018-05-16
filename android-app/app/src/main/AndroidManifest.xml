@@ -20,7 +20,7 @@
             android:label="@string/title_activity_login">
         </activity>
         <activity
-            android:name=".addCoursesActivity"
+            android:name=".AddCoursesActivity"
             android:exported="true" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".findPeople"
+        <activity android:name=".FindPeopleActivity"
             android:exported="true" />
     </application>
 
