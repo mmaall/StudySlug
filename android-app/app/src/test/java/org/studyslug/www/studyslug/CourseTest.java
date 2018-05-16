@@ -1,15 +1,8 @@
 package org.studyslug.www.studyslug;
 
-import android.util.Log;
-
-import junit.extensions.TestSetup;
-
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.ObjectStreamException;
 
 public class CourseTest {
 
@@ -18,7 +11,7 @@ public class CourseTest {
     private static final String testNumber = "Test Number";
     private static final String testDepartment = "Test Department";
     private static final String testSection = "Test Section";
-    private Users testUser;
+    private User testUser;
 
     @Before
     public void setUp() throws Exception {
@@ -30,7 +23,7 @@ public class CourseTest {
 
     @Test
     public void course_unit_test() {
-        testUser = new Users();
+        testUser = new User();
         testUser.setEmail("test_email@test.com");
         testUser.setName("Testy McTesterface");
         testUser.setStatus("Test Status");

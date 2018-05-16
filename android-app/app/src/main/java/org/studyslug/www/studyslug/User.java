@@ -1,15 +1,15 @@
 package org.studyslug.www.studyslug;
 import java.util.ArrayList;
 
-public class Users {
+public class User {
 
     private String name;
     private String status;
     private String email;
-    private ArrayList<String> classes;
+    private ArrayList<String> courses;
     private ArrayList<String> groups;
 
-    public Users(){
+    public User(){
 
     }
 
@@ -33,7 +33,7 @@ public class Users {
 
     public String getEmail() { return this.email; }
 
-    public Users(String name, String image, String status) {
+    public User(String name, String image, String status) {
         this.name = name;
         this.status = status;
     }
