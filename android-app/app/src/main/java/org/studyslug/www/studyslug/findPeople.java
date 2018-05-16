@@ -1,7 +1,6 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -79,7 +77,7 @@ public class findPeople extends AppCompatActivity {
                 }
                 catch(Exception e){
                     System.out.printf("No classes in spinner");
-                    Intent mainIntent = new Intent(findPeople.this, addClasses.class);
+                    Intent mainIntent = new Intent(findPeople.this, addCoursesActivity.class);
                     startActivity(mainIntent);
 
                 }
@@ -106,7 +104,7 @@ public class findPeople extends AppCompatActivity {
         addClasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(findPeople.this, addClasses.class));
+                startActivity(new Intent(findPeople.this, addCoursesActivity.class));
             }
         });
     }

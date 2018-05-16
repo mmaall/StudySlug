@@ -20,7 +20,7 @@
             android:label="@string/title_activity_login">
         </activity>
         <activity
-            android:name=".addClasses"
+            android:name=".addCoursesActivity"
             android:exported="true" />
         <activity android:name=".SplashActivity">
             <intent-filter>
