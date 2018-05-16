@@ -65,13 +65,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-
-    public void openLogin() {
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        startActivity(loginIntent);
-
-    }
-
     private void signIn() {
         System.out.println("Entered signin\n");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();

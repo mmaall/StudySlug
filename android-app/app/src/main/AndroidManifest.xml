@@ -15,11 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login">
-        </activity>
-        <activity
             android:name=".AddCoursesActivity"
             android:exported="true" />
         <activity android:name=".SplashActivity">
