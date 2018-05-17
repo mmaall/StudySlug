@@ -32,28 +32,20 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
 
     // UI references.
-    private EditText mEmailView;
-    private EditText mPasswordView;
     private SignInButton googleSignIn;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private ProgressDialog signInProgress;
     private GoogleSignInClient mGoogleSignInClient;
     private String userDataKey;
-
-
+    private static final String TAG = "SplashActivity: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"Started activity");
         setContentView(R.layout.activity_splash);
         googleSignIn= findViewById(R.id.g_sign_in_button);
         firebaseAuth= FirebaseAuth.getInstance();
-        signInProgress = new ProgressDialog(this);
-
-        // Set up the login form.
-        mEmailView =  findViewById(R.id.email);
-        mPasswordView=  findViewById(R.id.password);
 
         googleSignIn.setOnClickListener(this);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -66,7 +58,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private void signIn() {
-        System.out.println("Entered signin\n");
+        Log.d(TAG,"Entered sign-in");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -114,62 +106,15 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
-                            Snackbar.make(findViewById(R.id.login_form), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-                            //                       updateUI(null);
+                            Toast.makeText(SplashActivity.this,"Authentication failed", Toast.LENGTH_LONG).show();
                         }
-
-                        // ...
                     }
                 });
     }
 
-
-    private     void registerUser(){
-        String email= mEmailView.getText().toString().trim();
-        String password= mPasswordView.getText().toString().trim();
-
-
-        if(TextUtils.isEmpty(email)){
-            return;//no email
-        }
-        if(TextUtils.isEmpty(password)){
-            return;//no password
-        }
-        //Email and password has been entered
-        //Register user
-
-        signInProgress.setMessage("Logging in...");
-        signInProgress.show();
-
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //user is registerd succesfully and logged in
-                            Toast.makeText(SplashActivity.this, "Registered Succesfully",Toast.LENGTH_SHORT).show();
-                            if(task.getResult().getAdditionalUserInfo().isNewUser()) {
-                                userDataKey = firebaseAuth.getUid();
-                                databaseReference.child("users").child(userDataKey).push();
-                            }
-                            else{
-
-                            }
-                        }
-                        else{
-                            Toast.makeText(SplashActivity.this, "Could not register", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
-    }
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        //updateUI(currentUser);
     }
 
     public void onClick(View v) {
