@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 
-public class SplashActivity extends AppCompatActivity implements View.OnClickListener{
+public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
 
   // UI references.
   private SignInButton googleSignIn;
@@ -36,10 +37,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Log.d(TAG,"Started activity");
+    Log.d(TAG, "Started activity");
     setContentView(R.layout.activity_splash);
-    googleSignIn= findViewById(R.id.g_sign_in_button);
-    firebaseAuth= FirebaseAuth.getInstance();
+    googleSignIn = findViewById(R.id.g_sign_in_button);
+    firebaseAuth = FirebaseAuth.getInstance();
 
     googleSignIn.setOnClickListener(this);
     GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -52,7 +53,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
 
   private void signIn() {
-    Log.d(TAG,"Entered sign-in");
+    Log.d(TAG, "Entered sign-in");
     Intent signInIntent = mGoogleSignInClient.getSignInIntent();
     startActivityForResult(signInIntent, RC_SIGN_IN);
   }
@@ -81,35 +82,35 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
     AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
     firebaseAuth.signInWithCredential(credential)
-        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-          @Override
-          public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()) {
-              // Sign in success, update UI with the signed-in user's information
-              Log.d("TAG", "signInWithCredential:success");
-              FirebaseUser user = firebaseAuth.getCurrentUser();
-              // I assume we should go to main here
-              if(firebaseAuth.getCurrentUser() != null) {
-                Intent findPeopleIntent =
-                    new Intent(SplashActivity.this, FindPeopleActivity.class);
-                startActivity(findPeopleIntent);
-              } else {
-                /* TODO: Somehow the firebase user is null - figure out if we need
-                 * to throw an exception or something?
-                 */
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                  @Override
+                  public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                      // Sign in success, update UI with the signed-in user's information
+                      Log.d("TAG", "signInWithCredential:success");
+                      FirebaseUser user = firebaseAuth.getCurrentUser();
+                      // I assume we should go to main here
+                      if (firebaseAuth.getCurrentUser() != null) {
+                        Intent findPeopleIntent =
+                            new Intent(SplashActivity.this, FindPeopleActivity.class);
+                        startActivity(findPeopleIntent);
+                      } else {
+                        /* TODO: Somehow the firebase user is null - figure out if we need
+                         * to throw an exception or something?
+                         */
 
-                return;
-              }
-            } else {
-              // If sign in fails, display a message to the user.
-              // TODO: Figure out something useful to do if the sign-in fails
-              Log.w("TAG", "signInWithCredential:failure", task.getException());
-              Toast.makeText(SplashActivity.this,
-                  "Authentication failed", Toast.LENGTH_LONG)
-                  .show();
-            }
-          }
-        });
+                        return;
+                      }
+                    } else {
+                      // If sign in fails, display a message to the user.
+                      // TODO: Figure out something useful to do if the sign-in fails
+                      Log.w("TAG", "signInWithCredential:failure", task.getException());
+                      Toast.makeText(SplashActivity.this,
+                                     "Authentication failed", Toast.LENGTH_LONG)
+                           .show();
+                    }
+                  }
+                });
   }
 
   @Override

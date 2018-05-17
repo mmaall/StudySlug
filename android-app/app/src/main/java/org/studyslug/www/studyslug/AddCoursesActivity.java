@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -104,7 +105,7 @@ public class AddCoursesActivity extends AppCompatActivity {
           dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
         }
         Intent returnIntent = new Intent(AddCoursesActivity.this,
-            FindPeopleActivity.class);
+                                         FindPeopleActivity.class);
         startActivity(returnIntent);
       }
     });
@@ -112,7 +113,7 @@ public class AddCoursesActivity extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         Intent returnIntent = new Intent(AddCoursesActivity.this,
-            FindPeopleActivity.class);
+                                         FindPeopleActivity.class);
         startActivity(returnIntent);
       }
     });
