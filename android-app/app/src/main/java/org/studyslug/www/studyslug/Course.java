@@ -1,6 +1,5 @@
 package org.studyslug.www.studyslug;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Course {
@@ -11,15 +10,18 @@ public class Course {
 
 
     public Course() {
-        this.students = new HashMap<String, String>();
+        this.students = new HashMap<>();
     }
 
-    public Course(String department, String number, String section, HashMap<String, String> students) {
+    public Course(String department,
+                  String number,
+                  String section,
+                  HashMap<String, String> students) {
         this.department = department;
         this.number = number;
         this.section = section;
         if (this.students == null) {
-            this.students = new HashMap<String, String>(students);
+            this.students = new HashMap<>(students);
         } else {
             this.students = students;
         }

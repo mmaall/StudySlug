@@ -6,8 +6,8 @@ public class User {
     private String name;
     private String status;
     private String email;
-    private ArrayList<String> courses;
-    private ArrayList<String> groups;
+    private ArrayList<String> courseKeys;
+    private ArrayList<String> groupKeys;
 
     public User(){
 
@@ -33,7 +33,7 @@ public class User {
 
     public String getEmail() { return this.email; }
 
-    public User(String name, String image, String status) {
+    public User(String name, String status) {
         this.name = name;
         this.status = status;
     }
