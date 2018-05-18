@@ -46,6 +46,9 @@ public class AddCoursesActivity extends AppCompatActivity {
     setContentView(R.layout.activity_add_classes);
     Log.d(TAG, "onCreate: started");
 
+    buildDatabaseReferences();
+
+
     userDepartment = findViewById(R.id.user_department);
     userCourseNumber = findViewById(R.id.user_course_number);
     userCourseSection = findViewById(R.id.user_course_section);
@@ -101,8 +104,9 @@ public class AddCoursesActivity extends AppCompatActivity {
     });
   }
 
-  private void createDatabaseReferences() {
+  private void buildDatabaseReferences() {
     // Initialize database interactions and setup firebaseUser info
+    Log.d(TAG, "Building db references");
     dbReference = FirebaseDatabase.getInstance().getReference();
     firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     try {
