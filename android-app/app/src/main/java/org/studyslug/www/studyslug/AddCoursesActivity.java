@@ -109,14 +109,21 @@ public class AddCoursesActivity extends AppCompatActivity {
         startActivity(returnIntent);
       }
     });
-    cancelButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent returnIntent = new Intent(AddCoursesActivity.this,
-                                         FindPeopleActivity.class);
-        startActivity(returnIntent);
-      }
-    });
+  }
 
+  private void returnToFindPeople() {
+    Intent returnIntent = new Intent(AddCoursesActivity.this,
+                                     FindPeopleActivity.class);
+    startActivity(returnIntent);
+  }
+  public void onClick(View v) {
+    switch (v.getId()) {
+      case R.id.addClasses_button:
+        addClass();
+        break;
+      case R.id.cancel_button:
+        returnToFindPeople();
+        break;
+    }
   }
 }
