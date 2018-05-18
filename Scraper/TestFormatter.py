@@ -4,7 +4,6 @@ from __future__ import print_function
 
 with open('c:/Users/Kian/classlist.txt') as f:
     content = f.readlines()
-# you may also want to remove whitespace characters like `\n` at the end of each line
     for i in content:
         fullname = i
         j = i.split(' ',3)
