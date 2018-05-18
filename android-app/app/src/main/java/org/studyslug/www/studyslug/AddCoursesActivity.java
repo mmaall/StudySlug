@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,16 +54,38 @@ public class AddCoursesActivity extends AppCompatActivity {
   String[] departments = {"ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ART",
           "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CLNI", "CLTE", "CMMU", "CMPM", "CMPE",
           "CMPS", "COWL", "LTCR",};
+
   private ArrayList<Course> getCourses() {
-    ArrayList<Course> courseData = new ArrayList<Course>();
+    ArrayList<Course> courseData = new ArrayList<>();
     courseData.clear();
 
     //TODO:Fill courseData with courses by Department (ID)
+    // courseData.add(new Course(department, number, section, students));
 
 
     return courseData;
   }
-  
+
+  private void getCoursesBySelectedDepartment(String chosenDepartment) {
+    ArrayList<Course> filteredCourses = new ArrayList<>();
+    if (chosenDepartment == " "){
+
+        departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
+    }
+    else{
+        for(Course course: getCourses()){
+
+          if(course.getDepartment()==chosenDepartment){
+             filteredCourses.add(course);
+          }//endif
+
+        }//endfor
+
+      departmentAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,filteredCourses);
+    }//endelse
+
+    courseView.setAdapter(departmentAdapter);
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +112,23 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     // Initialize department spinner
     departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
+    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,departments));
+    courseView = (GridView) findViewById(R.id.mainGrid);
+    courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
+
+    departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+         if(position >= 0 && position < departments.length){
+              
+         }
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+
+      }
+    });
 
 
 
