@@ -13,18 +13,18 @@ with open('c:/Users/Kian/classlist.txt') as f:
         #i[2] = '-'
         section = j[3][0:2]
         name = j[3][3:]
-        print ('\n"',end=""),
+        print ('\n "',end=""),
         print (fullname[0:len(fullname)-1],end='"'),
         print(' : { \n  '),
-        print('"department" : "',end=""),
+        print('  "department" : "',end=""),
         print (subject,end=""),
-        print('",\n  "number" : "',end=""),
+        print('",\n   "number" : "',end=""),
         print (number,end=""),
-        print('",\n  "section" : "',end=""),
+        print('",\n   "section" : "',end=""),
         print (section,end=""),
-        print('",\n  "name" : "',end=""),
+        print('",\n   "name" : "',end=""),
         print (name[0:len(name)-1],end=""),
-        print('"\n  "students" : [{\n}]\n},',end="")
+        print('",\n  "students" : {}\n},',end="")
         
             
 
