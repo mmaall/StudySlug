@@ -20,25 +20,16 @@ import com.google.firebase.database.ValueEventListener;
 public class AddCoursesActivity extends AppCompatActivity {
 
   private static final String TAG = "AddCoursesActivity";
-
-  // Firebase stuff
   private DatabaseReference dbReference;
   private FirebaseUser firebaseUser;
   private DatabaseReference dbUserReference;
   private DatabaseReference coursesReference;
   private String dbCourseReference;
-
-  // User info
-  // private String user_name;
   private String userEmail;
   private String userKey;
-
-  // Form info
   private EditText userDepartment;
   private EditText userCourseNumber;
   private EditText userCourseSection;
-  private Button submitButton;
-  private Button cancelButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,61 +38,13 @@ public class AddCoursesActivity extends AppCompatActivity {
     Log.d(TAG, "onCreate: started");
 
     buildDatabaseReferences();
+    findFormIDs();
+  }
 
-
+  private void findFormIDs() {
     userDepartment = findViewById(R.id.user_department);
     userCourseNumber = findViewById(R.id.user_course_number);
     userCourseSection = findViewById(R.id.user_course_section);
-    submitButton = findViewById(R.id.add_courses_submit_button);
-    cancelButton = findViewById(R.id.add_courses_cancel_button);
-
-    // Get reference to the classes tree
-    coursesReference = dbReference.child("classes");
-
-    submitButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // Construct a class object using the info the firebaseUser submitted
-        final Course newCourse = new Course();
-        newCourse.addStudent(userEmail);
-        newCourse.setDepartment(userDepartment.getText().toString().toUpperCase());
-        newCourse.setNumber(userCourseNumber.getText().toString().toUpperCase());
-        newCourse.setSection(userCourseSection.getText().toString().toUpperCase());
-
-        // Scan db to see if this class already exists
-        coursesReference.addListenerForSingleValueEvent(new ValueEventListener() {
-          @Override
-          public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot != null) {
-              for (DataSnapshot db_class : dataSnapshot.getChildren()) {
-                Course temp = db_class.getValue(Course.class);
-                if (temp.equals(newCourse)) {
-                  dbCourseReference = db_class.getKey();
-                  temp.addStudent(userEmail);
-                  dbUserReference.child("classes").push().setValue(dbCourseReference);
-                  dbReference.child("classes").child(dbCourseReference).setValue(temp);
-                  break;
-                }
-              }
-            } else {
-              Log.d(TAG, "dataSnaphot not found");
-            }
-          }
-
-          @Override
-          public void onCancelled(DatabaseError databaseError) {
-            // TODO: Something here?
-          }
-        });
-        if (dbCourseReference == null) {
-          // This is a new course
-          DatabaseReference newCourseRef = dbReference.child("classes").push();
-          newCourseRef.setValue(newCourse);
-          dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
-        }
-        returnToFindPeople();
-      }
-    });
   }
 
   private void buildDatabaseReferences() {
@@ -116,6 +59,49 @@ public class AddCoursesActivity extends AppCompatActivity {
     }
     dbUserReference = dbReference.child("users").child(userKey);
     userEmail = firebaseUser.getEmail();
+    coursesReference = dbReference.child("classes");
+  }
+
+  private void addCourse() {
+    // Construct a class object using the info the firebaseUser submitted
+    final Course newCourse = new Course();
+    newCourse.addStudent(userEmail);
+    newCourse.setDepartment(userDepartment.getText().toString().toUpperCase());
+    newCourse.setNumber(userCourseNumber.getText().toString().toUpperCase());
+    newCourse.setSection(userCourseSection.getText().toString().toUpperCase());
+
+    // Scan db to see if this class already exists
+    coursesReference.addListenerForSingleValueEvent(new ValueEventListener() {
+      @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+        if (dataSnapshot != null) {
+          for (DataSnapshot db_class : dataSnapshot.getChildren()) {
+            Course temp = db_class.getValue(Course.class);
+            if (temp.equals(newCourse)) {
+              dbCourseReference = db_class.getKey();
+              temp.addStudent(userEmail);
+              dbUserReference.child("classes").push().setValue(dbCourseReference);
+              dbReference.child("classes").child(dbCourseReference).setValue(temp);
+              break;
+            }
+          }
+        } else {
+          Log.d(TAG, "dataSnaphot not found");
+        }
+      }
+
+      @Override
+      public void onCancelled(DatabaseError databaseError) {
+        // TODO: Something here?
+      }
+    });
+    if (dbCourseReference == null) {
+      // This is a new course
+      DatabaseReference newCourseRef = dbReference.child("classes").push();
+      newCourseRef.setValue(newCourse);
+      dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
+    }
+    returnToFindPeople();
   }
 
   private void returnToFindPeople() {
@@ -123,10 +109,11 @@ public class AddCoursesActivity extends AppCompatActivity {
                                      FindPeopleActivity.class);
     startActivity(returnIntent);
   }
+
   public void onClick(View v) {
     switch (v.getId()) {
       case R.id.add_courses_submit_button:
-        addClass();
+        addCourse();
         break;
       case R.id.add_courses_cancel_button:
         returnToFindPeople();

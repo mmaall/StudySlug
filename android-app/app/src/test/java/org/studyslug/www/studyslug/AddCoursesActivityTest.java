@@ -13,7 +13,7 @@ public class AddCoursesActivityTest {
 
   @Before
   public void setUp() {
-    AddCoursesActivity = new AddCoursesActivity();
+    testActivity = new AddCoursesActivity();
   }
 
   @Test
