@@ -46,14 +46,6 @@ public class AddCoursesActivity extends AppCompatActivity {
     setContentView(R.layout.activity_add_classes);
     Log.d(TAG, "onCreate: started");
 
-    // Initialize database interactions and setup firebaseUser info
-    dbReference = FirebaseDatabase.getInstance().getReference();
-    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    dbUserReference = dbReference.child("users").child(userKey);
-    userEmail = firebaseUser.getEmail();
-
-    // Get references to input form - for now I don't care about error checking
     userDepartment = findViewById(R.id.user_department);
     userCourseNumber = findViewById(R.id.user_course_number);
     userCourseSection = findViewById(R.id.user_course_section);
@@ -104,11 +96,22 @@ public class AddCoursesActivity extends AppCompatActivity {
           newCourseRef.setValue(newCourse);
           dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
         }
-        Intent returnIntent = new Intent(AddCoursesActivity.this,
-                                         FindPeopleActivity.class);
-        startActivity(returnIntent);
+        returnToFindPeople();
       }
     });
+  }
+
+  private void createDatabaseReferences() {
+    // Initialize database interactions and setup firebaseUser info
+    dbReference = FirebaseDatabase.getInstance().getReference();
+    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    try {
+      userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    } catch (NullPointerException e) {
+      Log.d(TAG,"Tried to get user ID, null pointer exception");
+    }
+    dbUserReference = dbReference.child("users").child(userKey);
+    userEmail = firebaseUser.getEmail();
   }
 
   private void returnToFindPeople() {
