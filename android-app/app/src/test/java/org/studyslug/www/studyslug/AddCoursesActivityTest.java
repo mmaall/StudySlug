@@ -7,11 +7,13 @@ import static org.junit.Assert.*;
 
 public class AddCoursesActivityTest {
   private AddCoursesActivity testActivity;
-  private 
+  private static final String TAG = "AddCoursesActivityTest: ";
+  private User testUser;
+  private Course testCourse;
 
   @Before
   public void setUp() {
-
+    AddCoursesActivity = new AddCoursesActivity();
   }
 
   @Test

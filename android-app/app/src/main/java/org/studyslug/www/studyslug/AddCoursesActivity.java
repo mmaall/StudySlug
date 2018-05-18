@@ -43,7 +43,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_add_classes);
+    setContentView(R.layout.activity_add_courses);
     Log.d(TAG, "onCreate: started");
 
     buildDatabaseReferences();
@@ -52,8 +52,8 @@ public class AddCoursesActivity extends AppCompatActivity {
     userDepartment = findViewById(R.id.user_department);
     userCourseNumber = findViewById(R.id.user_course_number);
     userCourseSection = findViewById(R.id.user_course_section);
-    submitButton = findViewById(R.id.addClasses_button);
-    cancelButton = findViewById(R.id.cancel_button);
+    submitButton = findViewById(R.id.add_courses_submit_button);
+    cancelButton = findViewById(R.id.add_courses_cancel_button);
 
     // Get reference to the classes tree
     coursesReference = dbReference.child("classes");
@@ -125,10 +125,10 @@ public class AddCoursesActivity extends AppCompatActivity {
   }
   public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.addClasses_button:
+      case R.id.add_courses_submit_button:
         addClass();
         break;
-      case R.id.cancel_button:
+      case R.id.add_courses_cancel_button:
         returnToFindPeople();
         break;
     }
