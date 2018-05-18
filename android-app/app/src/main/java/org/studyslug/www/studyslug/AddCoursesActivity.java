@@ -1,5 +1,6 @@
 package org.studyslug.www.studyslug;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,16 +52,17 @@ public class AddCoursesActivity extends AppCompatActivity {
   private Spinner departmentSpinner;
   private GridView courseView;
   ArrayAdapter<Course> departmentAdapter;
-  String[] departments = {"ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ART",
-          "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CLNI", "CLTE", "CMMU", "CMPM", "CMPE",
-          "CMPS", "COWL", "LTCR",};
 
-  private ArrayList<Course> getCourses() {
+  private ArrayList<Course> getCourses(DataSnapshot dataShot) {
     ArrayList<Course> courseData = new ArrayList<>();
     courseData.clear();
 
-    //TODO:Fill courseData with courses by Department (ID)
+    //TODO:Fill courseData with courses by Department (
     // courseData.add(new Course(department, number, section, students));
+    for (DataSnapshot courseShot: dataShot.getChildren()){
+
+    }
+
 
 
     return courseData;
@@ -112,23 +114,12 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     // Initialize department spinner
     departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
-    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,departments));
+    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,));
     courseView = (GridView) findViewById(R.id.mainGrid);
     courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
 
-    departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-      @Override
-      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-         if(position >= 0 && position < departments.length){
-              
-         }
-      }
+    departmentSpinner.setOnItemSelectedListener();
 
-      @Override
-      public void onNothingSelected(AdapterView<?> parent) {
-
-      }
-    });
 
 
 
