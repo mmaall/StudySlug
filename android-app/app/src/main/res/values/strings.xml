@@ -29,6 +29,12 @@
     <string name="prompt_course_number">Enter Course Number</string>
     <string name="prompt_section">Enter Course Section</string>
     <string name="action_addClasses_info">Submit</string>
+    <string-array name="departments">Departments
+        <item>CMPS</item>
+        <item>CMPE</item>
+        <item>PSYC</item>
+        <item>WRIT</item>
+    </string-array>
 
     <!-- navView Strings -->
     <string name="nav_home">Home</string>

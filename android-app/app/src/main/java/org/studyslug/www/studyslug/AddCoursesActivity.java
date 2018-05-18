@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.Spinner;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -15,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 public class AddCoursesActivity extends AppCompatActivity {
@@ -40,6 +46,24 @@ public class AddCoursesActivity extends AppCompatActivity {
   private Button submitButton;
   private Button cancelButton;
 
+  // Spinner stuff
+  private Spinner departmentSpinner;
+  private GridView courseView;
+  ArrayAdapter<Course> departmentAdapter;
+  String[] departments = {"ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ART",
+          "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CLNI", "CLTE", "CMMU", "CMPM", "CMPE",
+          "CMPS", "COWL", "LTCR",};
+  private ArrayList<Course> getCourses() {
+    ArrayList<Course> courseData = new ArrayList<Course>();
+    courseData.clear();
+
+    //TODO:Fill courseData with courses by Department (ID)
+
+
+    return courseData;
+  }
+  
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -62,6 +86,12 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     // Get reference to the classes tree
     coursesReference = dbReference.child("classes");
+
+    // Initialize department spinner
+    departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
+
+
+
 
     submitButton.setOnClickListener(new View.OnClickListener() {
       @Override
