@@ -7,35 +7,21 @@ import org.junit.Test;
 public class UserTest {
     private User testUser;
     private static final String TAG = "User Test: ";
-    private static final String testName = "Test Name";
-    private static final String testEmail = "Test Email";
-    private static final String testStatus = "Test Status";
+    private static final String TEST_NAME = "Test Name";
+    private static final String TEST_EMAIL = "Test Email";
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() {
         testUser = new User();
-        testUser.setName(testName);
-        testUser.setEmail(testEmail);
-        testUser.setStatus(testStatus);
-
-    }
-    @Test
-    public void userName_unit_test(){
-        Assert.assertEquals(testUser.getName(),testName);
-
+        testUser.setName(TEST_NAME);
+        testUser.setEmail(TEST_EMAIL);
     }
 
     @Test
-    public void userEmail_unit_test(){
-        Assert.assertEquals(testUser.getEmail(),testEmail);
+    public void user_getter_test(){
+        Assert.assertEquals(testUser.getName(), TEST_NAME);
+        Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
     }
-
-    @Test
-    public void userStatus_unit_test(){
-        Assert.assertEquals(testUser.getStatus(),testStatus);
-    }
-    
-
-    }
+}
 
 
