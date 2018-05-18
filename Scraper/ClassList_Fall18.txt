@@ -1,0 +1,1520 @@
+AMS 3 - 01 Precalculus
+AMS 5 - 01 Statistics
+AMS 5 - 02 Statistics
+AMS 7 - 01 StatMthdsBio/Env/Hlth
+AMS 7 - 02 StatMthdsBio/Env/Hlth
+AMS 7L - 01 StatMthdsBioEnvHlthLab
+AMS 7L - 02 StatMthdsBioEnvHlthLab
+AMS 10 - 01 Math Methods I
+AMS 11A - 01 Math Methd for Econ
+AMS 11B - 01 Math Methds Econ II
+AMS 80A - 01 Gambling and Gaming
+AMS 107 - 01 IntroFluidDynamics
+AMS 114 - 01 Intro Dynam Systems
+AMS 129 - 01 Foundtns Sci Comput
+AMS 131 - 01 Intro Prob Theory
+AMS 131 - 02 Intro Prob Theory
+AMS 200 - 01 Research/Teach AMS
+AMS 203 - 01 Intro Prob Theory
+AMS 203 - 50 Intro Prob Theory
+AMS 204 - 01 Stat Data Analysis
+AMS 211 - 01 Foundatn App Math
+AMS 214 - 01 Applied Dynamic Sys
+AMS 217 - 01 Intro Fluid Dynamics
+AMS 229 - 01 Convex Optimization
+AMS 263 - 01 Stochastic Processes
+AMS 266A - 01 Introduction to R
+AMS 274 - 01 Gen Linear Models
+AMS 280B - 01 Stat&AppliedMathModel
+AMS 280C - 01 Seminar in GAFD
+ANTH 1 - 01 Intro Biolog Anth
+ANTH 97 - 01 Lab Safety Practice
+ANTH 102A - 01 Human Skeletal Biol
+ANTH 104 - 01 Human Var and Adapt
+ANTH 110F - 01 Evolution Human Diet
+ANTH 110I - 01 SustainbilitySocJust
+ANTH 113 - 01 Tutor Writing Anth
+ANTH 130A - 01 People of Africa
+ANTH 130L - 01 Latin Amer Ethnogra
+ANTH 139 - 01 Language & Culture
+ANTH 146 - 01 Anth & Environment
+ANTH 150 - 01 Communicating Anth
+ANTH 158 - 01 Feminist Ethnography
+ANTH 170 - 01 His Archaeol Theory
+ANTH 179 - 01 Slavery in Atlantic
+ANTH 180 - 01 Ceramic Analysis
+ANTH 180L - 01 Ceramic Analys Lab
+ANTH 194A - 01 Dead Persons
+ANTH 194H - 01 Paleoanthropology
+ANTH 194S - 01 Anthroplgy of Sound
+ANTH 195A - 01 Senior Thesis Seminar
+ANTH 200A - 01 Cultural Grad Core
+ANTH 216 - 01 Methods in BioAnth
+ANTH 228 - 01 Grant Writing
+ANTH 248 - 01 Finance/Money/Law
+ANTH 270A - 01 Archaeol Grad Core
+ANTH 272 - 01 Adv Archeol Research
+ANTH 280 - 01 AdvCeramicAnalysis
+ANTH 280L - 01 CeramicAnalysisLab
+ANTH 292 - 01 Graduate Colloquim
+ANTH 294R - 01 Adv Read BioAnth
+APLX 80 - 01 Intro Applied Ling
+APLX 113 - 01 Inter-Cultural Comm
+ART 10E - 01 3D Foundation
+ART 20I - 01 Intro Photography
+ART 20J - 01 Intro Draw/Paint
+ART 20K - 01 Intro New Media
+ART 80D - 01 Intro Photography
+ART 80F - 01 Intro Digital Media
+ART 106C - 01 StopMotionAnimation
+ART 130 - 01 Interm/Adv Painting
+ART 146T - 01 Digital Illustration
+ART 150 - 01 Darkroom Practices
+ART 156 - 01 Project Devlop Photo
+ART 162A - 01 Intaglio I
+ART 163A - 01 Lithography I
+ART 180B - 01 Sculpture II
+ART 184 - 01 3D ArtDesign:LaserCNC
+ART 188 - 01 Int/Adv Sclpt/Fndry
+ART 189 - 01 SpecialTopicsSculpture
+ART 194 - 01 Forms and Ideas
+ARTG 80G - 01 Vis Com Interaction
+ARTG 80H - 01 Hist Digital Games
+ARTG 80I - 01 Foundations of Play
+ARTG 118 - 01 Draw/Paint Game Des
+ARTG 129 - 01 Spec Topic Game Des
+ARTG 170 - 01 Game Design I
+ARTG 170 - 01 Game Design I
+ARTG 179 - 01 Game Design Practicum
+ASTR 1 - 01 The Cosmos
+ASTR 2 - 01 Overview Universe
+ASTR 111 - 01 Order of Magnitude
+ASTR 119 - 01 Intro Sci Computing
+ASTR 135A - 01 Astrophys Adv Lab
+ASTR 171 - 01 Genl Relativity
+ASTR 205 - 01 Intr Astro Research
+ASTR 212 - 01 Dynamical Astronomy
+ASTR 223 - 01 Planetary Physics
+ASTR 292 - 01 Seminar
+BIOC 100A - 01 Biochemistry
+BIOC 110L - 01 AdvBiochemLaboratory
+BIOE 20B - 01 Developmt & Physiol
+BIOE 20C - 01 Ecology & Evolution
+BIOE 20C - 02 Ecology & Evolution
+BIOE 82 - 01 Intro Field Res/Con
+BIOE 82 - 02 Intro Field Res/Con
+BIOE 107 - 01 Ecology
+BIOE 109 - 01 Evolution
+BIOE 124 - 01 Mammalogy
+BIOE 124L - 01 Mammalogy Lab
+BIOE 136 - 01 Enviro Physiology
+BIOE 140 - 01 Behavioral Ecology
+BIOE 145 - 01 Plant Ecology
+BIOE 145L - 01 Plant Ecology Field
+BIOE 145L - 01 Plant Ecology Field
+BIOE 155 - 01 Freshwater Ecology
+BIOE 159A - 01 Fld Qtr:Marine Ecol
+BIOE 159B - 01 Fld Qtr:Ichthyology
+BIOE 159C - 01 Fld Qtr:Field Ecolo
+BIOE 159D - 01 Fld Qtr:Fld Eco Lab
+BIOE 165 - 01 Marine Conserv Bio
+BIOE 172 - 01 Population Genetics
+BIOE 172L - 01 Popultn Genetic Lab
+BIOE 183W - 01 Research in EEB
+BIOE 200A - 01 Scientific Skills
+BIOE 200B - 01 Adv Organismal Bio
+BIOE 245 - 01 Plant Ecology
+BIOE 245L - 01 Field Methods Lab
+BIOE 245L - 01 Field Methods Lab
+BIOE 272 - 01 Population Genetics
+BIOE 272L - 01 Populatn Genetc Lab
+BIOE 281A - 01 Appld Marine Ecolog
+BIOE 281B - 01 Molecular Evolution
+BIOE 281C - 01 Physiological Ecol
+BIOE 281D - 01 Global Chng Ecology
+BIOE 281E - 01 Freshwater Ecology
+BIOE 281F - 01 Ecological Res Topi
+BIOE 281G - 01 SexualSel/Soci Behav
+BIOE 281H - 01 Comp Marine Phys
+BIOE 281I - 01 DiseaseEco/Population
+BIOE 281K - 01 Plant Evolution
+BIOE 281L - 01 Behavrl & Evol Ecol
+BIOE 281N - 01 Marine Vert Ecology
+BIOE 281O - 01 PlantWaterRelations
+BIOE 281P - 01 Plant Population
+BIOE 281Q - 01 Molec Evolution Gen
+BIOE 281R - 01 Mari Eco&Evol Biol
+BIOE 281S - 01 Ancient DNA
+BIOE 281U - 01 Invertebrate Biol
+BIOE 281V - 01 Behavioral Ecology
+BIOE 281W - 01 Exercise/Env Phys
+BIOE 294 - 01 Ecol, Evol Bio Sem
+BIOE 295 - 01 Adv EEB Seminar
+BIOL 15 - 01 Research Reports
+BIOL 20A - 01 Cell & Molecular Bi
+BIOL 20A - 02 Cell & Molecular Bi
+BIOL 20L - 01 Experimental Lab
+BIOL 100 - 01 Biochemistry
+BIOL 101L - 01 Molecular Bio Lab
+BIOL 102L - 01 Toxic RNA Lab I
+BIOL 105 - 01 Genetics
+BIOL 109L - 01 Yeast Molecular Gen
+BIOL 110 - 01 Cell Biology
+BIOL 115L - 01 Eukaryotc Molec Lab
+BIOL 115L - 02 Eukaryotc Molec Lab
+BIOL 125 - 01 Intro to Neurosci
+BIOL 130 - 01 Human Physiology
+BIOL 130L - 01 Human Physiolgy Lab
+BIOL 186F - 01 Undergrad Rsrch:MCDB
+BIOL 186L - 01 Undergrad Rsrch MCD
+BIOL 186R - 01 UG Research: MCD Bio
+BIOL 189 - 01 Health Sci Intrnshp
+BIOL 189W - 01 Human Biology DC
+BIOL 191 - 01 ACE Service Learning
+BIOL 200A - 01 Critical Analysis
+BIOL 201 - 01 RNA Processing
+BIOL 280A - 01 Molec Gene Yeasts
+BIOL 280B - 01 Chromatin Structure
+BIOL 280C - 01 Mammalian Brain Dev
+BIOL 280D - 01 RNA Processing
+BIOL 280E - 01 Meiotic Chrom Dynms
+BIOL 280F - 01 Vert Neural Connect
+BIOL 280G - 01 Phys Devel Brain
+BIOL 280H - 01 Chromatn/Transcript
+BIOL 280I - 01 EpigeneticGeneSilenc
+BIOL 280J - 01 Macromoleculr Cmplx
+BIOL 280K - 01 Cell Cycle Research
+BIOL 280L - 01 Development
+BIOL 280M - 01 Post-Trans Control
+BIOL 280N - 01 Noncoding RNA Immune
+BIOL 280O - 01 Bacterial Pathogen
+BIOL 280Q - 01 Oocyte/Embry/Neuron
+BIOL 280R - 01 Gene reg C. elegans
+BIOL 280S - 01 Chrom/RNA reg
+BIOL 280T - 01 Drosophila Develpmt
+BIOL 280U - 01 Drosophila Embryo
+BIOL 280W - 01 Membrane Proteins
+BIOL 280Y - 01 Synaptic Plasticity
+BIOL 280Z - 01 ProstaDev&CancerBio
+BIOL 288 - 01 Teaching Assist Train
+BIOL 291 - 01 Mol Cell Devel Bio
+BIOL 292 - 01 MCD Seminar
+BME 5 - 01 Intro to Biotech
+BME 18 - 01 Sci Principles Life
+BME 80G - 01 Bioethics 21st Cent
+BME 110 - 01 Comp Bio Tools
+BME 122H - 01 Env Virology
+BME 129A - 01 Project Des/Imp BME I
+BME 130 - 01 Genomes
+BME 132 - 01 Evol Genomics
+BME 140 - 01 Bioinstrumentation
+BME 185 - 01 Tech Writing Biomol
+BME 205 - 01 BioinfoModel/Algorthm
+BME 232 - 01 Evol Genomics
+BME 280B - 01 Bioinform/Bioeng Sem
+BME 281C - 01 Cancer Genomics
+BME 281D - 01 Protein Engineering
+BME 281E - 01 Seminar in Genomics
+BME 281H - 01 Sem Compar Genomics
+BME 281N - 01 Transcriptomics
+BME 281P - 01 Nanotech/Biosensors
+BME 281R - 01 Stem Cell Genomics
+BME 281S - 01 Sem Comput Genomics
+BME 281V - 01 Immunogenomics
+CHEM 1A - 01 General Chemistry
+CHEM 1A - 02 General Chemistry
+CHEM 1B - 01 General Chemistry
+CHEM 1C - 01 General Chemistry
+CHEM 1M - 01 Gen Chem Lab
+CHEM 1N - 01 Gen Chem Lab
+CHEM 8A - 01 Organic Chemistry
+CHEM 8L - 01 Organic Chem Lab
+CHEM 122 - 01 Instrumental Analys
+CHEM 143 - 01 Org Chem Structure
+CHEM 146A - 01 Adv Lab Organic
+CHEM 163A - 01 Quantum Mech & Spec
+CHEM 182 - 01 ACE Service Learning
+CHEM 200A - 01 Adv Biophys Methods
+CHEM 234 - 01 Bioinorganic Chem
+CHEM 242B - 01 Modern Org Syn
+CHEM 269 - 01 Electrochemistry
+CHEM 274 - 01 Prosem Synth/Polymr
+CHEM 275 - 01 Bio Inorganic Chem
+CHEM 282 - 01 Synthetic Methods
+CHEM 284 - 01 Prosem Syn Org Chem
+CHEM 286 - 01 Prosem Nat Pro Chem
+CHEM 291 - 01 Chemistry Seminar
+CHEM 292 - 01 Seminar
+CHEM 296 - 01 Teaching Chemistry
+CHIN 1 - 01 Chinese: First Year
+CHIN 1 - 02 Chinese: First Year
+CHIN 1 - 03 Chinese: First Year
+CHIN 4 - 01 Chinese: Second Year
+CHIN 103 - 01 Advanced Chinese
+CLNI 1 - 01 ALE:Intl/Global Persp
+CLNI 1 - 01 ALE:Intl/Global Persp
+CLNI 1 - 02 ALE:Intl/Global Persp
+CLNI 1 - 02 ALE:Intl/Global Persp
+CLNI 1 - 03 ALE:Intl/Global Persp
+CLNI 1 - 03 ALE:Intl/Global Persp
+CLNI 1 - 04 ALE:Intl/Global Persp
+CLNI 1 - 04 ALE:Intl/Global Persp
+CLNI 1 - 05 ALE:Intl/Global Persp
+CLNI 1 - 05 ALE:Intl/Global Persp
+CLNI 1 - 06 ALE:Intl/Global Persp
+CLNI 1 - 06 ALE:Intl/Global Persp
+CLNI 1 - 07 ALE:Intl/Global Persp
+CLNI 1 - 07 ALE:Intl/Global Persp
+CLNI 1 - 08 ALE:Intl/Global Persp
+CLNI 1 - 08 ALE:Intl/Global Persp
+CLNI 1 - 09 ALE:Intl/Global Persp
+CLNI 1 - 09 ALE:Intl/Global Persp
+CLNI 1 - 10 ALE:Intl/Global Persp
+CLNI 1 - 10 ALE:Intl/Global Persp
+CLNI 1 - 11 ALE:Intl/Global Persp
+CLNI 1 - 11 ALE:Intl/Global Persp
+CLNI 1 - 12 ALE:Intl/Global Persp
+CLNI 1 - 12 ALE:Intl/Global Persp
+CLNI 1 - 13 ALE:Intl/Global Persp
+CLNI 1 - 13 ALE:Intl/Global Persp
+CLNI 1 - 14 ALE:Intl/Global Persp
+CLNI 1 - 14 ALE:Intl/Global Persp
+CLNI 90 - 01 Intercultural Study
+CLNI 120 - 01 PAC Planning
+CLTE 1 - 01 ALE:Social Justice
+CLTE 1 - 01 ALE:Social Justice
+CLTE 1 - 02 ALE:Social Justice
+CLTE 1 - 02 ALE:Social Justice
+CLTE 1 - 03 ALE:Social Justice
+CLTE 1 - 03 ALE:Social Justice
+CLTE 1 - 04 ALE:Social Justice
+CLTE 1 - 04 ALE:Social Justice
+CLTE 1 - 05 ALE:Social Justice
+CLTE 1 - 05 ALE:Social Justice
+CLTE 1 - 06 ALE:Social Justice
+CLTE 1 - 06 ALE:Social Justice
+CLTE 1 - 07 ALE:Social Justice
+CLTE 1 - 07 ALE:Social Justice
+CLTE 1 - 08 ALE:Social Justice
+CLTE 1 - 08 ALE:Social Justice
+CLTE 1 - 09 ALE:Social Justice
+CLTE 1 - 09 ALE:Social Justice
+CLTE 1 - 10 ALE:Social Justice
+CLTE 1 - 10 ALE:Social Justice
+CLTE 1 - 11 ALE:Social Justice
+CLTE 1 - 11 ALE:Social Justice
+CLTE 1 - 12 ALE:Social Justice
+CLTE 1 - 12 ALE:Social Justice
+CLTE 1 - 13 ALE:Social Justice
+CLTE 1 - 13 ALE:Social Justice
+CLTE 1 - 14 ALE:Social Justice
+CLTE 1 - 14 ALE:Social Justice
+CLTE 95 - 01 Nonviolent Comm
+CLTE 120 - 01 PAC Planning
+CLTE 135 - 01 Soc Just Inst & Pwr
+CMMU 10 - 01 Intr To Cmmu Actvsm
+CMMU 105A - 01 Field Study
+CMMU 105B - 01 Field Study
+CMMU 105C - 01 Field Study
+CMMU 132 - 01 Amer Cities Soc Chg
+CMMU 149 - 01 Pol Econ Food & Ag
+CMMU 161 - 01 GenderHealth&Justice
+CMPE 3 - 01 Personal Computers
+CMPE 8 - 01 Robot Automation
+CMPE 12 - 01 Com Sys/Assmbly Lan
+CMPE 12L - 01 Comp Sys/Lang Lab
+CMPE 16 - 01 Appl Discrete Math
+CMPE 80A - 01 Universal Access
+CMPE 80N - 01 Intro to Networking
+CMPE 100 - 01 Logic Design
+CMPE 100L - 01 Logic Design Lab
+CMPE 110 - 01 Computer Architect
+CMPE 118 - 01 Intro Mechatronics
+CMPE 118L - 01 Intro Mechatr's Lab
+CMPE 121 - 01 Micro System Design
+CMPE 121L - 01 Micro Sys Desgn Lab
+CMPE 129A - 01 Capstone Project I
+CMPE 141 - 01 Feedback Cntrl Syst
+CMPE 149 - 01 Intro Cyber-Phy Sys
+CMPE 150 - 01 Intro Comp Networks
+CMPE 150L - 01 Int Comp Net Lab
+CMPE 185 - 01 Tech Writ Comp Engs
+CMPE 200 - 01 Resrch & Teaching
+CMPE 202 - 01 Comp Architecture
+CMPE 216 - 01 Bio-Inspired Locomotion
+CMPE 218 - 01 Mechatronics
+CMPE 218L - 01 Mechatronics Lab
+CMPE 220 - 01 AdvParallelProcess
+CMPE 241 - 01 FeedbackContrlSystm
+CMPE 249 - 01 Intro Cyber-Phy Sys
+CMPE 252A - 01 Computer Networks
+CMPE 264 - 01 Image Analy/Com Vis
+CMPE 280C - 01 Seminar on Control
+CMPE 280C - 02 Seminar on Control
+CMPE 280C - 03 Seminar on Control
+CMPE 280N - 01 Seminar On Networks
+CMPE 280N - 02 Seminar On Networks
+CMPE 280P - 01 Parallel Processing
+CMPE 280S - 01 Seminar: Comp Sys
+CMPE 280V - 01 Seminar:ComputrVision
+CMPM 25 - 01 3D Modeling
+CMPM 146 - 01 Game AI
+CMPM 147 - 01 Generative Design
+CMPM 170 - 01 Game Design I
+CMPM 170 - 01 Game Design I
+CMPM 176 - 01 Game Systems
+CMPM 179 - 01 Game Design Practicum
+CMPM 201 - 01 Intro Comp Media
+CMPM 290A - 01 Topics Comp Media
+CMPM 290A - 02 Topics Comp Media
+CMPS 5J - 01 Intro to Prog Java
+CMPS 5P - 01 Intro Prog Python
+CMPS 12A - 01 Intro Program (Accel)
+CMPS 12B - 01 Intro Data Structur
+CMPS 12B - 02 Intro Data Structur
+CMPS 12L - 01 Comp Prog Lab
+CMPS 12M - 01 Data Structures Lab
+CMPS 12M - 02 Data Structures Lab
+CMPS 101 - 01 Abstract Data Types
+CMPS 101 - 02 Abstract Data Types
+CMPS 102 - 01 Intro Algorthm Anyl
+CMPS 104A - 01 Fund Compiler Des 1
+CMPS 109 - 01 Adv Programming
+CMPS 111 - 01 Intro Operating Sys
+CMPS 111 - 02 Intro Operating Sys
+CMPS 112 - 01 Compar Prog Lang
+CMPS 115 - 01 Intro Software Eng
+CMPS 115 - 02 Intro Software Eng
+CMPS 121 - 01 Mobile Applications
+CMPS 128 - 01 Dist Sys:FileSharing
+CMPS 130 - 01 Computational Models
+CMPS 142 - 01 Machine Learning
+CMPS 160 - 01 Intro Comp Graphics
+CMPS 160L - 01 Comp Graphics Lab
+CMPS 166A - 01 Game Theory /Apps I
+CMPS 180 - 01 Database Systems I
+CMPS 183 - 01 Web Applications
+CMPS 185 - 01 Technical Writing
+CMPS 200 - 01 Research & Teaching
+CMPS 201 - 01 Analysis Algorithms
+CMPS 217 - 01 Logic In Comp Sci
+CMPS 223 - 01 Adv Comp Security
+CMPS 242 - 01 Machine Learning
+CMPS 260 - 01 Computer Graphics
+CMPS 266A - 01 Introduction to R
+CMPS 278 - 01 Design Data Systems
+CMPS 280D - 01 Seminar Databases
+CMPS 280L - 01 Sem Logic Comp Sci
+CMPS 280M - 01 ML Seminar
+CMPS 280S - 01 Seminar Comp Syst
+COWL 1 - 01 ALE:Imagining Justice
+COWL 1 - 01 ALE:Imagining Justice
+COWL 1 - 02 ALE:Imagining Justice
+COWL 1 - 02 ALE:Imagining Justice
+COWL 1 - 03 ALE:Imagining Justice
+COWL 1 - 03 ALE:Imagining Justice
+COWL 1 - 04 ALE:Imagining Justice
+COWL 1 - 04 ALE:Imagining Justice
+COWL 1 - 05 ALE:Imagining Justice
+COWL 1 - 05 ALE:Imagining Justice
+COWL 1 - 06 ALE:Imagining Justice
+COWL 1 - 06 ALE:Imagining Justice
+COWL 1 - 07 ALE:Imagining Justice
+COWL 1 - 07 ALE:Imagining Justice
+COWL 1 - 08 ALE:Imagining Justice
+COWL 1 - 08 ALE:Imagining Justice
+COWL 1 - 09 ALE:Imagining Justice
+COWL 1 - 09 ALE:Imagining Justice
+COWL 1 - 10 ALE:Imagining Justice
+COWL 1 - 10 ALE:Imagining Justice
+COWL 1 - 11 ALE:Imagining Justice
+COWL 1 - 11 ALE:Imagining Justice
+COWL 1 - 12 ALE:Imagining Justice
+COWL 1 - 12 ALE:Imagining Justice
+COWL 1 - 13 ALE:Imagining Justice
+COWL 1 - 13 ALE:Imagining Justice
+COWL 1 - 14 ALE:Imagining Justice
+COWL 1 - 14 ALE:Imagining Justice
+COWL 1 - 15 ALE:Imagining Justice
+COWL 1 - 15 ALE:Imagining Justice
+COWL 1 - 16 ALE:Imagining Justice
+COWL 1 - 16 ALE:Imagining Justice
+COWL 70A - 01 Intro Book Arts
+COWL 107 - 01 Trust Rules
+COWL 111 - 01 Mock Trial Workshop
+COWL 122 - 01 UN-Contemporary Issues
+COWL 168 - 01 Social Change
+COWL 184A - 01 Leadership & Instit
+CRES 10 - 01 Intro to CRES
+CRSN 1 - 01 ALE:Environ/Society
+CRSN 1 - 01 ALE:Environ/Society
+CRSN 1 - 02 ALE:Environ/Society
+CRSN 1 - 02 ALE:Environ/Society
+CRSN 1 - 03 ALE:Environ/Society
+CRSN 1 - 03 ALE:Environ/Society
+CRSN 1 - 04 ALE:Environ/Society
+CRSN 1 - 04 ALE:Environ/Society
+CRSN 1 - 05 ALE:Environ/Society
+CRSN 1 - 05 ALE:Environ/Society
+CRSN 1 - 06 ALE:Environ/Society
+CRSN 1 - 06 ALE:Environ/Society
+CRSN 1 - 07 ALE:Environ/Society
+CRSN 1 - 07 ALE:Environ/Society
+CRSN 1 - 08 ALE:Environ/Society
+CRSN 1 - 08 ALE:Environ/Society
+CRSN 1 - 09 ALE:Environ/Society
+CRSN 1 - 09 ALE:Environ/Society
+CRSN 1 - 10 ALE:Environ/Society
+CRSN 1 - 10 ALE:Environ/Society
+CRSN 1 - 11 ALE:Environ/Society
+CRSN 1 - 11 ALE:Environ/Society
+CRSN 1 - 12 ALE:Environ/Society
+CRSN 1 - 12 ALE:Environ/Society
+CRSN 1 - 13 ALE:Environ/Society
+CRSN 1 - 13 ALE:Environ/Society
+CRSN 1 - 14 ALE:Environ/Society
+CRSN 1 - 14 ALE:Environ/Society
+CRSN 15 - 01 STEM Jump Start
+CRSN 15 - 02 STEM Jump Start
+CRSN 15 - 03 STEM Jump Start
+CRSN 15 - 04 STEM Jump Start
+CRSN 15 - 05 STEM Jump Start
+CRSN 55 - 01 Service Learning
+CRSN 56 - 01 Sust Media Interns
+CRSN 90 - 01 Garden Internship
+CRSN 122 - 01 UN-Contemporary Issues
+CRSN 151C - 01 Sust Lab Tools
+CRSN 152 - 01 IDEASS Lab
+CRSN 152 - 02 IDEASS Lab
+CRSN 152 - 03 IDEASS Lab
+CRSN 152 - 04 IDEASS Lab
+CRSN 162 - 01 Sust Int Practicum
+CRWN 1 - 01 ALE:Emerging Technologies
+CRWN 1 - 02 ALE:Emerging Technologies
+CRWN 1 - 03 ALE:Emerging Technologies
+CRWN 1 - 04 ALE:Emerging Technologies
+CRWN 1 - 05 ALE:Emerging Technologies
+CRWN 1 - 06 ALE:Emerging Technologies
+CRWN 1 - 07 ALE:Emerging Technologies
+CRWN 1 - 08 ALE:Emerging Technologies
+CRWN 1 - 09 ALE:Emerging Technologies
+CRWN 1 - 10 ALE:Emerging Technologies
+CRWN 1 - 11 ALE:Emerging Technologies
+CRWN 1 - 12 ALE:Emerging Technologies
+CRWN 1 - 13 ALE:Emerging Technologies
+CRWN 1 - 14 ALE:Emerging Technologies
+CRWN 1 - 15 ALE:Emerging Technologies
+CRWN 3L - 01 Precalc Academy Lab
+CRWN 70 - 01 Intro to Radio
+CRWN 70L - 01 Radio Production
+CRWN 86 - 01 Pro Comm in Digital Age
+CRWN 88 - 01 ComputFuturol
+CRWN 90 - 01 EntrepreneurshipAcad
+CRWN 185 - 01 Career&Internship
+DANM 210 - 01 Project Design Studio
+DANM 219 - 01 Electronic/Artmakng
+DANM 220 - 01 Intro Progrm Arts
+DANM 250A - 01 Collab Resrch Proj
+DANM 250B - 01 Collab Resrch Proj
+DANM 250E - 01 Collab Resrch Proj
+EART 1 - 01 Oceanography
+EART 5 - 01 California Geology
+EART 5L - 01 Calif Geology Lab
+EART 5L - 02 Calif Geology Lab
+EART 5L - 03 Calif Geology Lab
+EART 101 - 01 Invertebrate Paleo
+EART 101L - 01 InvertebratePaleoLab
+EART 101L - 02 InvertebratePaleoLab
+EART 109 - 01 Field Geology
+EART 109L - 01 Field Geology Lab
+EART 109L - 02 Field Geology Lab
+EART 110A - 01 Evolution Of Earth
+EART 110L - 01 Evol of Earth Lab
+EART 110L - 02 Evol of Earth Lab
+EART 110L - 03 Evol of Earth Lab
+EART 111 - 01 Math in Earth Science
+EART 116 - 01 Hydrology
+EART 119 - 01 Intro Sci Computing
+EART 121 - 01 The Atmosphere
+EART 150 - 01 Structural Geology
+EART 150L - 01 Structual Geol Lab
+EART 150L - 02 Structual Geol Lab
+EART 160 - 01 Planetary Science
+EART 191C - 01 Practical Geophysics
+EART 203 - 01 Intro Teaching Sem
+EART 204 - 01 EPS Foundations
+EART 213 - 01 Biogeochem Cycles
+EART 220 - 01 GroundWaterModeling
+EART 290B - 01 Topics Glaciology
+EART 290E - 01 Topics/Planetry Sci
+EART 292 - 01 Seminar
+EART 292 - 02 Seminar
+ECON 1 - 01 Intro Microeconomic
+ECON 2 - 01 Intro Macroeconomic
+ECON 10A - 01 Econ of Accounting
+ECON 11A - 01 Math Methd for Econ
+ECON 11B - 01 Math Methds Econ II
+ECON 20 - 01 Econ for Non-Majors
+ECON 100A - 01 Intermed Microecon
+ECON 100A - 02 Intermed Microecon
+ECON 100B - 01 Intermed Macroecon
+ECON 105 - 01 Topics in Macro
+ECON 111A - 01 Intermed Account I
+ECON 113 - 01 Intro Econometrics
+ECON 113 - 02 Intro Econometrics
+ECON 115 - 01 Intr Management Sci
+ECON 117B - 01 Tax Factors
+ECON 119 - 01 Advanced Accounting
+ECON 126 - 01 Why Succeed/Fail
+ECON 130 - 01 Money & Banking
+ECON 133 - 01 Security Markets
+ECON 136 - 01 Business Strategy
+ECON 140 - 01 International Trade
+ECON 143 - 01 InternatnlEconPolicy
+ECON 161A - 01 Marketing
+ECON 166A - 01 Game Theory /Apps I
+ECON 170 - 01 Environmental Econ
+ECON 180 - 01 Labor
+ECON 186 - 01 Mathematical Mthds
+ECON 197 - 01 Economic Rhetoric
+ECON 197 - 02 Economic Rhetoric
+ECON 200 - 01 Microecon Analysis
+ECON 204A - 01 Adv Microec Theor I
+ECON 205A - 01 Adv Macroec Theor I
+ECON 210B - 01 Math Methods Econ
+ECON 211A - 01 Adv Econometrics I
+ECON 216 - 01 Applied Economet I
+ECON 220A - 01 Development Econ I
+ECON 221A - 01 Adv Monetary Econ I
+ECON 233 - 01 Finance I
+ECON 241A - 01 Adv Intl Finance I
+ECON 250A - 01 Public Appl Econ I
+ECON 274 - 01 Macro Monetary Econ
+ECON 275 - 01 Wkshp App Microecon
+ECON 294A - 01 Applied EconFin Lab
+ECON 294A - 02 Applied EconFin Lab
+EDUC 50B - 01 CAL Teach 1: Math
+EDUC 50C - 01 CAL Teach1: Science
+EDUC 60 - 01 Intro to Education
+EDUC 104 - 01 Ethical Issue Teach
+EDUC 120 - 01 Aesthtc Educ Theory
+EDUC 160 - 01 Educ Reform Issues
+EDUC 171 - 01 Asian Schl & Immigra
+EDUC 180 - 01 Intro To Teaching
+EDUC 200 - 01 Beg Student Teach
+EDUC 200 - 04 Beg Student Teach
+EDUC 200 - 05 Beg Student Teach
+EDUC 204 - 01 English Development
+EDUC 211 - 01 TopicsElemEducation
+EDUC 212A - 01 Biling&Biliteracy:A
+EDUC 220 - 01 Reading & Lang Arts
+EDUC 222 - 01 Math Learn & Teach
+EDUC 226 - 01 English Teaching
+EDUC 228 - 01 Math Education
+EDUC 230 - 01 Sci Ed:Resrch/Pract
+EDUC 232 - 01 Social Science
+EDUC 235 - 01 Intr Educat Inquiry
+EDUC 262 - 01 Cultural Context Ed
+EE 80S - 01 Sustn Eng/Pract
+EE 101 - 01 Intro Elec Circuits
+EE 101L - 01 Intr Elec Circ Lab
+EE 103 - 01 Signals & Systems
+EE 103L - 01 Signals Systems Lab
+EE 129A - 01 Capstone Project I
+EE 129A - 02 Capstone Project I
+EE 130 - 01 Optoelect/Photonics
+EE 130L - 01 Optoelectronics Lab
+EE 145 - 01 Props Of Materials
+EE 145L - 01 Props Of Matrls Lab
+EE 154 - 01 Feedback Cntrl Syst
+EE 172 - 01 Adv Analog Circuits
+EE 173 - 01 Hi-Spd Digtl Design
+EE 173L - 01 Hi-Spd Digtl Des Lb
+EE 175 - 01 Energy Gen Control
+EE 175L - 01 Energy Gen/Ctrl Lab
+EE 216 - 01 Nanomaterial Devices
+EE 216 - 50 Nanomaterial Devices
+EE 221 - 01 Adv Analog Circuits
+EE 221 - 50 Adv Analog Circuits
+EE 227 - 01 Fund Semicond Phys
+EE 227 - 50 Fund Semicond Phys
+EE 230 - 01 Optical Fiber Comm
+EE 241 - 01 FeedbackContrlSystm
+EE 251 - 01 Digital Communicatn
+EE 251 - 50 Digital Communicatn
+EE 261 - 01 ErrorControlCoding
+EE 280A - 01 Applied Microscopy
+EE 280B - 01 Intgr Bioelect Sem
+EE 280N - 01 Nanophotonics Sem
+EE 280O - 01 Applied Optics
+EE 280Z - 01 Smart Grids & Data
+EE 290 - 01 EE Graduate Seminar
+EE 293 - 01 Adv Topics in EE
+EE 293 - 50 Adv Topics in EE
+ENVS 15 - 01 Naturl History UCSC
+ENVS 24 - 01 General Ecology
+ENVS 80B - 01 Forecast Globl Warm
+ENVS 106A - 01 Natural Hist Birds
+ENVS 115A - 01 GIS & Envnmtl Applc
+ENVS 115L - 01 GIS & Envrn App Lab
+ENVS 115L - 02 GIS & Envrn App Lab
+ENVS 115L - 03 GIS & Envrn App Lab
+ENVS 115L - 04 GIS & Envrn App Lab
+ENVS 115L - 05 GIS & Envrn App Lab
+ENVS 115L - 06 GIS & Envrn App Lab
+ENVS 120 - 01 Conservation Biology
+ENVS 130A - 01 Agroeco & Sust Ag
+ENVS 130L - 01 Agroeco & Sust Lab
+ENVS 130L - 02 Agroeco & Sust Lab
+ENVS 130L - 03 Agroeco & Sust Lab
+ENVS 130L - 04 Agroeco & Sust Lab
+ENVS 141 - 01 Ecological Econ
+ENVS 145 - 01 Green Cities
+ENVS 158 - 01 Pol Ecol & Socl Chg
+ENVS 167 - 01 Freshwater/Wetland
+ENVS 167L - 01 Freshwater Eco Lab
+ENVS 177 - 01 TeachEnvironEduc
+ENVS 189 - 01 Research Seminar
+ENVS 196 - 01 Senior Seminar
+ENVS 196 - 02 Senior Seminar
+ENVS 201A - 01 Research Approaches
+ENVS 215A - 01 Gis & Envnmtl Applc
+ENVS 215L - 01 GIS & Envrn App Lab
+ENVS 290 - 01 Interdis Research
+ENVS 290L - 01 Research Seminar
+ENVS 292 - 01 Research In Envs
+ENVS 292 - 02 Research In Envs
+ENVS 292 - 03 Research In Envs
+ENVS 292 - 04 Research In Envs
+ENVS 292 - 05 Research In Envs
+ENVS 292 - 06 Research In Envs
+ENVS 292 - 07 Research In Envs
+ENVS 292 - 08 Research In Envs
+ENVS 292 - 09 Research In Envs
+ENVS 292 - 10 Research In Envs
+ENVS 292 - 11 Research In Envs
+ENVS 292 - 12 Research In Envs
+ENVS 292 - 13 Research In Envs
+ENVS 292 - 14 Research In Envs
+ENVS 292 - 15 Research In Envs
+FILM 20A - 01 Intro Film Studies
+FILM 20A - 01 Intro Film Studies
+FILM 80M - 01 Understanding Media
+FILM 80S - 01 Sp Top Film/Dig Med
+FILM 132A - 01 Internatnl Cinema
+FILM 134B - 01 Amer Film:1960-Pres
+FILM 150 - 01 Screenwriting
+FILM 162 - 01 Film Authors
+FILM 170A - 01 Digital Media Prod
+FILM 170B - 01 Film/Video Productn
+FILM 170B - 01 Film/Video Productn
+FILM 171A - 01 Prod Workshop-Sound
+FILM 171S - 01 Spec Topics in Prod
+FILM 172 - 01 NarrativeVideoWksp
+FILM 172 - 01 NarrativeVideoWksp
+FILM 185D - 01 Sound/Image Theory
+FILM 185S - 01 AdvTopicFilmStudies
+FILM 194C - 01 New Media Theor Sem
+FILM 200C - 01 Theory/Praxis 2
+FILM 224 - 01 Mediating Diff
+FILM 237 - 01 Graduate Critique
+FMST 1 - 01 Feminist Stds Intro
+FMST 40 - 01 Sexuality/Globalztn
+FMST 75 - 01 Feminist Method
+FMST 80S - 01 Women In Music
+FMST 188 - 01 Topics in FMST
+FMST 194O - 01 Gender/Human Rights
+FMST 200 - 01 Feminist Theories
+FMST 204 - 01 Ethno Writ Soc Doc
+FMST 264 - 01 The Idea Of Africa
+FREN 1 - 01 French: First Year
+FREN 1 - 02 French: First Year
+FREN 1 - 03 French: First Year
+FREN 2 - 01 French: First Year
+FREN 3 - 01 French: First Year
+FREN 4 - 01 French: Second Year
+FREN 5 - 01 French: Second Year
+FREN 111 - 01 Stylistics
+GAME 230 - 50 Game Engineering
+GERM 1 - 01 German: First Year
+GERM 1 - 02 German: First Year
+GERM 1 - 03 German: First Year
+GERM 4 - 01 German: Second Year
+GREE 1 - 01 Elem Ancient Greek
+HAVC 24 - 01 SE Asia Visual Cul
+HAVC 40 - 01 Museum Cultures
+HAVC 45 - 01 Photography Now
+HAVC 70 - 01 Pacific Islands Art
+HAVC 116 - 01 AfricanArchitecture
+HAVC 141K - 01 Activst Art 1960 On
+HAVC 143E - 01 History of Design
+HAVC 160A - 01 Visual Cltr: Mexico
+HAVC 180A - 01 Global Contemp Art
+HAVC 191P - 01 Topics Contemp Art
+HAVC 191W - 01 ArtDisasterRslience
+HAVC 201A - 01 Intro Visual Studies
+HAVC 204 - 01 Grant Writing
+HAVC 205 - 01 Grant Writing in VS
+HAVC 233 - 01 ContempArt & Vis Cltr
+HEBR 1 - 01 Hebrew: First Year
+HIS 10A - 01 U.S. History To 1877
+HIS 11A - 01 L.Amer ColonlPeriod
+HIS 40B - 01 Modern East Asia
+HIS 41 - 01 Making Mod Mid East
+HIS 70B - 01 ModEurope 1815-pres
+HIS 77 - 01 Am Jewish History
+HIS 100 - 01 His Skills & Methds
+HIS 101E - 01 Global 1930s
+HIS 110A - 01 Colonial U S 1500.-1750
+HIS 116A - 01 Unchained Memory
+HIS 117 - 01 Wired Nation
+HIS 128 - 01 Chicana/o History
+HIS 137A - 01 Africa To 1800
+HIS 140D - 01 Recent Chinese Hist
+HIS 150F - 01 Engendering Empires
+HIS 158C - 01 Slavery in Atlantic
+HIS 159C - 01 Temple and City
+HIS 167A - 01 The First World War
+HIS 172A - 01 German History
+HIS 190A - 01 Latn Am Slavry/Race
+HIS 196H - 01 Sex and the City
+HIS 200 - 01 Methods & Theories
+HIS 210B - 01 Readings US History
+HIS 230B - 01 Engendering China
+HIS 260 - 01 Making Space
+HIS 280A - 01 Teaching Pedagogy
+HIS 280B - 01 Resrch & Grant Writ
+HIS 280C - 01 Job Market
+HISC 80O - 01 Popular Music
+HISC 120 - 01 What is a State?
+HISC 203A - 01 Approach To HistCon
+HISC 226 - 01 Liberty/Resistance
+HISC 232 - 01 Music/Social/Thought
+HISC 240 - 01 Univ Level Pedagogy
+HISC 264 - 01 The Idea Of Africa
+ITAL 1 - 01 Elem Italian Lang
+ITAL 1 - 02 Elem Italian Lang
+ITAL 1 - 03 Elem Italian Lang
+ITAL 1 - 04 Elem Italian Lang
+ITAL 4 - 01 Italian: Second Year
+ITAL 100 - 01 Adv Ital Comp/Conv
+JAPN 1 - 01 Japanese: First Year
+JAPN 1 - 02 Japanese: First Year
+JAPN 1 - 03 Japanese: First Year
+JAPN 1 - 04 Japanese: First Year
+JAPN 1 - 05 Japanese: First Year
+JAPN 1 - 06 Japanese: First Year
+JAPN 4 - 01 Japanese: Second Year
+JAPN 4 - 02 Japanese: Second Year
+JAPN 103 - 01 Advanced Japanese
+JWST 77 - 01 Am Jewish History
+KRSG 1 - 01 ALE:Power&Representat
+KRSG 1 - 01 ALE:Power&Representat
+KRSG 1 - 02 ALE:Power&Representat
+KRSG 1 - 02 ALE:Power&Representat
+KRSG 1 - 03 ALE:Power&Representat
+KRSG 1 - 03 ALE:Power&Representat
+KRSG 1 - 04 ALE:Power&Representat
+KRSG 1 - 04 ALE:Power&Representat
+KRSG 1 - 05 ALE:Power&Representat
+KRSG 1 - 05 ALE:Power&Representat
+KRSG 1 - 06 ALE:Power&Representat
+KRSG 1 - 06 ALE:Power&Representat
+KRSG 1 - 07 ALE:Power&Representat
+KRSG 1 - 07 ALE:Power&Representat
+KRSG 1 - 08 ALE:Power&Representat
+KRSG 1 - 08 ALE:Power&Representat
+KRSG 1 - 09 ALE:Power&Representat
+KRSG 1 - 09 ALE:Power&Representat
+KRSG 1 - 10 ALE:Power&Representat
+KRSG 1 - 10 ALE:Power&Representat
+KRSG 1 - 11 ALE:Power&Representat
+KRSG 1 - 11 ALE:Power&Representat
+KRSG 12A - 01 Service Learning
+KRSG 18 - 01 Natural Hist Pract
+KRSG 25 - 01 Transfer Success
+KRSG 25 - 02 Transfer Success
+KRSG 25 - 03 Transfer Success
+KRSG 25 - 04 Transfer Success
+KRSG 25 - 05 Transfer Success
+KRSG 25 - 06 Transfer Success
+LAAD 210 - 01 OralCommunication:TAs
+LALS 1 - 01 Intro Latin Amer St
+LALS 80S - 01 Sexualities/Genders
+LALS 90 - 01 Contemporary Brazil
+LALS 100 - 01 Concepts/Theories LALS
+LALS 122 - 01 Media/Nationalism
+LALS 130 - 01 Expresiones en el cine
+LALS 130 - 01 Expresiones en el cine
+LALS 171 - 01 BrazilBlackWhite
+LALS 172 - 01 VisualizingHumanRights
+LALS 180 - 01 Borders:Real/Imagin
+LALS 194R - 01 Violencia en Amer
+LALS 200 - 01 LatAm/Latina/o Stdy
+LATN 1 - 01 Elementary Latin
+LATN 1 - 02 Elementary Latin
+LGST 10 - 01 Intro Legal Process
+LGST 105C - 01 Modern Pol Thought
+LGST 109 - 01 Legal Theory
+LGST 110 - 01 Law & Social Issues
+LGST 111B - 01 Civil Liberties
+LGST 111C - 01 IssuesConstitutionLaw
+LGST 117 - 01 Sports Law Politics
+LGST 120C - 01 Capit Amer Pol Dev
+LGST 128I - 01 Race and Law
+LGST 159 - 01 Property and the Law
+LGST 196 - 01 Senior Capstone
+LING 50 - 01 Intr To Linguistics
+LING 53 - 01 Semantics I
+LING 80D - 01 Language and Mind
+LING 102 - 01 Phonology II
+LING 112 - 01 Syntax I
+LING 114A - 01 Syntax III
+LING 140 - 01 Language Change
+LING 151 - 01 Phonetic Analysis
+LING 154 - 01 Lang/Social Identity
+LING 211 - 01 Phonology A
+LING 221 - 01 Syntax A
+LING 229 - 01 Syntax Seminar
+LING 231 - 01 Semantics A
+LING 240 - 01 Pedagogy Of Ling
+LING 259 - 01 Phonetics Seminar
+LIT 1 - 01 Literary Interpret
+LIT 61P - 01 Reading Poetry
+LIT 61W - 01 Writing & Research
+LIT 61X - 01 Tragedy
+LIT 61Z - 01 
+LIT 80H - 01 Politics of Fashion
+LIT 90 - 01 Intro Creative Writ
+LIT 90 - 01 Intro Creative Writ
+LIT 90 - 02 Intro Creative Writ
+LIT 90 - 02 Intro Creative Writ
+LIT 90 - 03 Intro Creative Writ
+LIT 90 - 03 Intro Creative Writ
+LIT 91A - 01 Inter Fiction Writing
+LIT 91A - 01 Inter Fiction Writing
+LIT 91B - 01 Inter Poetry Writing
+LIT 91B - 01 Inter Poetry Writing
+LIT 114C - 01 Dante's Divine Comedy
+LIT 120F - 01 Modern Poetry
+LIT 125H - 01 Modern Arabic Novel
+LIT 126F - 01 Speculative Fiction
+LIT 130D - 01 Global Middle Ages
+LIT 133I - 01 Global Japanese Lit
+LIT 135E - 01 Hstorical Imaginary
+LIT 146B - 01 Victorian Literature
+LIT 146F - 01 Dissent in America
+LIT 155H - 01 The Horror Film
+LIT 155H - 01 The Horror Film
+LIT 155N - 01 Cinema in India
+LIT 155N - 01 Cinema in India
+LIT 165C - 01 Mesoamerican Lit
+LIT 167E - 01 Vampire in Pop Cltr
+LIT 168A - 01 Cultr Islamic Law
+LIT 169A - 01 Race/Gender/Material
+LIT 179A - 01 Adv Writing-Fiction
+LIT 179A - 01 Adv Writing-Fiction
+LIT 179B - 01 Adv Writing-Poetry
+LIT 179B - 01 Adv Writing-Poetry
+LIT 182J - 01 Theorie
+LIT 183B - 01 Themen Literatur
+LIT 184D - 01 Prose Authors
+LIT 186B - 01 Roman Poetry
+LIT 188H - 01 Erotismo y Mistica
+LIT 189C - 01 Intro a Span Study
+LIT 189S - 01 Cultura popular
+LIT 190I - 01 Individual Authors
+LIT 190I - 02 Individual Authors
+LIT 190Y - 01 Mod Jewish Lit/Cultr
+LIT 200 - 01 Proseminar
+LIT 201 - 01 Pedagogy of Literat
+LIT 222 - 01 English Lang Lit
+LIT 250 - 01 Theory and Methods
+LIT 251 - 01 TopicsCultrlStudies
+LIT 279A - 01 Methods and Materials
+LIT 282D - 01 Topics In Theory
+MATH 2 - 01 Col Algbra/Calculus
+MATH 2 - 02 Col Algbra/Calculus
+MATH 2 - 02 Col Algbra/Calculus
+MATH 2T - 01 Preparatory Math
+MATH 3 - 01 Precalculus
+MATH 3 - 02 Precalculus
+MATH 11A - 01 Calculus with Apps
+MATH 11A - 02 Calculus with Apps
+MATH 11B - 01 Calculus with Apps
+MATH 19A - 01 Calc:Sci,Engin,Math
+MATH 19A - 02 Calc:Sci,Engin,Math
+MATH 19B - 01 Calc:Sci,Engin,Math
+MATH 20A - 01 Honors Calculus
+MATH 21 - 01 Linear Algebra
+MATH 23A - 01 Vector Calculus
+MATH 23B - 01 Vector Calculus
+MATH 24 - 01 Ordinary Diff Equas
+MATH 100 - 01 Intr Proof/Prb Solv
+MATH 101 - 01 Math Problm Solving
+MATH 105A - 01 Real Analysis
+MATH 111A - 01 Algebra
+MATH 117 - 01 Adv Linear Algebra
+MATH 128A - 01 Classical Geometry
+MATH 134 - 01 Cryptography
+MATH 152 - 01 Programming for Math
+MATH 200 - 01 Algebra I
+MATH 203 - 01 Algebra IV
+MATH 204 - 01 Analysis I
+MATH 208 - 01 Manifolds I
+MATH 211 - 01 Algebraic Topology
+MATH 213A - 01 Partial Dif Eqtns I
+MATH 238 - 01 Ellip Func/Mod Form
+MATH 239 - 01 Homological Algebra
+MATH 292 - 01 Seminar
+MERR 1 - 01 ALE:ReadOurselves/World
+MERR 1 - 01 ALE:ReadOurselves/World
+MERR 1 - 02 ALE:ReadOurselves/World
+MERR 1 - 02 ALE:ReadOurselves/World
+MERR 1 - 03 ALE:ReadOurselves/World
+MERR 1 - 03 ALE:ReadOurselves/World
+MERR 1 - 04 ALE:ReadOurselves/World
+MERR 1 - 04 ALE:ReadOurselves/World
+MERR 1 - 05 ALE:ReadOurselves/World
+MERR 1 - 05 ALE:ReadOurselves/World
+MERR 1 - 06 ALE:ReadOurselves/World
+MERR 1 - 06 ALE:ReadOurselves/World
+MERR 1 - 07 ALE:ReadOurselves/World
+MERR 1 - 07 ALE:ReadOurselves/World
+MERR 1 - 08 ALE:ReadOurselves/World
+MERR 1 - 08 ALE:ReadOurselves/World
+MERR 1 - 09 ALE:ReadOurselves/World
+MERR 1 - 09 ALE:ReadOurselves/World
+MERR 1 - 10 ALE:ReadOurselves/World
+MERR 1 - 10 ALE:ReadOurselves/World
+MERR 1 - 11 ALE:ReadOurselves/World
+MERR 1 - 11 ALE:ReadOurselves/World
+MERR 1 - 12 ALE:ReadOurselves/World
+MERR 1 - 12 ALE:ReadOurselves/World
+MERR 1 - 13 ALE:ReadOurselves/World
+MERR 1 - 13 ALE:ReadOurselves/World
+MERR 1 - 14 ALE:ReadOurselves/World
+MERR 1 - 14 ALE:ReadOurselves/World
+MERR 1 - 15 ALE:ReadOurselves/World
+MERR 1 - 15 ALE:ReadOurselves/World
+MERR 3L - 01 Precalc Academy Lab
+MERR 85B - 01 Classrm Connection
+MERR 85C - 01 Classrm Connection
+MERR 90 - 01 Field:TheoryPractice
+MERR 183F - 01 Focus on Africa
+METX 119 - 01 Microbiology
+METX 119L - 01 Gen Microbio Lab
+METX 200 - 01 Intrdisc Appr
+METX 201 - 01 Sources/Pollutants
+METX 281C - 01 TopicsEnvirMicrobio
+METX 281M - 01 Topics Molec Toxic
+METX 281O - 01 Bacterial Pathogen
+METX 281S - 01 Cell&Org/Toxicants
+METX 281V - 01 Immunity to Bacteria
+METX 281Y - 01 Bacterial Biofilms
+METX 292 - 01 Intro Grad Seminar
+MUSC 1C - 01 Concert Choir
+MUSC 2 - 01 Univ Orchestra
+MUSC 3 - 01 Large Jazz Ensemble
+MUSC 5A - 01 Beg W Java Gamelan
+MUSC 5A - 02 Beg W Java Gamelan
+MUSC 5A - 03 Beg W Java Gamelan
+MUSC 5B - 01 Int W Java Gamelan
+MUSC 5C - 01 Adv W Java Gamelan
+MUSC 8A - 01 Balinese Gamelan
+MUSC 8B - 01 Adv Balinese Gameln
+MUSC 9 - 01 Wind Ensemble
+MUSC 10 - 01 Eurasian Ensemble
+MUSC 11A - 01 Western Classical
+MUSC 11B - 01 Intro to Jazz
+MUSC 11D - 01 Intr to World Music
+MUSC 12B - 01 Mexican Folklorico
+MUSC 30A - 01 Theor, Lit, Music
+MUSC 51 - 01 Vocal Repertoire Class
+MUSC 55 - 01 NorthIndiaRhythm
+MUSC 60 - 01 Fund Keyboard Skills
+MUSC 60 - 02 Fund Keyboard Skills
+MUSC 60 - 03 Fund Keyboard Skills
+MUSC 60 - 04 Fund Keyboard Skills
+MUSC 75 - 01 Beg Improv Theory
+MUSC 80C - 01 Hist Electronic Mus
+MUSC 80S - 01 Women In Music
+MUSC 80Z - 01 Laptop Music
+MUSC 81M - 01 Chic/LatinMuscUSA
+MUSC 101C - 01 Hist West Art Music
+MUSC 102 - 01 University Orchestra
+MUSC 103 - 01 Univ Concert Choir
+MUSC 121 - 01 Orchestration
+MUSC 125 - 01 Adv Elec Sound Synt
+MUSC 130 - 01 Harmony and Form
+MUSC 159A - 01 Opera Workshop
+MUSC 163 - 01 EarlyMusicEnsemble
+MUSC 164 - 01 Jazz Ensembles
+MUSC 166 - 01 Chamber Singers
+MUSC 167 - 01 Wksp Electron Music
+MUSC 200 - 01 Intro Res Methods
+MUSC 201 - 01 History of Music Theory
+MUSC 219 - 01 Technique/Composition
+MUSC 252 - 01 Current Issues Coll
+OAKS 1 - 01 ALE:CommunicaDiversity
+OAKS 1 - 01 ALE:CommunicaDiversity
+OAKS 1 - 02 ALE:CommunicaDiversity
+OAKS 1 - 02 ALE:CommunicaDiversity
+OAKS 1 - 03 ALE:CommunicaDiversity
+OAKS 1 - 03 ALE:CommunicaDiversity
+OAKS 1 - 04 ALE:CommunicaDiversity
+OAKS 1 - 04 ALE:CommunicaDiversity
+OAKS 1 - 05 ALE:CommunicaDiversity
+OAKS 1 - 05 ALE:CommunicaDiversity
+OAKS 1 - 06 ALE:CommunicaDiversity
+OAKS 1 - 06 ALE:CommunicaDiversity
+OAKS 1 - 07 ALE:CommunicaDiversity
+OAKS 1 - 07 ALE:CommunicaDiversity
+OAKS 1 - 08 ALE:CommunicaDiversity
+OAKS 1 - 08 ALE:CommunicaDiversity
+OAKS 1 - 09 ALE:CommunicaDiversity
+OAKS 1 - 09 ALE:CommunicaDiversity
+OAKS 1 - 10 ALE:CommunicaDiversity
+OAKS 1 - 10 ALE:CommunicaDiversity
+OAKS 1 - 11 ALE:CommunicaDiversity
+OAKS 1 - 11 ALE:CommunicaDiversity
+OAKS 1 - 12 ALE:CommunicaDiversity
+OAKS 1 - 12 ALE:CommunicaDiversity
+OAKS 1 - 13 ALE:CommunicaDiversity
+OAKS 1 - 13 ALE:CommunicaDiversity
+OAKS 1 - 14 ALE:CommunicaDiversity
+OAKS 1 - 14 ALE:CommunicaDiversity
+OAKS 1 - 15 ALE:CommunicaDiversity
+OAKS 1 - 15 ALE:CommunicaDiversity
+OAKS 1 - 16 ALE:CommunicaDiversity
+OAKS 1 - 16 ALE:CommunicaDiversity
+OAKS 73B - 01 Oakes Mentoring
+OAKS 151A - 01 CommunityLiteracies
+OAKS 151B - 01 Community Lit Field
+OCEA 1 - 01 The Oceans
+OCEA 80A - 01 Life In The Sea
+OCEA 90 - 01 ClimateFundamentals
+OCEA 200 - 01 Physical Oceanography
+OCEA 211 - 01 Climate Dynamics
+OCEA 213 - 01 Biogeochem Cycles
+OCEA 280 - 01 Marine Geology
+OCEA 290C - 01 Topics Mari Geochem
+OCEA 292 - 01 Seminar
+OCEA 296 - 01 Teaching Ocean Sci
+PHIL 9 - 01 Intro to Logic
+PHIL 11 - 01 Intro To Philosophy
+PHIL 23 - 01 Phil Cognitive Sci
+PHIL 80G - 01 Bioethics 21st Cent
+PHIL 100A - 01 Ancient Greek Phil
+PHIL 106 - 01 Kant
+PHIL 122 - 01 Metaphysics
+PHIL 143 - 01 App Eth:Ethics Bowl
+PHIL 190 - 01 Senior Seminar
+PHIL 235 - 01 Philos Of Psycholgy
+PHIL 280 - 01 Grad Colloquia
+PHIL 281 - 01 Pedagogy of Phil
+PHIL 290P - 01 MajFigrs/ContmpryPhil
+PHYE 5A - 01 SwimmingLev 1(non-swim)
+PHYE 5A - 02 Swimming Level 1
+PHYE 5B - 01 Swimming Level II
+PHYE 5C - 01 Aquat:Swim Levl III
+PHYE 5G - 01 Swim Conditioning
+PHYE 5R - 01 Basic Scuba Diving
+PHYE 5R - 01 Basic Scuba Diving
+PHYE 5R - 01 Basic Scuba Diving
+PHYE 5R - 02 Basic Scuba Diving
+PHYE 5R - 02 Basic Scuba Diving
+PHYE 5R - 02 Basic Scuba Diving
+PHYE 5S - 01 AdvancedScubaDiving
+PHYE 5T - 01 Scuba Rescue Diving
+PHYE 9B - 01 BegDinghySailing
+PHYE 9B - 02 BegDinghySailing
+PHYE 9B - 03 BegDinghySailing
+PHYE 9B - 04 BegDinghySailing
+PHYE 9B - 05 BegDinghySailing
+PHYE 9B - 06 AdaptiveBegSail
+PHYE 9C - 01 IntermedDinghySail
+PHYE 9C - 02 IntermedDinghySail
+PHYE 9C - 03 IntermedDinghySail
+PHYE 9D - 01 Adv Dinghy Sailing
+PHYE 9H - 01 Basic Rowing
+PHYE 9H - 02 Basic Rowing
+PHYE 9H - 03 Basic Rowing
+PHYE 9J - 01 Inter/Adv Rowing
+PHYE 9K - 01 Ocean Kayaking
+PHYE 9K - 02 Ocean Kayaking
+PHYE 9S - 01 Beg Keel Sailing
+PHYE 9S - 02 Beg Keel Sailing
+PHYE 9T - 01 Inter Keel Sailing
+PHYE 9X - 01 Adv Keel Sailing
+PHYE 15B - 01 Basketball I
+PHYE 15B - 02 Basketball I
+PHYE 15H - 01 Racquetball
+PHYE 15N - 01 Tennis I
+PHYE 15N - 02 Tennis II
+PHYE 15N - 03 Tennis III
+PHYE 15T - 01 Volleyball I
+PHYE 15T - 02 Volleyball II
+PHYE 15T - 03 Sand Volleyball
+PHYE 20A - 01 Ballet I
+PHYE 20A - 02 Continuing Ballet I
+PHYE 20A - 03 Ballet II
+PHYE 20A - 04 Ballet III
+PHYE 20B - 01 Folk Dance
+PHYE 20C - 01 Jazz Dance I
+PHYE 20C - 02 Jazz Dance II
+PHYE 20C - 03 Jazz Dance III
+PHYE 20D - 01 Modern Dance I
+PHYE 20D - 02 Modern Dance II/III
+PHYE 20F - 01 Indiv Study Dance
+PHYE 25A - 01 Fencing:Epee
+PHYE 25B - 01 Fencing: Foil
+PHYE 25C - 01 Fencing:Sabre
+PHYE 28K - 01 Soccer
+PHYE 30G - 01 Stretch & Strengthen
+PHYE 30G - 02 Pilates
+PHYE 30G - 03 Pilates
+PHYE 30G - 04 Pilates
+PHYE 30G - 05 Pilates
+PHYE 30G - 06 Total Body Condition
+PHYE 30G - 07 Total Body Condition
+PHYE 30H - 01 Tai Chi Chuan
+PHYE 30J - 01 Strength Training
+PHYE 30J - 02 Strength Training
+PHYE 30J - 03 Cardio Strength Training
+PHYE 30J - 04 Begin Strength Training
+PHYE 30L - 01 Yoga I
+PHYE 30L - 02 Yoga II
+PHYE 30L - 03 Yoga I
+PHYE 30L - 04 Yoga III
+PHYE 30L - 05 Yoga II
+PHYE 30L - 06 Yoga I
+PHYE 30L - 07 Yoga II
+PHYE 30N - 01 Self-Defense Basics
+PHYE 43A - 01 Aikido I
+PHYE 43A - 02 Aikido I
+PHYE 43A - 03 Aikido II
+PHYE 43A - 04 Aikido II
+PHYE 209B - 01 BegDinghySail
+PHYS 5A - 01 Intro Physics I
+PHYS 5C - 01 Intro Physics III
+PHYS 5D - 01 Intro Physics IV
+PHYS 5L - 01 Intro Phys I Lab
+PHYS 5L - 02 Intro Phys I Lab
+PHYS 5L - 03 Intro Phys I Lab
+PHYS 5L - 04 Intro Phys I Lab
+PHYS 5L - 05 Intro Phys I Lab
+PHYS 5L - 06 Intro Phys I Lab
+PHYS 5L - 07 Intro Phys I Lab
+PHYS 5L - 08 Intro Phys I Lab
+PHYS 5L - 09 Intro Phys I Lab
+PHYS 5L - 10 Intro Phys I Lab
+PHYS 5L - 11 Intro Phys I Lab
+PHYS 5N - 01 Intro Phys III Lab
+PHYS 5N - 02 Intro Phys III Lab
+PHYS 5N - 03 Intro Phys III Lab
+PHYS 5N - 04 Intro Phys III Lab
+PHYS 6A - 01 Intro Physics I
+PHYS 6A - 02 Intro Physics I
+PHYS 6C - 01 Intro Phys III
+PHYS 6L - 01 Intro Phys I Lab
+PHYS 6L - 02 Intro Phys I Lab
+PHYS 6L - 03 Intro Phys I Lab
+PHYS 6L - 04 Intro Phys I Lab
+PHYS 6L - 05 Intro Phys I Lab
+PHYS 6L - 06 Intro Phys I Lab
+PHYS 6L - 07 Intro Phys I Lab
+PHYS 6L - 08 Intro Phys I Lab
+PHYS 6L - 09 Intro Phys I Lab
+PHYS 6L - 10 Intro Phys I Lab
+PHYS 6L - 11 Intro Phys I Lab
+PHYS 6L - 12 Intro Phys I Lab
+PHYS 6L - 13 Intro Phys I Lab
+PHYS 6L - 14 Intro Phys I Lab
+PHYS 6L - 15 Intro Phys I Lab
+PHYS 6L - 16 Intro Phys I Lab
+PHYS 6L - 17 Intro Phys I Lab
+PHYS 6L - 18 Intro Phys I Lab
+PHYS 6L - 19 Intro Phys I Lab
+PHYS 6L - 20 Intro Phys I Lab
+PHYS 6L - 21 Intro Phys I Lab
+PHYS 6L - 22 Intro Phys I Lab
+PHYS 6L - 23 Intro Phys I Lab
+PHYS 6N - 01 Intro Phys III Lab
+PHYS 6N - 02 Intro Phys III Lab
+PHYS 6N - 03 Intro Phys III Lab
+PHYS 6N - 04 Intro Phys III Lab
+PHYS 6N - 05 Intro Phys III Lab
+PHYS 6N - 06 Intro Phys III Lab
+PHYS 6N - 07 Intro Phys III Lab
+PHYS 6N - 08 Intro Phys III Lab
+PHYS 6N - 09 Intro Phys III Lab
+PHYS 102 - 01 Modern Physics
+PHYS 105 - 01 Mechanics
+PHYS 107 - 01 IntroFluidDynamics
+PHYS 116C - 01 Math Method Physics
+PHYS 133 - 01 Intermediate Lab
+PHYS 135A - 01 Astrophys Adv Lab
+PHYS 139B - 01 Quantum Mechanics II
+PHYS 171 - 01 Genl Relativity
+PHYS 182 - 01 Sci Comm Physics
+PHYS 210 - 01 Classical Mechanics
+PHYS 212 - 01 Electromagnetism I
+PHYS 217 - 01 Quant Fld Theory I
+PHYS 221A - 01 Int Particle Phys I
+PHYS 231 - 01 Intro Condes Matter
+PHYS 291A - 01 Cosmology
+PHYS 291C - 01 Particle Physics
+PHYS 291D - 01 Exp Collider Phys
+PHYS 291E - 01 Applied Physics
+PHYS 291F - 01 Particle Astrophys
+PHYS 291G - 01 Cond Matter Physics
+PHYS 292 - 01 Seminar
+POLI 3 - 01 Concepts/Politics
+POLI 105C - 01 Modern Pol Thought
+POLI 110 - 01 Law & Social Issues
+POLI 111B - 01 Civil Liberties
+POLI 118 - 01 Pol/Critical Theory
+POLI 120C - 01 Capit Amer Pol Dev
+POLI 125 - 01 PoliticalOrganizatns
+POLI 128 - 01 AmerElecVoteBehavior
+POLI 129 - 01 American Defense
+POLI 140A - 01 European Politics
+POLI 143 - 01 Compar Post-Communi
+POLI 144 - 01 Andean Politics
+POLI 160D - 01 Intl Political Econ
+POLI 165 - 01 Global Organization
+POLI 174 - 01 GlobPoliticalEcology
+POLI 185 - 01 Political Psychology
+POLI 186 - 01 GlobalHealthPolitics
+POLI 190H - 01 Substance Of Dmcrcy
+POLI 190L - 01 Poverty Politics
+POLI 190P - 01 Race:His of Concept
+POLI 222 - 01 Conflict/Chng:Politics
+POLI 255 - 01 Comparative Anti-Colonialisms
+PORT 1A - 01 Portuguese: Accel
+PORT 60A - 01 Portuguese: Accel Rom Lang
+PORT 65B - 01 Portuguese: Accel Interm
+PRTR 1 - 01 ALE:Arts of Reading
+PRTR 1 - 02 ALE:Arts of Reading
+PRTR 1 - 03 ALE:Arts of Reading
+PRTR 1 - 04 ALE:Arts of Reading
+PRTR 1 - 05 ALE:Arts of Reading
+PRTR 1 - 06 ALE:Arts of Reading
+PRTR 1 - 07 ALE:Arts of Reading
+PRTR 1 - 08 ALE:Arts of Reading
+PRTR 1 - 09 ALE:Arts of Reading
+PRTR 1 - 10 ALE:Arts of Reading
+PRTR 1 - 11 ALE:Arts of Reading
+PRTR 1 - 12 ALE:Arts of Reading
+PRTR 1 - 13 ALE:Arts of Reading
+PRTR 1 - 14 ALE:Arts of Reading
+PRTR 41I - 01 Improvisation
+PSYC 1 - 01 Intro Psychology
+PSYC 10 - 01 Intro Develop Psych
+PSYC 20A - 01 Cogn: Fund Theories
+PSYC 40 - 01 Intro Social Psych
+PSYC 100 - 01 Research Methods
+PSYC 104 - 01 Develop in Infancy
+PSYC 112 - 01 Moral Development
+PSYC 114 - 01 Devel as Cultural
+PSYC 119T - 01 Media Contexts
+PSYC 124 - 01 Psych of Reading
+PSYC 125 - 01 Psych of Language
+PSYC 129 - 01 Learning and Memory
+PSYC 138 - 01 Programming CogSci
+PSYC 139H - 01 Weird Science
+PSYC 139K - 01 Face Recognition
+PSYC 140H - 01 Sexual Identity/Soc
+PSYC 146 - 01 The Social Context
+PSYC 150 - 01 Soc Psyc Flim-Flam
+PSYC 153 - 01 Psych of Poverty
+PSYC 159I - 01 Psyc of Immigration
+PSYC 159R - 01 AchievementDisparity
+PSYC 167 - 01 Clinical Psychology
+PSYC 171 - 01 Child Psychopathol
+PSYC 175 - 01 Pers/Relatn/Emotion
+PSYC 191A - 01 Teaching Psychology
+PSYC 204 - 01 Quant Data Analysis
+PSYC 214B - 01 Adv Multivar Techni
+PSYC 224A - 01 Prosem: Cogni Psy I
+PSYC 225A - 01 Intro Dev Reserch I
+PSYC 230 - 01 Cogni Psych Seminar
+PSYC 231 - 01 Social Psych Sem
+PSYC 242 - 01 Dev Psyc Seminar
+PSYC 244A - 01 Prosem I:Lang Devel
+PSYC 290B - 01 Adv Devel Research
+RUSS 1 - 01 Russian: First Year
+SCIC 201A - 01 Reporting Sci News
+SCIC 202 - 01 Writ & Edit Wrkshop
+SOCD 200 - 01 Approach Social Docmt
+SOCD 201A - 01 Intro Doc Fld Pro
+SOCD 201A - 01 Intro Doc Fld Pro
+SOCD 204 - 01 Ethno Writ Soc Doc
+SOCD 294A - 01 Prod/Anlysis/Editng
+SOCY 1 - 01 Intro Sociology
+SOCY 3A - 01 Evaluation/Evidence
+SOCY 15 - 01 World Society
+SOCY 30A - 01 IntrGlobal InfoEnterp
+SOCY 105A - 01 Classical Soc Theor
+SOCY 111 - 01 Family & Society
+SOCY 127P - 01 SocDrugs/Bots/Pharm
+SOCY 128I - 01 Race and Law
+SOCY 129 - 01 Pop Culture Studies
+SOCY 136 - 01 Social Psychology
+SOCY 152 - 01 Body and Society
+SOCY 172 - 01 Social Movements
+SOCY 178 - 01 Social Problems
+SOCY 196G - 01 GISES Proj Pract
+SOCY 201 - 01 Make Classic Theory
+SOCY 203 - 01 Sociol Methods
+SOCY 290 - 01 Adv Socio Analysis
+SPAN 1 - 01 Spanish: First Year
+SPAN 1 - 02 Spanish: First Year
+SPAN 1 - 03 Spanish: First Year
+SPAN 1 - 04 Spanish: First Year
+SPAN 2 - 01 Spanish: First Year
+SPAN 2 - 02 Spanish: First Year
+SPAN 2 - 03 Spanish: First Year
+SPAN 3 - 01 Spanish: First Year
+SPAN 3 - 02 Spanish: First Year
+SPAN 3 - 03 Spanish: First Year
+SPAN 3 - 04 Spanish: First Year
+SPAN 4 - 01 Spanish: Second Year
+SPAN 4 - 02 Spanish: Second Year
+SPAN 4 - 03 Spanish: Second Year
+SPAN 4 - 04 Spanish: Second Year
+SPAN 5 - 01 Spanish: Second Year
+SPAN 5M - 01 Medical Spanish
+SPAN 5M - 02 Medical Spanish
+SPAN 6 - 01 Spanish: Second Year
+SPAN 105 - 01 Intro a Span Study
+SPAN 150 - 01 Intro Hispanic Ling
+SPAN 151 - 01 Varieties of Spanish
+SPAN 156M - 01 Mexico & Southwest
+SPHS 4 - 01 SpanHeritageSpeakers
+SPHS 4 - 02 SpanHeritageSpeakers
+SPHS 4 - 03 SpanHeritageSpeakers
+SPHS 4 - 04 SpanHeritageSpeakers
+SPHS 115 - 01 Essay Reading/Writing
+STEV 1 - 01 ALE:Self and Society
+STEV 1 - 01 ALE:Self and Society
+STEV 1 - 02 ALE:Self and Society
+STEV 1 - 02 ALE:Self and Society
+STEV 1 - 03 ALE:Self and Society
+STEV 1 - 03 ALE:Self and Society
+STEV 1 - 04 ALE:Self and Society
+STEV 1 - 04 ALE:Self and Society
+STEV 1 - 05 ALE:Self and Society
+STEV 1 - 05 ALE:Self and Society
+STEV 1 - 06 ALE:Self and Society
+STEV 1 - 06 ALE:Self and Society
+STEV 1 - 07 ALE:Self and Society
+STEV 1 - 07 ALE:Self and Society
+STEV 1 - 08 ALE:Self and Society
+STEV 1 - 08 ALE:Self and Society
+STEV 1 - 09 ALE:Self and Society
+STEV 1 - 09 ALE:Self and Society
+STEV 1 - 10 ALE:Self and Society
+STEV 1 - 10 ALE:Self and Society
+STEV 1 - 11 ALE:Self and Society
+STEV 1 - 11 ALE:Self and Society
+STEV 1 - 12 ALE:Self and Society
+STEV 1 - 12 ALE:Self and Society
+STEV 1 - 13 ALE:Self and Society
+STEV 1 - 13 ALE:Self and Society
+STEV 1 - 14 ALE:Self and Society
+STEV 1 - 14 ALE:Self and Society
+STEV 1 - 15 ALE:Self and Society
+STEV 1 - 15 ALE:Self and Society
+STEV 11A - 01 ELP:Leadership Tools
+STEV 80H - 01 Rainbow Theater
+STEV 80H - 01 Rainbow Theater
+STEV 90 - 01 The Nuclear Pacific
+STEV 96 - 01 Peer Tutoring
+STEV 96 - 02 Peer Tutoring
+THEA 10 - 01 Intro to Design
+THEA 12 - 01 Stage Management
+THEA 20 - 01 Intr Studies Acting
+THEA 22 - 01 Indonesian Dance
+THEA 31C - 01 DanceStudio1:Contemp
+THEA 36 - 01 Intro Dance Comp
+THEA 37 - 01 African Dance
+THEA 40 - 01 Intro To Directing
+THEA 50 - 01 Fundamen Production
+THEA 55A - 01 Barnstorm
+THEA 55A - 01 Barnstorm
+THEA 55B - 01 Barnstorm Lab
+THEA 55B - 01 Barnstorm Lab
+THEA 61A - 01 AncientMedievalDrama
+THEA 80L - 01 Muppet Magic
+THEA 80U - 01 Everybody Dance Now
+THEA 80Z - 01 Indian Dance
+THEA 106 - 01 Digital Illustration
+THEA 126 - 01 Acting Studio III
+THEA 151 - 01 Stdy Perform Drama
+THEA 151 - 01 Stdy Perform Drama
+THEA 157 - 01 Playwriting
+THEA 161D - 01 Asian Theater
+THEA 161T - 01 Women In Theater
+THEA 185 - 01 Senior Seminar
+THEA 290A - 01 Text Analysis
+TIM 50 - 01 Business Inf System
+TIM 101 - 01 Mgmt Of Tech Seminr
+TIM 105 - 01 Intro Mgmt of Tech I
+TIM 166A - 01 Game Theory /Apps I
+TIM 205 - 01 Management Tech I
+TIM 209 - 01 DataMining/BusAnalytics
+TIM 280I - 01 Info Retrievl/Knowl Mgnt
+TIM 280S - 01 Seminar Topics
+UCDC 194A - 01 UCDC InternResearch
+UCDC 194B - 01 UCDC Intern Seminar
+WRIT 1A - 01 Intro to Composition
+WRIT 1A - 02 Intro to Composition
+WRIT 1A - 03 Intro to Composition
+WRIT 1A - 04 Intro to Composition
+WRIT 1A - 05 Intro to Composition
+WRIT 1A - 06 Intro to Composition
+WRIT 1A - 07 Intro to Composition
+WRIT 1A - 08 Intro to Composition
+WRIT 1A - 09 Intro to Composition
+WRIT 2 - 01 Rhetoric & Inquiry
+WRIT 2 - 02 Rhetoric & Inquiry
+WRIT 2 - 03 Rhetoric & Inquiry
+WRIT 2 - 04 Rhetoric & Inquiry
+WRIT 2 - 05 Rhetoric & Inquiry
+WRIT 2 - 06 Rhetoric & Inquiry
+WRIT 2 - 07 Rhetoric & Inquiry
+WRIT 2 - 08 Rhetoric & Inquiry
+WRIT 2 - 09 Rhetoric & Inquiry
+WRIT 2 - 10 Rhetoric & Inquiry
+WRIT 2 - 11 Rhetoric & Inquiry
+WRIT 2 - 12 Rhetoric & Inquiry
+WRIT 2 - 13 Rhetoric & Inquiry
+WRIT 2 - 14 Rhetoric & Inquiry
+WRIT 23 - 01 Grammar and Rhetoric
+WRIT 23 - 02 Grammar and Rhetoric
+WRIT 25 - 01 Writing About Place
+WRIT 25 - 02 Writing About Place
+WRIT 25 - 03 Writing About Place
+WRIT 25 - 04 Writing About Place
+WRIT 25 - 05 Writing About Place
+WRIT 26 - 01 Writing About Lang
+WRIT 26 - 02 Writing About Lang
+WRIT 26 - 03 Writing About Lang
+WRIT 26 - 04 Writing About Lang
+WRIT 26 - 05 Writing About Lang
+WRIT 26 - 06 Writing About Lang
+WRIT 26 - 07 Writing About Lang
+WRIT 26 - 08 Writing About Lang
+WRIT 26 - 09 Writing About Lang
+WRIT 26 - 10 Writing About Lang
+WRIT 26 - 11 Writing About Lang
+WRIT 26 - 12 Writing About Lang
+WRIT 26 - 13 Writing About Lang
+WRIT 26 - 14 Writing About Lang
+WRIT 26 - 15 Writing About Lang
+WRIT 27 - 01 Writing About Genre
+WRIT 27 - 02 Writing About Genre
+WRIT 169 - 01 Tutoring Writing
+WRIT 169 - 02 Tutoring Writing

@@ -1,0 +1,15 @@
+WRIT 23 - 02 Grammar and Rhetoric
+
+{
+  "classes" : {
+    "WRIT 23 - 02 Grammar and Rhetoric" : {
+      "department" : "WRIT",
+      "number" : "23",
+      "section" : "02",
+	  "name" : "Grammer and Rhetoric"
+      "students" : [{
+		"ID 0" : "kmoghtad@ucsc.edu",
+		,
+      }]
+    }
+  },
