@@ -20,9 +20,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 public class AddCoursesActivity extends AppCompatActivity {
@@ -52,34 +55,66 @@ public class AddCoursesActivity extends AppCompatActivity {
   private Spinner departmentSpinner;
   private GridView courseView;
   ArrayAdapter<Course> departmentAdapter;
+  Query courseQuery;
+
+
 
   private ArrayList<Course> getCourses(DataSnapshot dataShot) {
-    ArrayList<Course> courseData = new ArrayList<>();
+
+    final ArrayList<Course> courseData = new ArrayList<>();
     courseData.clear();
+    dbReference = FirebaseDatabase.getInstance().getReference("classes")
+    coursesReference = FirebaseDatabase.getInstance()
+                                       .getReference("classes");
+    courseQuery = coursesReference.orderByChild("department");
 
-    //TODO:Fill courseData with courses by Department (
+    ValueEventListener classes = dbReference.child("classes").addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+        Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
+        while (courseShot.hasNext()) {
+          DataSnapshot currentCourse = courseShot.next();
+          String currentDepartment, currentNumber, currentSection;
+          HashMap<String,String> currentStudents;
+          currentDepartment = currentCourse.child("department").getValue().toString();
+          currentNumber = currentCourse.child("number").getValue().toString();
+          currentSection = currentCourse.child("section").getValue().toString();
+
+          Course courseInject = currentCourse.getValue(Course.class);
+          courseData.add(courseInject);
+
+
+        }
+      }
+
+      @Override
+      public void onCancelled(DatabaseError databaseError) {
+
+      }
+    });
+
+
+    //TODO:Fill courseData with courses
     // courseData.add(new Course(department, number, section, students));
-    for (DataSnapshot courseShot: dataShot.getChildren()){
-
-    }
-
-
 
     return courseData;
+
   }
+
+
 
   private void getCoursesBySelectedDepartment(String chosenDepartment) {
     ArrayList<Course> filteredCourses = new ArrayList<>();
-    if (chosenDepartment == " "){
 
-        departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
+    if (chosenDepartment == " "){
+       departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
     }
     else{
-        for(Course course: getCourses()){
+       for(Course course : ){
+         if(course.getDepartment()==chosenDepartment){
 
-          if(course.getDepartment()==chosenDepartment){
-             filteredCourses.add(course);
-          }//endif
+           filteredCourses.add(course);
+          }
 
         }//endfor
 
@@ -114,16 +149,16 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     // Initialize department spinner
     departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
-    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,));
+    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
     courseView = (GridView) findViewById(R.id.mainGrid);
     courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
 
-    departmentSpinner.setOnItemSelectedListener();
 
 
 
 
 
+  /**
     submitButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -178,6 +213,7 @@ public class AddCoursesActivity extends AppCompatActivity {
         startActivity(returnIntent);
       }
     });
+    **/
 
-  }
+   }
 }
