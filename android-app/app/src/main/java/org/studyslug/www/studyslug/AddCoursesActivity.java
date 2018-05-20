@@ -48,7 +48,18 @@ public class AddCoursesActivity extends AppCompatActivity {
   private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
   Query courseQuery;
-  private ArrayList<String> availableDepartments = new ArrayList<>();
+  private String[] availableDepartments = {"ACEN","AMST","ANTH","APLX","AMS","ARAB","ARTG",
+                                           "ASTR","BIOC","BIOL","BIOE","BME","CHEM","CHIN","CLEI",
+                                           "CLNI","CLTE","CMMU","CMPM","CMPE","CMPS","COWL","LTCR",
+                                           "CRES","CRWN","DANM","EART","ECON","EDUC","EE","ENGR",
+                                           "LTEL","ENVS","ETOX","FMST","FILM","FREN","LTFR","GAME",
+                                           "GERM","LTGE","GREE","LTGR","HEBR","HNDI","HIS","HAVC",
+                                           "HISC","HUMN","ISM","ITAL","LTIT","JAPN","JWST","KRSG",
+                                           "LAAD","LATN","LALS","LTIN","LGST","LING","LIT","MATH",
+                                           "MERR","METX","LTMO","MUSC","OAKS","OCEA","PHIL","PHYE",
+                                            "POLI","PRTR","PORT","LTPR","PSYC","PUNJ","RUSS","SCIC",
+                                           "SOCD","SOCS","SOCY","SPAN","SPHS","SPSS","LTSP","STEV",
+                                            "TIM","THEA","UCDC","WMST","LTWL","WRIT","YIDD"};
   private ArrayList<Course> courseData;
 
   private void initView(){
@@ -61,9 +72,9 @@ public class AddCoursesActivity extends AppCompatActivity {
     departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(position >0 && position < availableDepartments.size()){
+        if(position >0 && position < availableDepartments.length){
 
-           selectedDepartment = availableDepartments.get(position);
+           selectedDepartment = availableDepartments[position];
            getCoursesBySelectedDepartment(selectedDepartment);
         }
         else{
@@ -96,15 +107,9 @@ public class AddCoursesActivity extends AppCompatActivity {
         Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
         while (courseShot.hasNext()) {
           DataSnapshot currentCourse = courseShot.next();
-          String currentDepartment, currentNumber, currentSection, currentName;
+          String currentName;
           HashMap<String,String> currentStudents;
-          currentDepartment = currentCourse.child("department").getValue().toString();
           currentName = currentCourse.child("name").getValue().toString();
-          availableDepartments.add(currentDepartment);
-          Log.d(TAG, "adding " + currentDepartment + " to availableDepartments");
-          currentNumber = currentCourse.child("number").getValue().toString();
-          currentSection = currentCourse.child("section").getValue().toString();
-
           Course courseInject = currentCourse.getValue(Course.class);
           courseData.add(courseInject);
           Log.d(TAG, "adding " + currentName + " to courseData");
