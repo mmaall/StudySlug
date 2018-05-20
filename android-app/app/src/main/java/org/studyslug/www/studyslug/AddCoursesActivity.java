@@ -58,6 +58,30 @@ public class AddCoursesActivity extends AppCompatActivity {
   Query courseQuery;
   private ArrayList<String> availableDepartments;
 
+  private void initView(){
+    // Initialize department spinner
+    departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
+    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,availableDepartments));
+    courseView = (GridView) findViewById(R.id.mainGrid);
+    courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
+
+    departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(position >0 && position < availableDepartments.size()){
+
+           getCoursesBySelectedDepartment();
+        }
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+
+      }
+    });
+
+  }
+
 
 
   private ArrayList<Course> getCourses() {
@@ -90,13 +114,11 @@ public class AddCoursesActivity extends AppCompatActivity {
 
         }
       }
-
       @Override
       public void onCancelled(DatabaseError databaseError) {
 
       }
     });
-
 
     //TODO:Fill courseData with courses
     // courseData.add(new Course(department, number, section, students));
@@ -134,92 +156,8 @@ public class AddCoursesActivity extends AppCompatActivity {
     setContentView(R.layout.activity_add_classes);
     Log.d(TAG, "onCreate: started");
 
-    // Initialize database interactions and setup firebaseUser info
-    dbReference = FirebaseDatabase.getInstance().getReference();
-    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    dbUserReference = dbReference.child("users").child(userKey);
-    userEmail = firebaseUser.getEmail();
+    initView();
 
-    // Get references to input form - for now I don't care about error checking
-    /**
-    userDepartment = findViewById(R.id.user_department);
-    userCourseNumber = findViewById(R.id.user_course_number);
-    userCourseSection = findViewById(R.id.user_course_section);
-    submitButton = findViewById(R.id.addClasses_button);
-    cancelButton = findViewById(R.id.cancel_button);
-     **/
-
-    // Get reference to the classes tree
-    coursesReference = dbReference.child("classes");
-
-    // Initialize department spinner
-    departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
-    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,availableDepartments));
-    courseView = (GridView) findViewById(R.id.mainGrid);
-    courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
-
-
-
-
-
-
-  /**
-    submitButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // Construct a class object using the info the firebaseUser submitted
-        final Course newCourse = new Course();
-        newCourse.addStudent(userEmail);
-        newCourse.setDepartment(userDepartment.getText().toString().toUpperCase());
-        newCourse.setNumber(userCourseNumber.getText().toString().toUpperCase());
-        newCourse.setSection(userCourseSection.getText().toString().toUpperCase());
-
-        // Scan db to see if this class already exists
-        coursesReference.addListenerForSingleValueEvent(new ValueEventListener() {
-          @Override
-          public void onDataChange(DataSnapshot dataSnapshot) {
-            if (dataSnapshot != null) {
-              for (DataSnapshot db_class : dataSnapshot.getChildren()) {
-                Course temp = db_class.getValue(Course.class);
-                if (temp.equals(newCourse)) {
-                  dbCourseReference = db_class.getKey();
-                  temp.addStudent(userEmail);
-                  dbUserReference.child("classes").push().setValue(dbCourseReference);
-                  dbReference.child("classes").child(dbCourseReference).setValue(temp);
-                  break;
-                }
-              }
-            } else {
-              Log.d(TAG, "dataSnaphot not found");
-            }
-          }
-
-          @Override
-          public void onCancelled(DatabaseError databaseError) {
-            // TODO: Something here?
-          }
-        });
-        if (dbCourseReference == null) {
-          // This is a new course
-          DatabaseReference newCourseRef = dbReference.child("classes").push();
-          newCourseRef.setValue(newCourse);
-          dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
-        }
-        Intent returnIntent = new Intent(AddCoursesActivity.this,
-                                         FindPeopleActivity.class);
-        startActivity(returnIntent);
-      }
-    });
-    cancelButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent returnIntent = new Intent(AddCoursesActivity.this,
-                                         FindPeopleActivity.class);
-        startActivity(returnIntent);
-      }
-    });
-    **/
 
    }
 }
