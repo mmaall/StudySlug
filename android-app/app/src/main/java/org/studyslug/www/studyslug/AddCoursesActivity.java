@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,24 +40,16 @@ public class AddCoursesActivity extends AppCompatActivity {
   private DatabaseReference coursesReference;
   private String dbCourseReference;
 
-  // User info
-  // private String user_name;
-  private String userEmail;
-  private String userKey;
-
-  // Form info
-  private EditText userDepartment;
-  private EditText userCourseNumber;
-  private EditText userCourseSection;
-  private Button submitButton;
-  private Button cancelButton;
 
   // Spinner stuff
   private Spinner departmentSpinner;
   private GridView courseView;
+  private String selectedDepartment;
+  private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
   Query courseQuery;
   private ArrayList<String> availableDepartments;
+  private ArrayList<Course> courseData;
 
   private void initView(){
     // Initialize department spinner
@@ -70,7 +63,11 @@ public class AddCoursesActivity extends AppCompatActivity {
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(position >0 && position < availableDepartments.size()){
 
-           getCoursesBySelectedDepartment();
+           selectedDepartment = availableDepartments.get(position);
+           getCoursesBySelectedDepartment(selectedDepartment);
+        }
+        else{
+
         }
       }
 
@@ -86,7 +83,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   private ArrayList<Course> getCourses() {
 
-    final ArrayList<Course> courseData = new ArrayList<>();
+    courseData = new ArrayList<>();
     courseData.clear();
     dbReference = FirebaseDatabase.getInstance().getReference("classes");
     coursesReference = FirebaseDatabase.getInstance()
