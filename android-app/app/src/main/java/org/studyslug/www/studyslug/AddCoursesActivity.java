@@ -48,7 +48,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
   Query courseQuery;
-  private ArrayList<String> availableDepartments;
+  private ArrayList<String> availableDepartments = new ArrayList<>();
   private ArrayList<Course> courseData;
 
   private void initView(){
@@ -96,17 +96,18 @@ public class AddCoursesActivity extends AppCompatActivity {
         Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
         while (courseShot.hasNext()) {
           DataSnapshot currentCourse = courseShot.next();
-          String currentDepartment, currentNumber, currentSection;
+          String currentDepartment, currentNumber, currentSection, currentName;
           HashMap<String,String> currentStudents;
           currentDepartment = currentCourse.child("department").getValue().toString();
-
+          currentName = currentCourse.child("name").getValue().toString();
           availableDepartments.add(currentDepartment);
-
+          Log.d(TAG, "adding " + currentDepartment + " to availableDepartments");
           currentNumber = currentCourse.child("number").getValue().toString();
           currentSection = currentCourse.child("section").getValue().toString();
 
           Course courseInject = currentCourse.getValue(Course.class);
           courseData.add(courseInject);
+          Log.d(TAG, "adding " + currentName + " to courseData");
 
 
         }
