@@ -56,14 +56,15 @@ public class AddCoursesActivity extends AppCompatActivity {
   private GridView courseView;
   ArrayAdapter<Course> departmentAdapter;
   Query courseQuery;
+  private ArrayList<String> availableDepartments;
 
 
 
-  private ArrayList<Course> getCourses(DataSnapshot dataShot) {
+  private ArrayList<Course> getCourses() {
 
     final ArrayList<Course> courseData = new ArrayList<>();
     courseData.clear();
-    dbReference = FirebaseDatabase.getInstance().getReference("classes")
+    dbReference = FirebaseDatabase.getInstance().getReference("classes");
     coursesReference = FirebaseDatabase.getInstance()
                                        .getReference("classes");
     courseQuery = coursesReference.orderByChild("department");
@@ -77,6 +78,9 @@ public class AddCoursesActivity extends AppCompatActivity {
           String currentDepartment, currentNumber, currentSection;
           HashMap<String,String> currentStudents;
           currentDepartment = currentCourse.child("department").getValue().toString();
+
+          availableDepartments.add(currentDepartment);
+
           currentNumber = currentCourse.child("number").getValue().toString();
           currentSection = currentCourse.child("section").getValue().toString();
 
@@ -110,7 +114,7 @@ public class AddCoursesActivity extends AppCompatActivity {
        departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
     }
     else{
-       for(Course course : ){
+       for(Course course:getCourses() ){
          if(course.getDepartment()==chosenDepartment){
 
            filteredCourses.add(course);
@@ -138,18 +142,20 @@ public class AddCoursesActivity extends AppCompatActivity {
     userEmail = firebaseUser.getEmail();
 
     // Get references to input form - for now I don't care about error checking
+    /**
     userDepartment = findViewById(R.id.user_department);
     userCourseNumber = findViewById(R.id.user_course_number);
     userCourseSection = findViewById(R.id.user_course_section);
     submitButton = findViewById(R.id.addClasses_button);
     cancelButton = findViewById(R.id.cancel_button);
+     **/
 
     // Get reference to the classes tree
     coursesReference = dbReference.child("classes");
 
     // Initialize department spinner
     departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
-    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
+    departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,availableDepartments));
     courseView = (GridView) findViewById(R.id.mainGrid);
     courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
 
