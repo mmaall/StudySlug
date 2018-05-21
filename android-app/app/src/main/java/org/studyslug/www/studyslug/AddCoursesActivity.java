@@ -35,16 +35,13 @@ public class AddCoursesActivity extends AppCompatActivity {
   private static final String TAG = "AddCoursesActivity";
 
   // Firebase stuff
-  private DatabaseReference dbReference;
-  private FirebaseUser firebaseUser;
-  private DatabaseReference dbUserReference;
-  private DatabaseReference coursesReference;
-  private String dbCourseReference;
+  //private DatabaseReference dbReference;
+
 
 
   // Spinner stuff
   private Spinner departmentSpinner;
-  private ListView courseView;
+  private GridView courseView;
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
@@ -68,7 +65,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
     departmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,availableDepartments));
-    courseView = (ListView) findViewById(R.id.mainList);
+    courseView = (GridView) findViewById(R.id.mainGrid);
     courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
 
 
@@ -102,27 +99,33 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     courseData = new ArrayList<>();
     courseData.clear();
-    dbReference = FirebaseDatabase.getInstance().getReference("classes");
-    coursesReference = FirebaseDatabase.getInstance()
+    DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference coursesReference = FirebaseDatabase.getInstance()
                                        .getReference("classes");
     courseQuery = coursesReference.orderByChild("department");
 
-    ValueEventListener classes = dbReference.child("classes").addValueEventListener(new ValueEventListener() {
+    dbReference.child("classes").addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
-        Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
-        while (courseShot.hasNext()) {
-          DataSnapshot currentCourse = courseShot.next();
-          String currentName;
-          HashMap<String,String> currentStudents;
-          currentName = currentCourse.child("name").getValue().toString();
-          Course courseInject = currentCourse.getValue(Course.class);
-          courseData.add(courseInject);
-          Log.d(TAG, "adding " + currentName + " to courseData");
+        Iterable<DataSnapshot> courseCheck = dataSnapshot.getChildren();
+        for(DataSnapshot child:courseCheck )
+        {
+          Course placeCourse = child.getValue(Course.class);
+          courseData.add(placeCourse);
+        }
+        //Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
+        //while (courseShot.hasNext()) {
+        //DataSnapshot currentCourse = courseShot.next();
+        //String currentName;
+        //HashMap<String,String> currentStudents;
+        //currentName = currentCourse.child("name").getValue().toString();
+        //Course courseInject = currentCourse.getValue(Course.class);
+        //courseData.add(courseInject);
+        //Log.d(TAG, "adding " + currentName + " to courseData");
 
 
         }
-      }
+
       @Override
       public void onCancelled(DatabaseError databaseError) {
 

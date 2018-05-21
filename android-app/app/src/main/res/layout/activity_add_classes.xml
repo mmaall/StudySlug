@@ -25,14 +25,14 @@
       />
 
 
-    <ListView
-        android:id="@+id/mainList"
+    <GridView
+        android:id="@+id/mainGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/departSpinner"
         android:numColumns="auto_fit">
 
-    </ListView>
+    </GridView>
 
 
 
