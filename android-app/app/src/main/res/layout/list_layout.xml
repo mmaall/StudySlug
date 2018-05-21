@@ -9,9 +9,8 @@
         android:id="@+id/User1.name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="135dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/imageButton"
         android:text="Name"
         android:textColor="#555555"
         android:textSize="16sp" />
@@ -28,7 +27,7 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="118dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
