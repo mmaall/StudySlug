@@ -50,7 +50,6 @@ public class FindPeopleActivity extends AppCompatActivity {
                                       .getReference("users")
                                       .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                       .child("classes");
-
     searchButton = findViewById(R.id.imageButton4);
     imageButton = findViewById(R.id.imageButton);
     resultList = findViewById(R.id.result_list);
@@ -110,7 +109,7 @@ public class FindPeopleActivity extends AppCompatActivity {
   private void firebaseUserSearch(String searchText) {
 
 
-    Toast.makeText(FindPeopleActivity.this, "Started Slug Search!", Toast.LENGTH_LONG)
+    Toast.makeText(FindPeopleActivity.this, "Finding Slugs!", Toast.LENGTH_LONG)
          .show();
     dbCourseReference = FirebaseDatabase.getInstance()
                                         .getReference("classes")
