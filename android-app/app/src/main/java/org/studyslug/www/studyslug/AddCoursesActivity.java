@@ -72,8 +72,9 @@ public class AddCoursesActivity extends AppCompatActivity {
     departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(position >0 && position < availableDepartments.length){
-
+        Log.d(TAG,"onItemSelected");
+        if(position > 0 && position < availableDepartments.length){
+           Log.d(TAG, "Grabbed this item");
            selectedDepartment = availableDepartments[position];
            getCoursesBySelectedDepartment(selectedDepartment);
         }
