@@ -35,7 +35,16 @@ public class AddCoursesActivity extends AppCompatActivity {
   private static final String TAG = "AddCoursesActivity";
 
   // Firebase stuff
-  //private DatabaseReference dbReference;
+  private DatabaseReference dbReference
+  private DatabaseReference userReference;
+  private FirebaseUser firebaseUser;
+  private DatabaseReference coursesReference;
+  private String dbCourseReference;
+  private String userEmail;
+  private String userKey;
+  private String userDepartment;
+  private String userCourseNumber;
+  private String userCourseSection;
 
 
 
@@ -45,6 +54,8 @@ public class AddCoursesActivity extends AppCompatActivity {
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
+  ArrayList<Course> courseData;
+  ArrayList<Course> filteredCourses;
   Query courseQuery;
   private String[] availableDepartments = {"ACEN","AMST","ANTH","APLX","AMS","ARAB","ARTG",
                                            "ASTR","BIOC","BIOL","BIOE","BME","CHEM","CHIN","CLEI",
@@ -58,7 +69,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                             "POLI","PRTR","PORT","LTPR","PSYC","PUNJ","RUSS","SCIC",
                                            "SOCD","SOCS","SOCY","SPAN","SPHS","SPSS","LTSP","STEV",
                                             "TIM","THEA","UCDC","WMST","LTWL","WRIT","YIDD"};
-  private ArrayList<Course> courseData;
+
 
   private void initView(){
     // Initialize department spinner
@@ -70,36 +81,15 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
 
-    departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-      @Override
-      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.d(TAG,"onItemSelected");
-       //String selectedDepartment = departmentSpinner.getSelectedItem().toString();
-        if(position > 0 && position < availableDepartments.length){
-           Log.d(TAG, "Grabbed this item");
-           selectedDepartment = availableDepartments[position];
-           getCoursesBySelectedDepartment(selectedDepartment);
-        }
-        else{
 
-        }
-      }
-
-      @Override
-      public void onNothingSelected(AdapterView<?> parent) {
-
-      }
-    });
 
   }
-
-
 
   private ArrayList<Course> getCourses() {
 
     courseData = new ArrayList<>();
     courseData.clear();
-    DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+    dbReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference coursesReference = FirebaseDatabase.getInstance()
                                        .getReference("classes");
     courseQuery = coursesReference.orderByChild("department");
@@ -136,10 +126,8 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   }
 
-
-
   private void getCoursesBySelectedDepartment(String chosenDepartment) {
-    ArrayList<Course> filteredCourses = new ArrayList<>();
+    filteredCourses = new ArrayList<>();
     /**
     if (chosenDepartment == " "){
        departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
@@ -165,11 +153,104 @@ public class AddCoursesActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_classes);
+
     Log.d(TAG, "onCreate: started");
+
     getCourses();
+
     initView();
-    
+
+    /**
+     * Track Click in Spinner
+     */
+    departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Log.d(TAG,"onItemSelected");
+        //String selectedDepartment = departmentSpinner.getSelectedItem().toString();
+        if(position > 0 && position < availableDepartments.length){
+          Log.d(TAG, "Grabbed this item");
+          selectedDepartment = availableDepartments[position];
+          getCoursesBySelectedDepartment(selectedDepartment);
+        }
+        else{
+
+        }
+      }
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+      }
+    });
+     firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+     userReference = dbReference.child("users").child(userKey);
+
+    /**
+     * Track Click in GridView of Courses
+     */
+    courseView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+       @Override
+       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+         Course selectedCourse = filteredCourses.get(position);
+         // addCourse(selectedCourse);
+
+       }
+
+       @Override
+       public void onNothingSelected(AdapterView<?> parent) {
+
+       }
+     });
+
+
+
+
+
 
 
    }
+   /**
+  private void addCourse(Course userCourse) {
+    // Construct a class object using the info the firebaseUser submitted
+    final Course newCourse = new Course();
+    newCourse.addStudent(userEmail);
+    newCourse.setDepartment(userDepartment.getText().toString().toUpperCase());
+    newCourse.setNumber(userCourseNumber.getText().toString().toUpperCase());
+    newCourse.setSection(userCourseSection.getText().toString().toUpperCase());
+
+    // Scan db to see if this class already exists
+    coursesReference.addListenerForSingleValueEvent(new ValueEventListener() {
+      @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+        if (dataSnapshot != null) {
+          for (DataSnapshot db_class : dataSnapshot.getChildren()) {
+            Course temp = db_class.getValue(Course.class);
+            if (temp.equals(newCourse)) {
+              dbCourseReference = db_class.getKey();
+              temp.addStudent(userEmail);
+              userReference.child("classes").push().setValue(dbCourseReference);
+              dbReference.child("classes").child(dbCourseReference).setValue(temp);
+              break;
+            }
+          }
+        } else {
+          Log.d(TAG, "dataSnaphot not found");
+        }
+      }
+
+      @Override
+      public void onCancelled(DatabaseError databaseError) {
+        // TODO: Something here?
+      }
+    });
+    if (dbCourseReference == null) {
+      // This is a new course
+      DatabaseReference newCourseRef = dbReference.child("classes").push();
+      newCourseRef.setValue(newCourse);
+      userReference.child("classes").push().setValue(newCourseRef.getKey());
+    }
+    returnToFindPeople();
+  }
+    **/
+
 }
