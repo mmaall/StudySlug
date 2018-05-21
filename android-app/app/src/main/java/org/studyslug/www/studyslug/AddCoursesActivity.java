@@ -74,7 +74,7 @@ public class AddCoursesActivity extends AppCompatActivity {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.d(TAG,"onItemSelected");
-       String selectedDepartment = departmentSpinner.getSelectedItem().toString();
+       //String selectedDepartment = departmentSpinner.getSelectedItem().toString();
         if(position > 0 && position < availableDepartments.length){
            Log.d(TAG, "Grabbed this item");
            selectedDepartment = availableDepartments[position];
@@ -147,10 +147,11 @@ public class AddCoursesActivity extends AppCompatActivity {
     else{
      **/
        for(Course course:getCourses() ){
-         if(course.getDepartment()==chosenDepartment){
+         if(course.getDepartment().equals(chosenDepartment)){
 
            filteredCourses.add(course);
           }
+          else{ continue; }
 
         }//endfor
 
@@ -167,6 +168,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     Log.d(TAG, "onCreate: started");
     getCourses();
     initView();
+    
 
 
    }
