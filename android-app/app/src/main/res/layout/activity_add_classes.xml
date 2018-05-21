@@ -18,18 +18,21 @@
         android:id="@+id/departSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:padding="5dp"/>
-    
-    <GridView
-        android:id="@+id/mainGrid"
+        android:padding="5dp"
+      />
+
+
+    <ListView
+        android:id="@+id/mainList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/departSpinner"
         android:numColumns="auto_fit">
 
-    </GridView>
+    </ListView>
 
 
 

@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -43,7 +44,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   // Spinner stuff
   private Spinner departmentSpinner;
-  private GridView courseView;
+  private ListView courseView;
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
@@ -65,14 +66,18 @@ public class AddCoursesActivity extends AppCompatActivity {
   private void initView(){
     // Initialize department spinner
     departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
+    departmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     departmentSpinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,availableDepartments));
-    courseView = (GridView) findViewById(R.id.mainGrid);
+    courseView = (ListView) findViewById(R.id.mainList);
     courseView.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1,getCourses()));
+
+
 
     departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.d(TAG,"onItemSelected");
+       String selectedDepartment = departmentSpinner.getSelectedItem().toString();
         if(position > 0 && position < availableDepartments.length){
            Log.d(TAG, "Grabbed this item");
            selectedDepartment = availableDepartments[position];
@@ -124,10 +129,7 @@ public class AddCoursesActivity extends AppCompatActivity {
       }
     });
 
-    //TODO:Fill courseData with courses
-    // courseData.add(new Course(department, number, section, students));
-
-    return courseData;
+        return courseData;
 
   }
 
@@ -159,7 +161,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_classes);
     Log.d(TAG, "onCreate: started");
-
+    getCourses();
     initView();
 
 
