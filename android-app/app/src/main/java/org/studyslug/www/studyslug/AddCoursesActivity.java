@@ -137,11 +137,12 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   private void getCoursesBySelectedDepartment(String chosenDepartment) {
     ArrayList<Course> filteredCourses = new ArrayList<>();
-
+    /**
     if (chosenDepartment == " "){
        departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
     }
     else{
+     **/
        for(Course course:getCourses() ){
          if(course.getDepartment()==chosenDepartment){
 
@@ -151,7 +152,7 @@ public class AddCoursesActivity extends AppCompatActivity {
         }//endfor
 
       departmentAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,filteredCourses);
-    }//endelse
+    //}//endelse
 
     courseView.setAdapter(departmentAdapter);
   }
