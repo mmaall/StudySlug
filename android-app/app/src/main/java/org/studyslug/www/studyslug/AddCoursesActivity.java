@@ -182,6 +182,8 @@ public class AddCoursesActivity extends AppCompatActivity {
       public void onNothingSelected(AdapterView<?> parent) {
       }
     });
+
+    Log.d(TAG,"trying to add userkey" + userKey);
     firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     userReference = dbReference.child("users").child(userKey);
 
