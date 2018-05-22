@@ -75,7 +75,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   private void initView() {
     // Initialize department spinner
     departmentSpinner = findViewById(R.id.departSpinner);
-    departmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
     departmentSpinner.setAdapter(
         new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
                                  availableDepartments));
@@ -144,8 +144,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     }//endfor
 
-    departmentAdapter =
-        new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredCourses);
+    departmentAdapter.addAll(filteredCourses);
     //}//endelse
 
     courseView.setAdapter(departmentAdapter);
