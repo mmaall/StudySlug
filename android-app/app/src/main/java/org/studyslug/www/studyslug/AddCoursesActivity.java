@@ -183,7 +183,7 @@ public class AddCoursesActivity extends AppCompatActivity {
       }
     });
 
-    Log.d(TAG,"trying to add userkey" + userKey);
+/*    Log.d(TAG,"trying to add userkey" + userKey);
     firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     userReference = dbReference.child("users").child(userKey);
 
