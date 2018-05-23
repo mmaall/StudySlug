@@ -1,8 +1,10 @@
 package org.studyslug.www.studyslug;
 
+import android.content.Context;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.content.Intent;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -50,12 +53,14 @@ public class AddCoursesActivity extends AppCompatActivity {
   // Spinner stuff
   private Spinner departmentSpinner;
   private GridView courseView;
+  private RecyclerView courseRecycler;
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
   ArrayAdapter<Course> departmentAdapter;
   ArrayList<Course> courseData;
   ArrayList<Course> filteredCourses;
   Query courseQuery;
+
   private String[] availableDepartments = {
       "ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ARTG",
       "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CHEM", "CHIN", "CLEI",
@@ -71,6 +76,20 @@ public class AddCoursesActivity extends AppCompatActivity {
       "TIM", "THEA", "UCDC", "WMST", "LTWL", "WRIT", "YIDD"
   };
 
+  public static class CoursesViewHolder extends RecyclerView.ViewHolder {
+    View mView;
+
+    public CoursesViewHolder(View itemView) {
+      super(itemView);
+      mView = itemView;
+    }
+
+    public void setDetails(Context ctx, String courseName) {
+      TextView course_name = (TextView) mView.findViewById(R.id.course.name);
+      course_name.setText(courseName);
+    }
+  }
+}
 
   private void initView() {
     // Initialize department spinner
@@ -134,7 +153,7 @@ public class AddCoursesActivity extends AppCompatActivity {
      }
      else{
      **/
-    for (Course course : getCourses()) {
+    /**for (Course course : getCourses()) {
       if (course.getDepartment().equals(chosenDepartment)) {
 
         filteredCourses.add(course);
@@ -143,12 +162,14 @@ public class AddCoursesActivity extends AppCompatActivity {
       }
 
     }//endfor
+     **/
 
     departmentAdapter.addAll(filteredCourses);
     //}//endelse
 
     courseView.setAdapter(departmentAdapter);
   }
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -172,7 +193,7 @@ public class AddCoursesActivity extends AppCompatActivity {
         if (position > 0 && position < availableDepartments.length) {
           Log.d(TAG, "Grabbed this item");
           selectedDepartment = availableDepartments[position];
-          getCoursesBySelectedDepartment(selectedDepartment);
+          RecyclerBuilder(selectedDepartment,"classes","departments",courseRecycler,this,RecyclerView.ViewHolder courseHolder);
         } else {
 
         }

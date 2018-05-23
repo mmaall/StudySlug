@@ -18,14 +18,13 @@ public class RecyclerBuilder {
   private String searchText;
   private String referenceText;
   private String orderElement;
-  private String childText;
-  private RecyclerView.ViewHolder viewHolder;
+
+  final private RecyclerView.ViewHolder viewHolder;
   private DatabaseReference dbReference;
   private static final String TAG = "RecyclerBuilder";
 
   public RecyclerBuilder(String searchText,
                          String referenceText,
-                         String childText,
                          String orderElement,
                          RecyclerView recyclerView,
                          Context context,
@@ -33,21 +32,19 @@ public class RecyclerBuilder {
     firebaseDatabase = FirebaseDatabase.getInstance();
     this.searchText = searchText;
     this.referenceText = referenceText;
-    this.childText = childText;
     this.orderElement = orderElement;
     this.recyclerView = recyclerView;
     this.context = context;
     this.viewHolder = viewHolder;
     Log.d(TAG, "RecyclerBuilder constructed with fields: " + searchText + ", "
-               + referenceText + ", " + childText + ", " + orderElement + ", " + recyclerView);
+               + referenceText + ", " +", " + orderElement + ", " + recyclerView);
 
     dbReference = FirebaseDatabase.getInstance()
                                         .getReference(referenceText)
-                                        .child(searchText)
-                                        .child(childText);
+                                        .child(searchText);
     Query firebaseSearchQuery = dbReference.orderByChild(orderElement);
 
-    FirebaseRecyclerAdapter<String, viewHolder> firebaseRecyclerAdapter =
+    FirebaseRecyclerAdapter<String, FindPeopleActivity.UsersViewHolder> firebaseRecyclerAdapter =
         new FirebaseRecyclerAdapter<String, viewHolder>(
 
             String.class,
