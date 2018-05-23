@@ -130,10 +130,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
     else{
       //invalid domain
-      Intent SplashPage =
+      FirebaseAuth.getInstance().signOut();
+      /*Intent SplashPage =
           new Intent(SplashActivity.this, SplashActivity.class);
       startActivity(SplashPage);
-
+      */
+      return;
     }
   }
 
