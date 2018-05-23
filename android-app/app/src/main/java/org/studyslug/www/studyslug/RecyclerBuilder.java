@@ -28,7 +28,7 @@ public class RecyclerBuilder {
                          String orderElement,
                          RecyclerView recyclerView,
                          Context context,
-                         RecyclerView.ViewHolder viewHolder) {
+                         final RecyclerView.ViewHolder viewHolder) {
     firebaseDatabase = FirebaseDatabase.getInstance();
     this.searchText = searchText;
     this.referenceText = referenceText;
@@ -54,9 +54,9 @@ public class RecyclerBuilder {
 
         ) {
           @Override
-          protected void populateViewHolder(viewHolder, String model,
+          protected void populateViewHolder(RecyclerView.ViewHolder viewHolder, String model,
                                             int position) {
-            viewHolder.setDetails(context(), model);
+            viewHolder.setDetails(this, model);
           }
         };
 

@@ -193,7 +193,8 @@ public class AddCoursesActivity extends AppCompatActivity {
         if (position > 0 && position < availableDepartments.length) {
           Log.d(TAG, "Grabbed this item");
           selectedDepartment = availableDepartments[position];
-          RecyclerBuilder(selectedDepartment,"classes","departments",courseRecycler,this,RecyclerView.ViewHolder courseHolder);
+
+          RecyclerBuilder(selectedDepartment,"classes","departments",courseRecycler,this,);
         } else {
 
         }
