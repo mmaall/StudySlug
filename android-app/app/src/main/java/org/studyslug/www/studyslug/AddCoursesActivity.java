@@ -127,10 +127,10 @@ public class AddCoursesActivity extends AppCompatActivity {
      }//endfor
      **/
 
-    departmentAdapter.addAll(filteredCourses);
+    // departmentAdapter.addAll(filteredCourses);
     //}//endelse
 
-    courseView.setAdapter(departmentAdapter);
+    // courseView.setAdapter(departmentAdapter);
   }
 
   private void findViews() {
@@ -206,7 +206,7 @@ public class AddCoursesActivity extends AppCompatActivity {
           ArrayAdapter<String> courseAdapter =
               new ArrayAdapter<>(AddCoursesActivity.this,
                                  android.R.layout.simple_spinner_item, filteredCourses);
-          
+
           courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
           courseSpinner.setAdapter(courseAdapter);
         }
