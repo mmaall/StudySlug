@@ -65,21 +65,6 @@ public class AddCoursesActivity extends AppCompatActivity {
   List<String> departments;
   Query courseQuery;
 
-  private String[] availableDepartments = {
-      "ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ARTG",
-      "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CHEM", "CHIN", "CLEI",
-      "CLNI", "CLTE", "CMMU", "CMPM", "CMPE", "CMPS", "COWL", "LTCR",
-      "CRES", "CRWN", "DANM", "EART", "ECON", "EDUC", "EE", "ENGR",
-      "LTEL", "ENVS", "ETOX", "FMST", "FILM", "FREN", "LTFR", "GAME",
-      "GERM", "LTGE", "GREE", "LTGR", "HEBR", "HNDI", "HIS", "HAVC",
-      "HISC", "HUMN", "ISM", "ITAL", "LTIT", "JAPN", "JWST", "KRSG",
-      "LAAD", "LATN", "LALS", "LTIN", "LGST", "LING", "LIT", "MATH",
-      "MERR", "METX", "LTMO", "MUSC", "OAKS", "OCEA", "PHIL", "PHYE",
-      "POLI", "PRTR", "PORT", "LTPR", "PSYC", "PUNJ", "RUSS", "SCIC",
-      "SOCD", "SOCS", "SOCY", "SPAN", "SPHS", "SPSS", "LTSP", "STEV",
-      "TIM", "THEA", "UCDC", "WMST", "LTWL", "WRIT", "YIDD"
-  };
-
 
 
 /** Let's bench this method for now
@@ -157,12 +142,11 @@ public class AddCoursesActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_classes);
-    departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
-    courseSpinner = (Spinner) findViewById(R.id.course_spinner);
+    departmentSpinner = findViewById(R.id.departSpinner);
+    courseSpinner =  findViewById(R.id.course_spinner);
 
     Log.d(TAG, "onCreate: started");
 
-   // getCourses();
     /**
      * Fill the first spinner.
      */
@@ -202,15 +186,19 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     });
 
+
    selectedDepartment = departmentSpinner.getSelectedItem().toString();
    departmentReference.addValueEventListener(new ValueEventListener() {
      @Override
      public void onDataChange(DataSnapshot dataSnapshot) {
        for(DataSnapshot classShot : dataSnapshot.getChildren()){
-            if(classShot.getValue(String.class).equals(selectedDepartment)){
+            if(classShot.child("department").getValue(String.class).equals(selectedDepartment)){
               /**TODO:From the department reference, add the class name string to filteredCourses.
                *
                */
+
+
+
             }
 
        }
