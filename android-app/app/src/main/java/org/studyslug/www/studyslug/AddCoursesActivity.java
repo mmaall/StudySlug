@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.List;
 
 public class AddCoursesActivity extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   private DatabaseReference userReference;
   private FirebaseUser firebaseUser;
   private DatabaseReference coursesReference;
+  private DatabaseReference departmentReference;
   private String dbCourseReference;
   private String userEmail;
   private String userKey;
@@ -56,9 +58,11 @@ public class AddCoursesActivity extends AppCompatActivity {
   private RecyclerView courseRecycler;
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
+  String temp = " ";
   ArrayAdapter<Course> departmentAdapter;
   ArrayList<Course> courseData;
   ArrayList<Course> filteredCourses;
+  List<String> departments;
   Query courseQuery;
 
   private String[] availableDepartments = {
@@ -76,35 +80,9 @@ public class AddCoursesActivity extends AppCompatActivity {
       "TIM", "THEA", "UCDC", "WMST", "LTWL", "WRIT", "YIDD"
   };
 
-  public static class CoursesViewHolder extends RecyclerView.ViewHolder {
-    View mView;
-
-    public CoursesViewHolder(View itemView) {
-      super(itemView);
-      mView = itemView;
-    }
-
-    public void setDetails(Context ctx, String courseName) {
-      TextView course_name = (TextView) mView.findViewById(R.id.course.name);
-      course_name.setText(courseName);
-    }
-  }
-}
-
-  private void initView() {
-    // Initialize department spinner
-    departmentSpinner = findViewById(R.id.departSpinner);
-    departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
-    departmentSpinner.setAdapter(
-        new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                                 availableDepartments));
-    courseView = findViewById(R.id.mainGrid);
-    courseView.setAdapter(
-        new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getCourses()));
 
 
-  }
-
+/** Let's bench this method for now
   private ArrayList<Course> getCourses() {
 
     courseData = new ArrayList<>();
@@ -144,6 +122,11 @@ public class AddCoursesActivity extends AppCompatActivity {
     return courseData;
 
   }
+ **/
+
+
+
+
 
   private void getCoursesBySelectedDepartment(String chosenDepartment) {
     filteredCourses = new ArrayList<>();
@@ -170,7 +153,6 @@ public class AddCoursesActivity extends AppCompatActivity {
     courseView.setAdapter(departmentAdapter);
   }
 
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -178,53 +160,39 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     Log.d(TAG, "onCreate: started");
 
-    getCourses();
-
-    initView();
-
-    /**
-     * Track Click in Spinner
-     */
-    departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+   // getCourses();
+    departmentReference = FirebaseDatabase.getInstance()
+                                       .getReference("classes")
+                                       .child("department");
+    
+    departmentReference.addValueEventListener(new ValueEventListener() {
       @Override
-      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.d(TAG, "onItemSelected");
-        //String selectedDepartment = departmentSpinner.getSelectedItem().toString();
-        if (position > 0 && position < availableDepartments.length) {
-          Log.d(TAG, "Grabbed this item");
-          selectedDepartment = availableDepartments[position];
+      public void onDataChange(DataSnapshot dataSnapshot) {
 
-          RecyclerBuilder(selectedDepartment,"classes","departments",courseRecycler,this,);
-        } else {
+        departments = new ArrayList<>();
+        for (DataSnapshot depSnapshot : dataSnapshot.getChildren()) {
+          String depName = depSnapshot.getValue(String.class);
+
+          if (!depName.equals(temp)) {
+            departments.add(depName);
+            temp = depName;
+          }
+
+          ArrayAdapter<String> areasAdapter =
+                  new ArrayAdapter<>(AddCoursesActivity.this,
+                          android.R.layout.simple_spinner_item, departments);
+          areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+          departmentSpinner.setAdapter(areasAdapter);
+
 
         }
       }
 
       @Override
-      public void onNothingSelected(AdapterView<?> parent) {
+      public void onCancelled(DatabaseError databaseError) {
+
       }
+
+
     });
-
-/*    Log.d(TAG,"trying to add userkey" + userKey);
-    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    userReference = dbReference.child("users").child(userKey);
-
-    /**
-     * Track Click in GridView of Courses
-     */
-    courseView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-      @Override
-      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        Course selectedCourse = filteredCourses.get(position);
-        // addCourse(selectedCourse);
-
-      }
-
-      @Override
-      public void onNothingSelected(AdapterView<?> parent) {
-
-      }
-    });
-  }
-}
+  }}
