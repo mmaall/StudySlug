@@ -54,14 +54,14 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   // Spinner stuff
   private Spinner departmentSpinner;
-  private GridView courseView;
+  private Spinner courseSpinner;
   private RecyclerView courseRecycler;
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
   String temp = " ";
   ArrayAdapter<Course> departmentAdapter;
   ArrayList<Course> courseData;
-  ArrayList<Course> filteredCourses;
+  ArrayList<String> filteredCourses;
   List<String> departments;
   Query courseQuery;
 
@@ -157,14 +157,20 @@ public class AddCoursesActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_classes);
+    departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
+    courseSpinner = (Spinner) findViewById(R.id.course_spinner);
 
     Log.d(TAG, "onCreate: started");
 
    // getCourses();
+    /**
+     * Fill the first spinner.
+     */
     departmentReference = FirebaseDatabase.getInstance()
                                        .getReference("classes")
                                        .child("department");
-    
+    coursesReference = FirebaseDatabase.getInstance().getReference("classes");
+
     departmentReference.addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
@@ -195,4 +201,27 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
     });
+
+   selectedDepartment = departmentSpinner.getSelectedItem().toString();
+   departmentReference.addValueEventListener(new ValueEventListener() {
+     @Override
+     public void onDataChange(DataSnapshot dataSnapshot) {
+       for(DataSnapshot classShot : dataSnapshot.getChildren()){
+            if(classShot.getValue(String.class).equals(selectedDepartment)){
+              /**TODO:From the department reference, add the class name string to filteredCourses.
+               *
+               */
+            }
+
+       }
+     }
+
+     @Override
+     public void onCancelled(DatabaseError databaseError) {
+
+     }
+   });
+
+
+
   }}

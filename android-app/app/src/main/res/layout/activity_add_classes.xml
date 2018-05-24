@@ -17,23 +17,13 @@
     <Spinner
         android:id="@+id/departSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="45dp"
         android:background="@color/colorBackground"
         android:padding="5dp" />
 
-
-    <RecyclerView
-        android:id="@+id/courseView"
-        android:layout_width="match_parent"
-        android:layout_height="474dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="22dp"
-        android:numColumns="auto_fit">
-
-    </RecyclerView>
 
     <Button
         android:id="@+id/addButton"
@@ -43,6 +33,15 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Add Class" />
+
+    <Spinner
+        android:id="@+id/course_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/departSpinner"
+        android:layout_marginTop="147dp" />
 
 
 </RelativeLayout>
