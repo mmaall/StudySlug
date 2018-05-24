@@ -65,67 +65,47 @@ public class AddCoursesActivity extends AppCompatActivity {
   List<String> departments;
   Query courseQuery;
 
-  private String[] availableDepartments = {
-      "ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ARTG",
-      "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CHEM", "CHIN", "CLEI",
-      "CLNI", "CLTE", "CMMU", "CMPM", "CMPE", "CMPS", "COWL", "LTCR",
-      "CRES", "CRWN", "DANM", "EART", "ECON", "EDUC", "EE", "ENGR",
-      "LTEL", "ENVS", "ETOX", "FMST", "FILM", "FREN", "LTFR", "GAME",
-      "GERM", "LTGE", "GREE", "LTGR", "HEBR", "HNDI", "HIS", "HAVC",
-      "HISC", "HUMN", "ISM", "ITAL", "LTIT", "JAPN", "JWST", "KRSG",
-      "LAAD", "LATN", "LALS", "LTIN", "LGST", "LING", "LIT", "MATH",
-      "MERR", "METX", "LTMO", "MUSC", "OAKS", "OCEA", "PHIL", "PHYE",
-      "POLI", "PRTR", "PORT", "LTPR", "PSYC", "PUNJ", "RUSS", "SCIC",
-      "SOCD", "SOCS", "SOCY", "SPAN", "SPHS", "SPSS", "LTSP", "STEV",
-      "TIM", "THEA", "UCDC", "WMST", "LTWL", "WRIT", "YIDD"
-  };
 
-
-
-/** Let's bench this method for now
-  private ArrayList<Course> getCourses() {
-
-    courseData = new ArrayList<>();
-    courseData.clear();
-    dbReference = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference coursesReference = FirebaseDatabase.getInstance()
-                                                         .getReference("classes");
-    courseQuery = coursesReference.orderByChild("department");
-
-    dbReference.child("classes").addValueEventListener(new ValueEventListener() {
-      @Override
-      public void onDataChange(DataSnapshot dataSnapshot) {
-        Iterable<DataSnapshot> courseCheck = dataSnapshot.getChildren();
-        for (DataSnapshot child : courseCheck) {
-          Course placeCourse = child.getValue(Course.class);
-          courseData.add(placeCourse);
-        }
-        //Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
-        //while (courseShot.hasNext()) {
-        //DataSnapshot currentCourse = courseShot.next();
-        //String currentName;
-        //HashMap<String,String> currentStudents;
-        //currentName = currentCourse.child("name").getValue().toString();
-        //Course courseInject = currentCourse.getValue(Course.class);
-        //courseData.add(courseInject);
-        //Log.d(TAG, "adding " + currentName + " to courseData");
-
-
-      }
-
-      @Override
-      public void onCancelled(DatabaseError databaseError) {
-
-      }
-    });
-
-    return courseData;
-
-  }
- **/
-
-
-
+  /**
+   * Let's bench this method for now
+   * private ArrayList<Course> getCourses() {
+   * <p>
+   * courseData = new ArrayList<>();
+   * courseData.clear();
+   * dbReference = FirebaseDatabase.getInstance().getReference();
+   * DatabaseReference coursesReference = FirebaseDatabase.getInstance()
+   * .getReference("classes");
+   * courseQuery = coursesReference.orderByChild("department");
+   * <p>
+   * dbReference.child("classes").addValueEventListener(new ValueEventListener() {
+   *
+   * @Override public void onDataChange(DataSnapshot dataSnapshot) {
+   * Iterable<DataSnapshot> courseCheck = dataSnapshot.getChildren();
+   * for (DataSnapshot child : courseCheck) {
+   * Course placeCourse = child.getValue(Course.class);
+   * courseData.add(placeCourse);
+   * }
+   * //Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
+   * //while (courseShot.hasNext()) {
+   * //DataSnapshot currentCourse = courseShot.next();
+   * //String currentName;
+   * //HashMap<String,String> currentStudents;
+   * //currentName = currentCourse.child("name").getValue().toString();
+   * //Course courseInject = currentCourse.getValue(Course.class);
+   * //courseData.add(courseInject);
+   * //Log.d(TAG, "adding " + currentName + " to courseData");
+   * <p>
+   * <p>
+   * }
+   * @Override public void onCancelled(DatabaseError databaseError) {
+   * <p>
+   * }
+   * });
+   * <p>
+   * return courseData;
+   * <p>
+   * }
+   **/
 
 
   private void getCoursesBySelectedDepartment(String chosenDepartment) {
@@ -137,14 +117,14 @@ public class AddCoursesActivity extends AppCompatActivity {
      else{
      **/
     /**for (Course course : getCourses()) {
-      if (course.getDepartment().equals(chosenDepartment)) {
+     if (course.getDepartment().equals(chosenDepartment)) {
 
-        filteredCourses.add(course);
-      } else {
-        continue;
-      }
+     filteredCourses.add(course);
+     } else {
+     continue;
+     }
 
-    }//endfor
+     }//endfor
      **/
 
     departmentAdapter.addAll(filteredCourses);
@@ -153,23 +133,38 @@ public class AddCoursesActivity extends AppCompatActivity {
     courseView.setAdapter(departmentAdapter);
   }
 
+  private void findViews() {
+    setContentView(R.layout.activity_add_classes);
+    departmentSpinner = findViewById(R.id.departSpinner);
+    courseSpinner = findViewById(R.id.course_spinner);
+  }
+
+  private void buildReferences() {
+    departmentReference = FirebaseDatabase.getInstance()
+                                          .getReference("classes")
+                                          .child("department");
+    coursesReference = FirebaseDatabase.getInstance()
+                                       .getReference("classes");
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_add_classes);
-    departmentSpinner = (Spinner) findViewById(R.id.departSpinner);
-    courseSpinner = (Spinner) findViewById(R.id.course_spinner);
-
     Log.d(TAG, "onCreate: started");
 
-   // getCourses();
+    findViews();
+    buildReferences();
+
+    buildDropdownMenus();
+
+
+    // getCourses();
     /**
      * Fill the first spinner.
      */
-    departmentReference = FirebaseDatabase.getInstance()
-                                       .getReference("classes")
-                                       .child("department");
-    coursesReference = FirebaseDatabase.getInstance().getReference("classes");
+  }
+
+  private void buildDropdownMenus() {
 
     departmentReference.addValueEventListener(new ValueEventListener() {
       @Override
@@ -185,43 +180,42 @@ public class AddCoursesActivity extends AppCompatActivity {
           }
 
           ArrayAdapter<String> areasAdapter =
-                  new ArrayAdapter<>(AddCoursesActivity.this,
-                          android.R.layout.simple_spinner_item, departments);
+              new ArrayAdapter<>(AddCoursesActivity.this,
+                                 android.R.layout.simple_spinner_item, departments);
+
           areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
           departmentSpinner.setAdapter(areasAdapter);
-
-
         }
       }
 
       @Override
       public void onCancelled(DatabaseError databaseError) {
-
       }
-
-
     });
 
-   selectedDepartment = departmentSpinner.getSelectedItem().toString();
-   departmentReference.addValueEventListener(new ValueEventListener() {
-     @Override
-     public void onDataChange(DataSnapshot dataSnapshot) {
-       for(DataSnapshot classShot : dataSnapshot.getChildren()){
-            if(classShot.getValue(String.class).equals(selectedDepartment)){
-              /**TODO:From the department reference, add the class name string to filteredCourses.
-               *
-               */
-            }
+    selectedDepartment = departmentSpinner.getSelectedItem().toString();
+    coursesReference.addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+        for (DataSnapshot classShot : dataSnapshot.getChildren()) {
+          if (classShot.child("department").getValue(String.class).equals(selectedDepartment)) {
+            filteredCourses.add(classShot.getKey());
+          }
 
-       }
-     }
+          ArrayAdapter<String> courseAdapter =
+              new ArrayAdapter<>(AddCoursesActivity.this,
+                                 android.R.layout.simple_spinner_item, filteredCourses);
+          
+          courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+          courseSpinner.setAdapter(courseAdapter);
+        }
+      }
 
-     @Override
-     public void onCancelled(DatabaseError databaseError) {
-
-     }
-   });
+      @Override
+      public void onCancelled(DatabaseError databaseError) {}
+    });
 
 
-
-  }}
+  }
+}
