@@ -58,7 +58,7 @@ public class FindPeopleActivity extends AppCompatActivity {
 
     resultList.setLayoutManager(new LinearLayoutManager(this));
 
-    dbUserReference.addValueEventListener(new ValueEventListener() {gi
+    dbUserReference.addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
 
