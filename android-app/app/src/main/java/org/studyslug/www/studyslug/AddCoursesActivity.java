@@ -50,6 +50,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   private String userDepartment;
   private String userCourseNumber;
   private String userCourseSection;
+  private
 
 
   // Spinner stuff
@@ -194,28 +195,36 @@ public class AddCoursesActivity extends AppCompatActivity {
       }
     });
 
-    selectedDepartment = departmentSpinner.getSelectedItem().toString();
-    coursesReference.addValueEventListener(new ValueEventListener() {
-      @Override
-      public void onDataChange(DataSnapshot dataSnapshot) {
-        for (DataSnapshot classShot : dataSnapshot.getChildren()) {
-          if (classShot.child("department").getValue(String.class).equals(selectedDepartment)) {
-            filteredCourses.add(classShot.getKey());
+    Object selectedItem = departmentSpinner.getSelectedItem();
+
+    if (selectedItem != null) {
+      selectedDepartment = departmentSpinner.getSelectedItem().toString();
+
+      coursesReference.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+          for (DataSnapshot classShot : dataSnapshot.getChildren()) {
+            if (classShot.child("department").getValue(String.class).equals(selectedDepartment)) {
+              filteredCourses.add(classShot.getKey());
+            }
+
+            ArrayAdapter<String> courseAdapter =
+                new ArrayAdapter<>(AddCoursesActivity.this,
+                                   android.R.layout.simple_spinner_item, filteredCourses);
+
+            courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            courseSpinner.setAdapter(courseAdapter);
           }
-
-          ArrayAdapter<String> courseAdapter =
-              new ArrayAdapter<>(AddCoursesActivity.this,
-                                 android.R.layout.simple_spinner_item, filteredCourses);
-
-          courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-          courseSpinner.setAdapter(courseAdapter);
         }
-      }
 
-      @Override
-      public void onCancelled(DatabaseError databaseError) {}
-    });
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+        }
+      });
 
+    } else {
+      // TODO show all classes
+    }
 
   }
 }
