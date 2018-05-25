@@ -40,11 +40,7 @@ public class FindPeopleActivity extends AppCompatActivity {
   private DatabaseReference dbUserReference;
   private DatabaseReference dbCourseReference;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_find_people);
+  private void findViews(){
     final Spinner areaSpinner = findViewById(R.id.spinner2);
     dbUserReference = FirebaseDatabase.getInstance()
                                       .getReference("users")
@@ -57,41 +53,35 @@ public class FindPeopleActivity extends AppCompatActivity {
 
     resultList.setLayoutManager(new LinearLayoutManager(this));
 
-    dbUserReference.addValueEventListener(new ValueEventListener() {
-      @Override
-      public void onDataChange(DataSnapshot dataSnapshot) {
+  }
 
-        areas = new ArrayList<>();
-        for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
-          String areaName = areaSnapshot.getValue(String.class);
-          areas.add(areaName);
-        }
+  private void buildReferences(){
+    dbUserReference = FirebaseDatabase.getInstance()
+            .getReference("users")
+            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+            .child("classes");
 
-        ArrayAdapter<String> areasAdapter =
-            new ArrayAdapter<>(FindPeopleActivity.this,
-                               android.R.layout.simple_spinner_item, areas);
-        areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        areaSpinner.setAdapter(areasAdapter);
 
-        try {
-          classKey = areaSpinner.getSelectedItem().toString();
-        } catch (Exception e) {
-          System.out.print("No classes in spinner");
-          Intent mainIntent =
-              new Intent(FindPeopleActivity.this, AddCoursesActivity.class);
-          startActivity(mainIntent);
-        }
-      }
 
-      @Override
-      public void onCancelled(DatabaseError databaseError) { // TODO Something here?
-      }
-    });
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_find_people);
+
+    findViews();
+    buildReferences();
+
+    setCoursesMenu();
+
 
     searchButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         String searchText = areaSpinner.getSelectedItem().toString();
+        
         firebaseUserSearch(searchText);
       }
     });
@@ -104,6 +94,41 @@ public class FindPeopleActivity extends AppCompatActivity {
         startActivity(new Intent(FindPeopleActivity.this, AddCoursesActivity.class));
       }
     });
+  }
+
+  private void setCoursesMenu(){
+    dbUserReference.addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+
+        areas = new ArrayList<>();
+        for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
+          String areaName = areaSnapshot.getValue(String.class);
+          areas.add(areaName);
+        }
+
+        ArrayAdapter<String> areasAdapter =
+                new ArrayAdapter<>(FindPeopleActivity.this,
+                        android.R.layout.simple_spinner_item, areas);
+        areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        areaSpinner.setAdapter(areasAdapter);
+
+        try {
+          classKey = areaSpinner.getSelectedItem().toString();
+        } catch (Exception e) {
+          System.out.print("No classes in spinner");
+          Intent mainIntent =
+                  new Intent(FindPeopleActivity.this, AddCoursesActivity.class);
+          startActivity(mainIntent);
+        }
+      }
+
+      @Override
+      public void onCancelled(DatabaseError databaseError) { // TODO Something here?
+      }
+    });
+
+
   }
 
   private void firebaseUserSearch(String searchText) {

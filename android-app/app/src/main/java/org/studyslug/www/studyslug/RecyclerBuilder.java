@@ -56,8 +56,9 @@ public class RecyclerBuilder {
           @Override
           protected void populateViewHolder(RecyclerView.ViewHolder viewHolder, String model,
                                             int position) {
-            // TODO: Fix this
-            //viewHolder.setDetails(this, model);
+             // TODO: Fix this
+
+
           }
         };
 

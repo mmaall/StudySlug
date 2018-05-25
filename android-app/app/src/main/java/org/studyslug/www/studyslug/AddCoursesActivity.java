@@ -166,6 +166,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     buildDropdownMenus();
 
 
+
     /**
      * Fill the first spinner.
      */
@@ -214,6 +215,8 @@ public class AddCoursesActivity extends AppCompatActivity {
                                      FindPeopleActivity.class);
     startActivity(returnIntent);
   }
+
+
 
     Object selectedItem = departmentSpinner.getSelectedItem();
 
