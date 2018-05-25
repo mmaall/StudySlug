@@ -37,8 +37,6 @@ import java.util.List;
 public class AddCoursesActivity extends AppCompatActivity {
 
   private static final String TAG = "AddCoursesActivity";
-
-  // Firebase stuff
   private DatabaseReference dbReference;
   private DatabaseReference userReference;
   private FirebaseUser firebaseUser;
@@ -202,6 +200,20 @@ public class AddCoursesActivity extends AppCompatActivity {
       public void onCancelled(DatabaseError databaseError) {
       }
     });
+    if (dbCourseReference == null) {
+      // This is a new course
+      DatabaseReference newCourseRef = dbReference.child("classes").push();
+      newCourseRef.setValue(newCourse);
+      dbUserReference.child("classes").push().setValue(newCourseRef.getKey());
+    }
+    returnToFindPeople();
+  }
+
+  private void returnToFindPeople() {
+    Intent returnIntent = new Intent(AddCoursesActivity.this,
+                                     FindPeopleActivity.class);
+    startActivity(returnIntent);
+  }
 
     Object selectedItem = departmentSpinner.getSelectedItem();
 

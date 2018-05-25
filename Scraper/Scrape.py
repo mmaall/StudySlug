@@ -21,17 +21,17 @@ def _sanitizeStatus(regStatus):
         return "all"
     return False
 
-#def _sanitizeTerm(term, soup):                                     if term was not hardcoded as a digit
-#    try:                                                           and was a string we must use this. 
-#        term = int(term)
-#    except ValueError:
-#        if term[-8:] != " Quarter":
-#                term = term+" Quarter"
-#        for termOption in soup.find('select', id='term_dropdown').findAll('option'):
-#            if termOption.getText() == term:
-#                term = termOption['value']
-#                break
-#    return term
+def _sanitizeTerm(term, soup):                                    
+    try:                                                           
+        term = int(term)
+    except ValueError:
+        if term[-8:] != " Quarter":
+                term = term+" Quarter"
+        for termOption in soup.find('select', id='term_dropdown').findAll('option'):
+            if termOption.getText() == term:
+                term = termOption['value']
+                break
+    return term
 
 def readClasses():
 

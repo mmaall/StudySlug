@@ -24,7 +24,6 @@
         android:background="@color/colorBackground"
         android:padding="5dp" />
 
-
     <Button
         android:id="@+id/addButton"
         android:layout_width="match_parent"
