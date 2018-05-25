@@ -77,7 +77,7 @@ public class FindPeopleActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         String searchText = areaSpinner.getSelectedItem().toString();
-        
+
         firebaseUserSearch(searchText);
       }
     });
