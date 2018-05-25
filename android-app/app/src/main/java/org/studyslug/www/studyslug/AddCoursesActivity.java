@@ -165,6 +165,12 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     buildDropdownMenus();
 
+      /**
+       *  Using SwitchActivity will looking something like this, I think.
+       *  //SwitchActivity setUpSwitch = new SwitchActivity(AddCoursesActivity.class);
+       // setUpSwitch.SwitchToAddCourses(setUpSwitch.sourceActivity);
+       */
+    
 
 
     /**
@@ -201,6 +207,7 @@ public class AddCoursesActivity extends AppCompatActivity {
       public void onCancelled(DatabaseError databaseError) {
       }
     });
+    /**
     if (dbCourseReference == null) {
       // This is a new course
       DatabaseReference newCourseRef = dbReference.child("classes").push();
@@ -215,6 +222,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                      FindPeopleActivity.class);
     startActivity(returnIntent);
   }
+     **/
 
 
 

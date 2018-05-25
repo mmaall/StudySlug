@@ -1,18 +1,26 @@
 package org.studyslug.www.studyslug;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
 public class SwitchActivity {
 
-    private Context currentContext;
 
-    private void SwitchToFindPeople(Context context){
+    public Activity sourceActivity;
+
+    SwitchActivity(Activity activity){
+        this.sourceActivity = activity;
+    }
+
+    public void SwitchToFindPeople(Activity sourceActivity){
         //TODO:Implement this correctly
-
-        //startActivity(new Intent(context.this, AddCoursesActivity.class));
+         Intent findPeopleIntent = new Intent(sourceActivity,FindPeopleActivity.class);
+         sourceActivity.startActivity(findPeopleIntent);
 
     }
-    private void SwitchToAddCourses(Context context){
+    public void SwitchToAddCourses(Activity sourceActivity){
+         Intent addCoursesIntent = new Intent(sourceActivity,AddCoursesActivity.class);
+         sourceActivity.startActivity(addCoursesIntent);
 
     }
 }
