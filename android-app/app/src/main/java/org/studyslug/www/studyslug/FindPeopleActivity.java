@@ -91,7 +91,7 @@ public class FindPeopleActivity extends AppCompatActivity {
     addClasses.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(FindPeopleActivity.this, AddCoursesActivity.class));
+
       }
     });
   }
