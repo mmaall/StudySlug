@@ -4,6 +4,7 @@ import android.content.Context;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -55,6 +56,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   private Spinner departmentSpinner;
   private Spinner courseSpinner;
   private RecyclerView courseRecycler;
+  private RecyclerView.LayoutManager courseLayoutManager;
   private String selectedDepartment;
   private String selectError = "Error choosing department.";
   String temp = " ";
@@ -141,9 +143,13 @@ public class AddCoursesActivity extends AppCompatActivity {
   }
 
   private void findViews() {
-    setContentView(R.layout.activity_add_classes);
+    setContentView(R.layout.activity_add_courses);
     departmentSpinner = findViewById(R.id.departSpinner);
     courseSpinner = findViewById(R.id.course_spinner);
+    courseRecycler = findViewById(R.id.course_recycler);
+    courseRecycler.setHasFixedSize(true);
+    courseLayoutManager = new LinearLayoutManager(this);
+    courseRecycler.setLayoutManager(courseLayoutManager);
   }
 
   private void buildReferences() {
@@ -167,10 +173,10 @@ public class AddCoursesActivity extends AppCompatActivity {
 
       /**
        *  Using SwitchActivity will looking something like this, I think.
-       *  //SwitchActivity setUpSwitch = new SwitchActivity(AddCoursesActivity.class);
-       // setUpSwitch.SwitchToAddCourses(setUpSwitch.sourceActivity);
+       *  SwitchActivity setUpSwitch = new SwitchActivity(AddCoursesActivity.class);
+       *  setUpSwitch.SwitchToAddCourses(setUpSwitch.sourceActivity);
        */
-    
+
 
 
     /**
@@ -243,6 +249,7 @@ public class AddCoursesActivity extends AppCompatActivity {
             ArrayAdapter<String> courseAdapter =
                 new ArrayAdapter<>(AddCoursesActivity.this,
                                    android.R.layout.simple_spinner_item, filteredCourses);
+
 
             courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             courseSpinner.setAdapter(courseAdapter);

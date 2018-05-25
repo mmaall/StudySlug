@@ -31,7 +31,7 @@
         android:background="@color/colorSecondary"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Add Class" />
+        android:text="@string/add_class" />
 
     <Spinner
         android:id="@+id/course_spinner"
@@ -41,6 +41,12 @@
         android:layout_alignParentTop="true"
         android:layout_below="@id/departSpinner"
         android:layout_marginTop="147dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/course_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
 
 
 </RelativeLayout>
