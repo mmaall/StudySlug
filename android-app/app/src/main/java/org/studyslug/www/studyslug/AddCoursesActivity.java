@@ -168,6 +168,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     buildDropdownMenus();
 
 
+
     /**
      * Fill the first spinner.
      */
@@ -202,6 +203,8 @@ public class AddCoursesActivity extends AppCompatActivity {
       public void onCancelled(DatabaseError databaseError) {
       }
     });
+
+
 
     Object selectedItem = departmentSpinner.getSelectedItem();
 
