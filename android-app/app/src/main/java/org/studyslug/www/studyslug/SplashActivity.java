@@ -32,6 +32,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private GoogleSignInClient mGoogleSignInClient;
   private static final String TAG = "SplashActivity: ";
   private final static int RC_SIGN_IN = 2;
+  private final static String validDomain= "ucsc.edu";
 
 
   @Override
@@ -42,13 +43,15 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     googleSignIn = findViewById(R.id.g_sign_in_button);
     firebaseAuth = FirebaseAuth.getInstance();
 
-    googleSignIn.setOnClickListener(this);
     GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .setHostedDomain("ucsc.edu")
         .requestIdToken(getString(R.string.default_web_client_id))
         .requestEmail()
         .build();
 
     mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    googleSignIn.setOnClickListener(this);
+
   }
 
 
@@ -68,49 +71,90 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         // Google Sign In was successful, authenticate with Firebase
         GoogleSignInAccount account = task.getResult(ApiException.class);
         firebaseAuthWithGoogle(account);
+        //handleSignInResult(task);
       } catch (ApiException e) {
         // Google Sign In failed, update UI appropriately
-        Log.w("TAG", "Google sign in failed", e);
-
+        Log.d("TAG", "Google sign in failed", e);
+        return;
         // TODO: Figure out something useful to do here
       }
     }
   }
 
   private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-    Log.d("TAG", "firebaseAuthWithGoogle:" + acct.getId());
+    Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+    String emailAddress= acct.getEmail();
+    String currentDomain= emailAddress.substring(emailAddress.indexOf('@')+1,emailAddress.length());
+    Log.d(TAG, "Email: "+emailAddress);
 
-    AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-    firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                  @Override
-                  public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                      // Sign in success, update UI with the signed-in user's information
-                      Log.d("TAG", "signInWithCredential:success");
-                      FirebaseUser user = firebaseAuth.getCurrentUser();
-                      // I assume we should go to main here
-                      if (firebaseAuth.getCurrentUser() != null) {
-                        Intent findPeopleIntent =
-                            new Intent(SplashActivity.this, FindPeopleActivity.class);
-                        startActivity(findPeopleIntent);
-                      } else {
-                        /* TODO: Somehow the firebase user is null - figure out if we need
+    Log.d(TAG, "Domain: "+currentDomain);
+
+    if(validDomain.equals(currentDomain)) {
+      //valid domain
+      Log.d(TAG,"Valid domain given");
+      AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+      Log.d("TAG", "Sign in method: " + credential.getProvider());
+
+      firebaseAuth.signInWithCredential(credential)
+          .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+              if (task.isSuccessful()) {
+                // Sign in success, update UI with the signed-in user's information
+                Log.d(TAG, "signInWithCredential:success");
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                // I assume we should go to main here
+                if (firebaseAuth.getCurrentUser() != null) {
+                  Log.d(TAG, "intent:goto FindPeople");
+
+                  Intent findPeopleIntent =
+                      new Intent(SplashActivity.this, FindPeopleActivity.class);
+                  startActivity(findPeopleIntent);
+                } else {
+                        /* TODO: Somehow the firlebase user is null - figure out if we need
                          * to throw an exception or something?
                          */
 
-                        return;
-                      }
-                    } else {
-                      // If sign in fails, display a message to the user.
-                      // TODO: Figure out something useful to do if the sign-in fails
-                      Log.w("TAG", "signInWithCredential:failure", task.getException());
-                      Toast.makeText(SplashActivity.this,
-                                     "Authentication failed", Toast.LENGTH_LONG)
-                           .show();
-                    }
-                  }
-                });
+                  return;
+                }
+              } else {
+                // If sign in fails, display a message to the user.
+                // TODO: Figure out something useful to do if the sign-in fails
+                Log.d(TAG, "signInWithCredential:failure", task.getException());
+                Toast.makeText(SplashActivity.this,
+                    "Authentication failed", Toast.LENGTH_LONG)
+                    .show();
+              }
+            }
+          });
+    }
+    else{
+      //invalid domain
+      FirebaseAuth.getInstance().signOut();
+      /*Intent SplashPage =
+          new Intent(SplashActivity.this, SplashActivity.class);
+      startActivity(SplashPage);
+      */
+      return;
+    }
+  }
+
+  private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    try {
+      GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+      Intent findPeopleIntent =
+          new Intent(SplashActivity.this, FindPeopleActivity.class);
+      startActivity(findPeopleIntent);
+      // Signed in successfully, show authenticated UI.
+
+    } catch (ApiException e) {
+      // The ApiException status code indicates the detailed failure reason.
+      // Please refer to the GoogleSignInStatusCodes class reference for more information.
+      Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+      Intent SplashPage =
+          new Intent(SplashActivity.this, SplashActivity.class);
+      startActivity(SplashPage);
+    }
   }
 
   @Override
@@ -122,6 +166,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     // TODO: Refactor this to have the button just call this onclick
     switch (v.getId()) {
       case R.id.g_sign_in_button:
+        Log.d(TAG,"Sign In has been clicked");
         signIn();
         break;
 
