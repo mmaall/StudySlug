@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private DatabaseReference dbReference;
   private GoogleSignInClient mGoogleSignInClient;
   private static final String TAG = "SplashActivity: ";
-  private final static int RC_SIGN_IN = 2;
+  private final static int RCSignIn = 2;
   private final static String validDomain= "ucsc.edu";
 
 
@@ -58,14 +58,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private void signIn() {
     Log.d(TAG, "Entered sign-in");
     Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-    startActivityForResult(signInIntent, RC_SIGN_IN);
+    startActivityForResult(signInIntent, RCSignIn);
   }
 
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
     // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-    if (requestCode == RC_SIGN_IN) {
+    if (requestCode == RCSignIn) {
       Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
       try {
         // Google Sign In was successful, authenticate with Firebase
@@ -85,11 +85,11 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
     String emailAddress= acct.getEmail();
     String currentDomain= emailAddress.substring(emailAddress.indexOf('@')+1,emailAddress.length());
+    boolean isValidDomain = validDomain.equals(currentDomain);
     Log.d(TAG, "Email: "+emailAddress);
-
     Log.d(TAG, "Domain: "+currentDomain);
 
-    if(validDomain.equals(currentDomain)) {
+    if(isValidDomain) {
       //valid domain
       Log.d(TAG,"Valid domain given");
       AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -104,6 +104,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Log.d(TAG, "signInWithCredential:success");
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 // I assume we should go to main here
+
                 if (firebaseAuth.getCurrentUser() != null) {
                   Log.d(TAG, "intent:goto FindPeople");
 
@@ -128,13 +129,23 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             }
           });
     }
+
     else{
       //invalid domain
+      Toast.makeText(SplashActivity.this,
+          "Invalid domain", Toast.LENGTH_LONG)
+          .show();
       FirebaseAuth.getInstance().signOut();
-      /*Intent SplashPage =
-          new Intent(SplashActivity.this, SplashActivity.class);
-      startActivity(SplashPage);
-      */
+      FirebaseUser user = firebaseAuth.getCurrentUser();
+
+      try{
+        Log.d(TAG, "Deleting illegal user");
+        user.delete();
+      }
+      catch (Exception e){
+        Log.d(TAG, "User unable to be deleted");
+      }
+
       return;
     }
   }
