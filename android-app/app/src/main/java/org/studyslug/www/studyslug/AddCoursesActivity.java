@@ -34,22 +34,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class AddCoursesActivity extends AppCompatActivity {
 
   private static final String TAG = "AddCoursesActivity";
+
+  // Firebase stuff
   private DatabaseReference dbReference;
   private DatabaseReference userReference;
   private FirebaseUser firebaseUser;
   private DatabaseReference coursesReference;
   private DatabaseReference departmentReference;
+
+
+  /// Strings
   private String dbCourseReference;
   private String userEmail;
   private String userKey;
-  private String userDepartment;
-  private String userCourseNumber;
-  private String userCourseSection;
-
 
 
   // Spinner stuff
@@ -58,89 +60,12 @@ public class AddCoursesActivity extends AppCompatActivity {
   private RecyclerView courseRecycler;
   private RecyclerView.LayoutManager courseLayoutManager;
   private String selectedDepartment;
-  private String selectError = "Error choosing department.";
   String temp = " ";
   ArrayAdapter<Course> departmentAdapter;
   ArrayList<Course> courseData;
   ArrayList<String> filteredCourses;
   List<String> departments;
-  Query courseQuery;
 
-
-
-
-/** Let's bench this method for now
-  private ArrayList<Course> getCourses() {
-
-    courseData = new ArrayList<>();
-    courseData.clear();
-    dbReference = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference coursesReference = FirebaseDatabase.getInstance()
-                                                         .getReference("classes");
-    courseQuery = coursesReference.orderByChild("department");
-
-    dbReference.child("classes").addValueEventListener(new ValueEventListener() {
-      @Override
-      public void onDataChange(DataSnapshot dataSnapshot) {
-        Iterable<DataSnapshot> courseCheck = dataSnapshot.getChildren();
-        for (DataSnapshot child : courseCheck) {
-          Course placeCourse = child.getValue(Course.class);
-          courseData.add(placeCourse);
-        }
-        //Iterator<DataSnapshot> courseShot = dataSnapshot.getChildren().iterator();
-        //while (courseShot.hasNext()) {
-        //DataSnapshot currentCourse = courseShot.next();
-        //String currentName;
-        //HashMap<String,String> currentStudents;
-        //currentName = currentCourse.child("name").getValue().toString();
-        //Course courseInject = currentCourse.getValue(Course.class);
-        //courseData.add(courseInject);
-        //Log.d(TAG, "adding " + currentName + " to courseData");
-
-
-      }
-
-      @Override
-      public void onCancelled(DatabaseError databaseError) {
-
-      }
-    });
-
-    return courseData;
-
-  }
- **/
-
-
-
-
-
-
-
-  private void getCoursesBySelectedDepartment(String chosenDepartment) {
-    filteredCourses = new ArrayList<>();
-    /**
-     if (chosenDepartment == " "){
-     departmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getCourses());
-     }
-     else{
-     **/
-    /**for (Course course : getCourses()) {
-     if (course.getDepartment().equals(chosenDepartment)) {
-
-     filteredCourses.add(course);
-     } else {
-     continue;
-     }
-
-     }//endfor
-     **/
-
-    // departmentAdapter.addAll(filteredCourses);
-    //}//endelse
-
-    // courseView.setAdapter(departmentAdapter);
-  }
 
   private void findViews() {
     setContentView(R.layout.activity_add_courses);
@@ -153,11 +78,23 @@ public class AddCoursesActivity extends AppCompatActivity {
   }
 
   private void buildReferences() {
+    dbReference = FirebaseDatabase.getInstance().getReference();
     departmentReference = FirebaseDatabase.getInstance()
                                           .getReference("classes")
                                           .child("department");
     coursesReference = FirebaseDatabase.getInstance()
                                        .getReference("classes");
+    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+    try {
+      userKey = firebaseUser.getUid();
+    } catch (NullPointerException e) {
+      Log.d(TAG,"Tried to get user ID, null pointer exception");
+    }
+
+    userReference = dbReference.child("users").child(userKey);
+
+
   }
 
   @Override
@@ -171,17 +108,20 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     buildDropdownMenus();
 
-      /**
-       *  Using SwitchActivity will looking something like this, I think.
+
+    /**
+     * insert code to track class add button
+     * then
+     * dbReference.child("classes").child(courseReference).setValue(courseName);
+     *
+     */
+
+    /**
+     *  Using SwitchActivity will looking something like this, I think.
        *  SwitchActivity setUpSwitch = new SwitchActivity(AddCoursesActivity.class);
        *  setUpSwitch.SwitchToAddCourses(setUpSwitch.sourceActivity);
        */
 
-
-
-    /**
-     * Fill the first spinner.
-     */
   }
 
   private void buildDropdownMenus() {
