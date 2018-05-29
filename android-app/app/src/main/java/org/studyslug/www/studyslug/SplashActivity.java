@@ -21,7 +21,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,6 +46,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     setContentView(R.layout.activity_splash);
     googleSignIn = findViewById(R.id.g_sign_in_button);
     firebaseAuth = FirebaseAuth.getInstance();
+    dbReference = FirebaseDatabase.getInstance().getReference("users");
 
     GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .setHostedDomain("ucsc.edu")
@@ -84,7 +89,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
     Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
     String emailAddress= acct.getEmail();
-    String currentDomain= emailAddress.substring(emailAddress.indexOf('@')+1,emailAddress.length());
+    final String currentDomain= emailAddress.substring(emailAddress.indexOf('@')+1,emailAddress.length());
     boolean isValidDomain = validDomain.equals(currentDomain);
     Log.d(TAG, "Email: "+emailAddress);
     Log.d(TAG, "Domain: "+currentDomain);
@@ -103,9 +108,36 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "signInWithCredential:success");
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                // I assume we should go to main here
 
-                if (firebaseAuth.getCurrentUser() != null) {
+                if (user != null) {
+                  //Add user to datbase if not already there.
+                  String userID = user.getUid();
+                  Log.d(TAG, "UID: "+ userID);
+
+                  DatabaseReference currentUserReference= dbReference.child(userID);
+                  Log.d(TAG, "DBRef: "+currentUserReference);
+                  ValueEventListener eventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                      if(!dataSnapshot.exists()) {
+                        //create new user
+                        Log.d(TAG, "User not in database, must create new user");
+
+
+                      } else{
+                        Log.d(TAG, "User in database. Carry on");
+                      }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                  };
+                  currentUserReference.addListenerForSingleValueEvent(eventListener);
+
+
+
+                  //Goto Find People
                   Log.d(TAG, "intent:goto FindPeople");
 
                   Intent findPeopleIntent =
@@ -183,5 +215,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
     }
   }
+
 
 }
