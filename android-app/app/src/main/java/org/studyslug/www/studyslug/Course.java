@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Course {
   private String department;
+  private String name;
   private String number;
   private String section;
   private HashMap<String, String> students;
@@ -13,17 +14,27 @@ public class Course {
   }
 
   public Course(String department,
+                String name,
                 String number,
                 String section,
                 HashMap<String, String> students) {
     this.department = department;
     this.number = number;
     this.section = section;
+    this.name = name;
     if (this.students == null) {
       this.students = new HashMap<>(students);
     } else {
       this.students = students;
     }
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getDepartment() {

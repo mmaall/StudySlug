@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Spinner;
@@ -32,94 +31,83 @@ public class FindPeopleActivity extends AppCompatActivity {
   private String classKey;
   private EditText searchField;
   private ImageButton searchButton;
-  private ImageButton imageButton;
-
+  private ImageButton addClasses;
   private String text;
   private RecyclerView resultList;
   private List<String> areas;
-
   private DatabaseReference dbUserReference;
   private DatabaseReference dbCourseReference;
+  private Spinner areaSpinner;
 
-  private void findViews(){
-    final Spinner areaSpinner = findViewById(R.id.spinner2);
+  private void configureLayoutElements() {
+    setContentView(R.layout.activity_find_people);
+    areaSpinner = findViewById(R.id.find_people_spinner);
+    searchButton = findViewById(R.id.find_people_magnifying_glass);
+    addClasses = findViewById(R.id.find_people_plus_button);
+    resultList = findViewById(R.id.result_list);
+    resultList.setHasFixedSize(true);
+    resultList.setLayoutManager(new LinearLayoutManager(this));
+    setCoursesMenu(areaSpinner);
+  }
+
+  private void buildDatabaseReferences() {
     dbUserReference = FirebaseDatabase.getInstance()
                                       .getReference("users")
                                       .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                       .child("classes");
-    searchButton = findViewById(R.id.imageButton4);
-    imageButton = findViewById(R.id.imageButton);
-    resultList = findViewById(R.id.result_list);
-    resultList.setHasFixedSize(true);
-
-    resultList.setLayoutManager(new LinearLayoutManager(this));
-
   }
 
-  private void buildReferences(){
-    dbUserReference = FirebaseDatabase.getInstance()
-            .getReference("users")
-            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-            .child("classes");
-
-
-
-  }
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_find_people);
-
-    findViews();
-    buildReferences();
-
-    setCoursesMenu();
-
-
+  private void setOnClickListeners() {
     searchButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         String searchText = areaSpinner.getSelectedItem().toString();
-
         firebaseUserSearch(searchText);
       }
     });
 
-    ImageButton addClasses = findViewById(R.id.imageButton2);
-
     addClasses.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        
+        startActivity(new Intent(FindPeopleActivity.this, AddCoursesActivity.class));
       }
     });
   }
 
-  private void setCoursesMenu(){
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    configureLayoutElements();
+    buildDatabaseReferences();
+    setOnClickListeners();
+  }
+
+  private void setCoursesMenu(final Spinner peopleSpinner) {
+
     dbUserReference.addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
 
         areas = new ArrayList<>();
+        areas.add("[SELECT CLASS]");
         for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
           String areaName = areaSnapshot.getValue(String.class);
           areas.add(areaName);
         }
 
         ArrayAdapter<String> areasAdapter =
-                new ArrayAdapter<>(FindPeopleActivity.this,
-                        android.R.layout.simple_spinner_item, areas);
+            new ArrayAdapter<>(FindPeopleActivity.this,
+                               android.R.layout.simple_spinner_item, areas);
         areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        areaSpinner.setAdapter(areasAdapter);
+
+        peopleSpinner.setAdapter(areasAdapter);
 
         try {
-          classKey = areaSpinner.getSelectedItem().toString();
+          classKey = peopleSpinner.getSelectedItem().toString();
         } catch (Exception e) {
           System.out.print("No classes in spinner");
           Intent mainIntent =
-                  new Intent(FindPeopleActivity.this, AddCoursesActivity.class);
+              new Intent(FindPeopleActivity.this, AddCoursesActivity.class);
           startActivity(mainIntent);
         }
       }
@@ -133,8 +121,6 @@ public class FindPeopleActivity extends AppCompatActivity {
   }
 
   private void firebaseUserSearch(String searchText) {
-
-
     Toast.makeText(FindPeopleActivity.this, "Finding Slugs!", Toast.LENGTH_LONG)
          .show();
     dbCourseReference = FirebaseDatabase.getInstance()
