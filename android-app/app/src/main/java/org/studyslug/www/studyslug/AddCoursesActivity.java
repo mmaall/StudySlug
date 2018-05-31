@@ -126,7 +126,7 @@ public class AddCoursesActivity extends AppCompatActivity {
         getLayout();
         getDepartmentAdapter();
         chooseDepartment();
-        addCoursesToUser(classes);
+
 
         Log.d("SpinnerGot", dropdownText);
         ImageButton findPeople = findViewById(R.id.add_courses_little_magnifying_glass);
@@ -149,6 +149,10 @@ public class AddCoursesActivity extends AppCompatActivity {
 
         dbCourseReference = FirebaseDatabase.getInstance()
                 .getReference("classes");
+        userReference = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(currentUserKey);
+
 
         final Query firebaseSearchQuery = dbCourseReference.orderByKey().startAt(dropdownText).endAt(dropdownText + searchText + "\uf8ff");
 
@@ -164,37 +168,25 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
                 {
+
                     @Override
                     protected void populateViewHolder(final UsersViewHolder viewHolder, final Course model,
                                                       final int position) {
                         viewHolder.setDetails(getApplicationContext(), model);
-                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                classes.add(firebaseRecyclerAdapter.getRef(position).toString());
+
+                            viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String currentCourse = getItem(position).toString();
+                                    userReference.child("classes").push().setValue(currentCourse);
 
 
-                            }
-                        });
-                        /**
-                        viewHolder.checkSelect.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                CheckBox box = (CheckBox) v;
-                                String classTitle = box.getTag().toString();
-                                classes.add(classTitle);
+                                }
 
-                            }
-                        });**/
+                            });
+                        }
 
-
-
-                    }
-
-
-
-
-
+                    
                 };
 
 
@@ -238,15 +230,14 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
 
+    /**
     public void addCoursesToUser(List<String> classesChosenByUser){
 
-        userReference = FirebaseDatabase.getInstance().getReference()
-                                                      .child("users")
-                                                      .child(currentUserKey);
+
         for (String currentCourse : classesChosenByUser) {
 
                userReference.child("classes").push().setValue(currentCourse);
 
         }
-    }
+    }**/
 }
