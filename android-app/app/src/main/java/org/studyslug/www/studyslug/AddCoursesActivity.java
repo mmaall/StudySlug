@@ -215,7 +215,7 @@ public class AddCoursesActivity extends AppCompatActivity {
             TextView classname = (TextView) mView.findViewById(R.id.User1_name);
             TextView classnumber = (TextView) mView.findViewById(R.id.Class_number);
             TextView section = (TextView) mView.findViewById(R.id.Course_section);
-            checkSelect = itemView.findViewById(R.id.checkBox);
+            CheckBox checkSelect = mView.findViewById(R.id.checkBox);
             classname.setText(temp.getName());
             classnumber.setText(temp.getNumber());
             section.setText(temp.getSection());
