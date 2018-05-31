@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.content.Intent;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -45,7 +46,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     // Output
     private RecyclerView resultList;
     private List<String> areas;
-    private List<String> classes;
+    private List<String> classes = new ArrayList<>();
 
     // Database
     private DatabaseReference dbUserReference;
@@ -170,7 +171,8 @@ public class AddCoursesActivity extends AppCompatActivity {
                         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                classes.add(getRef(position).toString());
+                                classes.add(firebaseRecyclerAdapter.getRef(position).toString());
+
 
                             }
                         });
