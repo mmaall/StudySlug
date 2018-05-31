@@ -1,8 +1,11 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -148,7 +151,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
         final Query firebaseSearchQuery = dbCourseReference.orderByKey().startAt(dropdownText).endAt(dropdownText + searchText + "\uf8ff");
 
-        FirebaseRecyclerAdapter<Course, UsersViewHolder> firebaseRecyclerAdapter =
+        final FirebaseRecyclerAdapter<Course, UsersViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Course, UsersViewHolder>(
 
                         Course.class,
@@ -161,9 +164,17 @@ public class AddCoursesActivity extends AppCompatActivity {
 
                 {
                     @Override
-                    protected void populateViewHolder(UsersViewHolder viewHolder, final Course model,
-                                                      int position) {
+                    protected void populateViewHolder(final UsersViewHolder viewHolder, final Course model,
+                                                      final int position) {
                         viewHolder.setDetails(getApplicationContext(), model);
+                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                classes.add(getRef(position).toString());
+
+                            }
+                        });
+                        /**
                         viewHolder.checkSelect.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -172,7 +183,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                 classes.add(classTitle);
 
                             }
-                        });
+                        });**/
 
 
 
@@ -192,14 +203,16 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
     // View Holder Class
-    public static class UsersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class UsersViewHolder extends RecyclerView.ViewHolder  {
         View mView;
         CheckBox checkSelect;
+
+
 
         public UsersViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            itemView.setOnClickListener((View.OnClickListener) this);  // listener for each row.
+
 
         }
 
@@ -216,14 +229,11 @@ public class AddCoursesActivity extends AppCompatActivity {
         }
 
 
-        @Override
-        public void onClick(View v) {
-            int clickPosition = getAdapterPosition();
-
-        }
 
 
     }
+
+
 
 
     public void addCoursesToUser(List<String> classesChosenByUser){
