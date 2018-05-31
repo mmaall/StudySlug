@@ -1,11 +1,8 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +19,6 @@ import android.widget.ArrayAdapter;
 import android.content.Intent;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -36,27 +32,26 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     // Layout
     private String dropdownText = "";
-    private String searchText="";
+    private String searchText = "";
     private EditText searchField;
     private ImageButton searchButton;
     private ImageButton imageButton;
-    private CheckBox classCheck;
     private Spinner departmentSpinner;
 
     // Output
     private RecyclerView resultList;
     private List<String> areas;
-    private List<String> classes = new ArrayList<>();
+    private List<String> classes;
 
     // Database
     private DatabaseReference dbUserReference;
     private DatabaseReference dbCourseReference;
     private DatabaseReference userReference;
-    private FirebaseUser      currentUser;
-    private String            currentUserKey;
+    private FirebaseUser currentUser;
+    private String currentUserKey;
 
     ArrayAdapter<Course> departmentAdapter;
-    private String[] availableDepartments = { "FILTER BY SUBJECT",
+    private String[] availableDepartments = {"FILTER BY SUBJECT",
             "ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ARTG",
             "ASTR", "BIOC", "BIOL", "BIOE", "BME", "CHEM", "CHIN", "CLEI",
             "CLNI", "CLTE", "CMMU", "CMPM", "CMPE", "CMPS", "COWL", "LTCR",
@@ -71,7 +66,7 @@ public class AddCoursesActivity extends AppCompatActivity {
             "TIM", "THEA", "UCDC", "WMST", "LTWL", "WRIT", "YIDD"
     };
 
-    public void buildDatabaseReferences(){
+    public void buildDatabaseReferences() {
         dbUserReference = FirebaseDatabase.getInstance()
                 .getReference("classes");
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -79,7 +74,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     }
 
-    public void getLayout(){
+    public void getLayout() {
         setContentView(R.layout.activity_add_courses);
         departmentSpinner = findViewById(R.id.add_courses_department_spinner);
 
@@ -87,14 +82,13 @@ public class AddCoursesActivity extends AppCompatActivity {
         imageButton = findViewById(R.id.add_courses_icon_button);
         resultList = findViewById(R.id.result_list_courses);
         resultList.setHasFixedSize(true);
-        classCheck = findViewById(R.id.checkBox);
 
         resultList.setLayoutManager(new LinearLayoutManager(this));
 
 
     }
 
-    public void getDepartmentAdapter(){
+    public void getDepartmentAdapter() {
         // Initialize department spinner
         ArrayAdapter<String> departmentAdapter =
                 new ArrayAdapter<>(AddCoursesActivity.this,
@@ -104,7 +98,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     }
 
-    public void chooseDepartment(){
+    public void chooseDepartment() {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +111,6 @@ public class AddCoursesActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -126,7 +119,7 @@ public class AddCoursesActivity extends AppCompatActivity {
         getLayout();
         getDepartmentAdapter();
         chooseDepartment();
-
+        //addCoursesToUser(classes);
 
         Log.d("SpinnerGot", dropdownText);
         ImageButton findPeople = findViewById(R.id.add_courses_little_magnifying_glass);
@@ -152,11 +145,9 @@ public class AddCoursesActivity extends AppCompatActivity {
         userReference = FirebaseDatabase.getInstance().getReference()
                 .child("users")
                 .child(currentUserKey);
-
-
         final Query firebaseSearchQuery = dbCourseReference.orderByKey().startAt(dropdownText).endAt(dropdownText + searchText + "\uf8ff");
 
-        final FirebaseRecyclerAdapter<Course, UsersViewHolder> firebaseRecyclerAdapter =
+        FirebaseRecyclerAdapter<Course, UsersViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Course, UsersViewHolder>(
 
                         Course.class,
@@ -168,23 +159,23 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
                 {
-
                     @Override
-                    protected void populateViewHolder(final UsersViewHolder viewHolder, final Course model,
-                                                      final int position) {
+                    protected void populateViewHolder(UsersViewHolder viewHolder, final Course model,
+                                                      int position) {
                         viewHolder.setDetails(getApplicationContext(), model);
+                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String classkey = model.getDepartment()+" "+model.getNumber()+" - "+model.getSection()+" "+model.getName();
+                                Log.d("O", classkey);
+                                userReference.child("classes").push().setValue(classkey);
 
-                            viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    String currentCourse = getItem(position).toString();
-                                    userReference.child("classes").push().setValue(currentCourse);
+                                dbCourseReference.child(classkey).child("students").push().setValue(currentUser.getEmail());
+                            }
+                        });
 
 
-                                }
-
-                            });
-                        }
+                    }
 
 
                 };
@@ -197,16 +188,13 @@ public class AddCoursesActivity extends AppCompatActivity {
 
 
     // View Holder Class
-    public class UsersViewHolder extends RecyclerView.ViewHolder  {
+    public static class UsersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         View mView;
-        CheckBox checkSelect;
-
-
 
         public UsersViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-
+            itemView.setOnClickListener((View.OnClickListener) this);  // listener for each row.
 
         }
 
@@ -215,7 +203,6 @@ public class AddCoursesActivity extends AppCompatActivity {
             TextView classname = (TextView) mView.findViewById(R.id.User1_name);
             TextView classnumber = (TextView) mView.findViewById(R.id.Class_number);
             TextView section = (TextView) mView.findViewById(R.id.Course_section);
-            CheckBox checkSelect = mView.findViewById(R.id.checkBox);
             classname.setText(temp.getName());
             classnumber.setText(temp.getNumber());
             section.setText(temp.getSection());
@@ -223,21 +210,27 @@ public class AddCoursesActivity extends AppCompatActivity {
         }
 
 
+        @Override
+        public void onClick(View v) {
+            int clickPosition = getAdapterPosition();
+
+        }
 
 
     }
 
 
+ /*   public void addCoursesToUser(List<String> classesChosenByUser){
 
-
-    /**
-    public void addCoursesToUser(List<String> classesChosenByUser){
-
-
+        userReference = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(currentUserKey);
         for (String currentCourse : classesChosenByUser) {
 
-               userReference.child("classes").push().setValue(currentCourse);
+            userReference.child("classes").push().setValue(currentCourse);
 
         }
-    }**/
+    }
+}
+*/
 }

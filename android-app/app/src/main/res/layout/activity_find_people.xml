@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +16,7 @@
         android:layout_marginTop="76dp"
         android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/find_people_plus_button"
@@ -23,36 +24,38 @@
         android:layout_width="64dp"
         android:layout_height="52dp"
         android:layout_marginBottom="388dp"
+        android:layout_marginStart="1dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         android:tint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/find_people_magnifying_glass"
         app:layout_constraintEnd_toStartOf="@+id/result_list"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/find_people_picture_button"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <Spinner
         android:id="@+id/find_people_spinner"
-        android:layout_width="234dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="279dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@android:drawable/btn_dropdown"
         android:backgroundTint="#545160b3"
         android:popupBackground="#4a5160b3"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/find_people_plus_button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/find_people_picture_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/find_people_picture_button"
         android:layout_width="59dp"
         android:layout_height="52dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="4dp"
         android:background="@color/common_google_signin_btn_text_light_disabled"
         app:layout_constraintBottom_toTopOf="@+id/find_people_plus_button"
@@ -67,9 +70,12 @@
         style="@android:style/Widget.Holo.Light.ImageButton"
         android:layout_width="389dp"
         android:layout_height="56dp"
+        android:layout_marginStart="2dp"
         android:background="#545160b3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
 </android.support.constraint.ConstraintLayout>
