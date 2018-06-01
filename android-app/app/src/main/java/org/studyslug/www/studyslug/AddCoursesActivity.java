@@ -186,6 +186,8 @@ public class AddCoursesActivity extends AppCompatActivity {
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if(!dataSnapshot.child(classkey).exists()){
                                             userReference.child("classes").push().setValue(classkey);
+                                            UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
                                         }
                                         else
                                         {
@@ -198,8 +200,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
                                     }
                                 });
-                                   
-                                    UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
 
                             }
 
