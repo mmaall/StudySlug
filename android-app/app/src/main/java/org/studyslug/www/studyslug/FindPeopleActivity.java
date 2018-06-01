@@ -155,7 +155,7 @@ public class FindPeopleActivity extends AppCompatActivity {
                                         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                                                 "mailto",model.getEmail(), null));
                                         intent.putExtra(Intent.EXTRA_SUBJECT, "You've been invited to study through StudySlug!");
-                                        intent.putExtra(Intent.EXTRA_TEXT, "Hi, I saw you were looking to study for "+ searchText+ ". We should study together! ");
+                                        intent.putExtra(Intent.EXTRA_TEXT, "Hi "+model.getName()+",\nI saw you were looking to study for "+ searchText+ ". We should study together!  \n\n -"+FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                                         startActivity(Intent.createChooser(intent, "Choose application:"));
                                     }
                                 });

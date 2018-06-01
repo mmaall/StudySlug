@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
 import android.util.Log;
+import java.lang.reflect.Field;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -107,6 +108,19 @@ public class AddCoursesActivity extends AppCompatActivity {
                         android.R.layout.simple_spinner_item, availableDepartments);
 
         departmentSpinner.setAdapter(departmentAdapter);
+        try {
+            Field popup = Spinner.class.getDeclaredField("mPopup");
+            popup.setAccessible(true);
+
+            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(departmentSpinner);
+
+
+            popupWindow.setHeight(600);
+            popupWindow.setVerticalOffset(30);
+        }
+        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+            // silently fail.
+        }
 
     }
 
@@ -186,7 +200,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                             userReference.child("classes").child(classkey).setValue("0");
                                             UserToClass.child("StudySlugClasses").child(classkey).child("students").child(FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0]).child("name").setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                                             UserToClass.child("StudySlugClasses").child(classkey).child("students").child(FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0]).child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                                            Toast.makeText(AddCoursesActivity.this, "You are in "+model.getName() +"!", Toast.LENGTH_LONG)
+                                            Toast.makeText(AddCoursesActivity.this, "You are now enrolled in "+model.getName() +"!", Toast.LENGTH_LONG)
                                                     .show();
                                         }
                                         else
