@@ -10,10 +10,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/result_list"
-        android:layout_width="286dp"
-        android:layout_height="430dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="258dp"
+        android:layout_height="419dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="72dp"
         android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

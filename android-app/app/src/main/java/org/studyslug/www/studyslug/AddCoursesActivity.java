@@ -177,7 +177,6 @@ public class AddCoursesActivity extends AppCompatActivity {
                         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                boolean exists = false;
                                 final String classkey = model.getDepartment()+" "+model.getNumber()+" - "+model.getSection()+" "+model.getName();
 
                                 userCourseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -185,7 +184,8 @@ public class AddCoursesActivity extends AppCompatActivity {
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if(!dataSnapshot.child(classkey).exists()){
                                             userReference.child("classes").child(classkey).setValue("0");
-                                            UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                                            UserToClass.child("StudySlugClasses").child(classkey).child("students").child(FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0]).child("name").setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                                            UserToClass.child("StudySlugClasses").child(classkey).child("students").child(FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0]).child("email").setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                                             Toast.makeText(AddCoursesActivity.this, "You are in "+model.getName() +"!", Toast.LENGTH_LONG)
                                                     .show();
                                         }

@@ -1,6 +1,7 @@
 package org.studyslug.www.studyslug;
 
         import android.content.Context;
+        import android.net.Uri;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.LinearLayoutManager;
@@ -34,6 +35,7 @@ public class FindPeopleActivity extends AppCompatActivity {
     private EditText searchField;
     private ImageButton searchButton;
     private ImageButton addClasses;
+    private ImageButton emailButton;
     private String text;
     private RecyclerView resultList;
     private List<String> areas;
@@ -123,7 +125,7 @@ public class FindPeopleActivity extends AppCompatActivity {
 
     }
 
-    private void firebaseUserSearch(String searchText) {
+    private void firebaseUserSearch(final String searchText) {
         Toast.makeText(FindPeopleActivity.this, "Finding Slugs!", Toast.LENGTH_LONG)
                 .show();
         dbCourseReference = FirebaseDatabase.getInstance()
@@ -132,19 +134,33 @@ public class FindPeopleActivity extends AppCompatActivity {
                 .child("students");
         Query firebaseSearchQuery = dbCourseReference.orderByKey();
 
-        FirebaseRecyclerAdapter<String, UsersViewHolder> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<String, UsersViewHolder>(
+        FirebaseRecyclerAdapter<User, UsersViewHolder> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<User, UsersViewHolder>(
 
-                        String.class,
+                        User.class,
                         R.layout.list_layout,
                         UsersViewHolder.class,
                         firebaseSearchQuery
 
                 ) {
                     @Override
-                    protected void populateViewHolder(UsersViewHolder viewHolder, String model,
-                                                      int position) {
+                    protected void populateViewHolder(UsersViewHolder viewHolder, final User model,
+                                                      final int position) {
+
                         viewHolder.setDetails(getApplicationContext(), model);
+                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                                "mailto",model.getEmail()+"@UCSC.edu", null));
+                                        intent.putExtra(Intent.EXTRA_SUBJECT, "You've been invited to study through StudySlug!");
+                                        intent.putExtra(Intent.EXTRA_TEXT, "Hi, I saw you were looking to study for "+ searchText+ ". We should study together! ");
+                                        startActivity(Intent.createChooser(intent, "Choose application:"));
+                                    }
+                                });
+
+
                     }
                 };
 
@@ -162,9 +178,9 @@ public class FindPeopleActivity extends AppCompatActivity {
             mView = itemView;
         }
 
-        public void setDetails(Context ctx, String userName) {
+        public void setDetails(Context ctx, User model) {
             TextView user_name = (TextView) mView.findViewById(R.id.User1_name);
-            user_name.setText(userName);
+            user_name.setText(model.getName().split(" ")[0]+model.getName().split(" ")[1].charAt(0));
         }
     }
 }
