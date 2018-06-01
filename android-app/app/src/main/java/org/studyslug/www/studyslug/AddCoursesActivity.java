@@ -246,6 +246,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                      Toast.LENGTH_LONG)
                            .show();
                       // TODO add log message for successful enrollment
+
                     } else {
                       Toast.makeText(AddCoursesActivity.this,
                                      "Already enrolled in " + model.getName() + "!",
