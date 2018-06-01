@@ -155,7 +155,7 @@ public class FindPeopleActivity extends AppCompatActivity {
   }
 
   private void firebaseUserSearch(final String searchText) {
-    Toast.makeText(FindPeopleActivity.this, "Finding Slugs!", Toast.LENGTH_LONG)
+    Toast.makeText(FindPeopleActivity.this, "Finding Slugs!", Toast.LENGTH_SHORT)
          .show();
 
     dbCourseReference = FirebaseDatabase.getInstance()

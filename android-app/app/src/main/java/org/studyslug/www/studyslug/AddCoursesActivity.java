@@ -163,7 +163,7 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   private void firebaseClassSearch(String dropdownText, String searchText) {
 
-    Toast.makeText(AddCoursesActivity.this, "Finding Classes!", Toast.LENGTH_LONG)
+    Toast.makeText(AddCoursesActivity.this, "Finding Classes!", Toast.LENGTH_SHORT)
          .show();
 
     dbCourseReference = FirebaseDatabase.getInstance()

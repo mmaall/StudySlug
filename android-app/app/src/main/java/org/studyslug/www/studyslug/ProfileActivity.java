@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +23,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private List<String> areas;
     private DatabaseReference dbUserReference;
+    private Button RemoveClass;
+    private Spinner ClassSpinner;
+    private String UserName,UserEmail;
 
     private void getLayout(){
         setContentView(R.layout.activity_profile);
@@ -82,6 +87,13 @@ public class ProfileActivity extends AppCompatActivity {
                 .child("classes");
     }
     private void configureLayoutElements() {
+        setContentView(R.layout.activity_profile);
+        ClassSpinner = findViewById(R.id.user_classes_spinner);
+        RemoveClass = findViewById(R.id.drop_button);
+        TextView UserName = (TextView) findViewById(R.id.user_name);
+        UserName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        TextView UserEmail = (TextView) findViewById(R.id.user_email);
+        UserEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
 }
