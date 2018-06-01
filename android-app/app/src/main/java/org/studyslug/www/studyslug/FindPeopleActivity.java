@@ -93,7 +93,7 @@ public class FindPeopleActivity extends AppCompatActivity {
                 areas = new ArrayList<>();
                 areas.add("SELECT CLASS");
                 for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
-                    String areaName = areaSnapshot.getValue(String.class);
+                    String areaName = areaSnapshot.getKey().toString();
                     areas.add(areaName);
                 }
 

@@ -185,7 +185,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if(!dataSnapshot.child(classkey).exists()){
-                                            userReference.child("classes").push().setValue(classkey);
+                                            userReference.child("classes").child(classkey).setValue("0");
                                             UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
                                         }
