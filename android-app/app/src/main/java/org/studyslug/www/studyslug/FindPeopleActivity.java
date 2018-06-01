@@ -52,7 +52,11 @@ public class FindPeopleActivity extends AppCompatActivity {
     areaSpinner = findViewById(R.id.find_people_spinner);
     searchButton = findViewById(R.id.find_people_magnifying_glass);
     userPhoto = findViewById(R.id.find_people_picture_button);
-    userPhoto.setImageURI(userPhotoURL);
+
+
+
+
+
     addClasses = findViewById(R.id.find_people_plus_button);
     resultList = findViewById(R.id.result_list);
     resultList.setHasFixedSize(true);
@@ -70,7 +74,18 @@ public class FindPeopleActivity extends AppCompatActivity {
                                       )
                                       .child("classes");
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
     userPhotoURL = currentUser.getPhotoUrl();
+    if(userPhotoURL != null)
+    {
+      userPhoto.setImageURI(null);
+      userPhoto.setImageURI(userPhotoURL);
+    }gi
+    else
+    {
+      Toast.makeText(this,"Unable to retrieve URI", Toast.LENGTH_SHORT).show();
+    }
 
 
   }
