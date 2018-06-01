@@ -6,11 +6,24 @@ public class User {
 
   private String name;
   private String email;
+  private String bio;
   private ArrayList<String> courseKeys;
   private ArrayList<String> groupKeys;
 
   public User() {
 
+  }
+
+  public User(String name, String email) {
+    this.name = name;
+    this.email = email;
+  }
+
+
+  public User(String name, String email, String bio) {
+    this.name = name;
+    this.email = email;
+    this.bio= bio;
   }
 
   public String getName() {
@@ -29,8 +42,17 @@ public class User {
     return this.email;
   }
 
-  public User(String name, String email) {
-    this.name = name;
-    this.email = email;
+  public void setBio(String bio){
+    this.bio=bio;
   }
+
+  public String getBio(){
+    return this.bio;
+  }
+
+
+
+
+
+
 }
