@@ -153,7 +153,7 @@ public class FindPeopleActivity extends AppCompatActivity {
                             public void onClick(View v) {
 
                                         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                                                "mailto",model.getEmail()+"@UCSC.edu", null));
+                                                "mailto",model.getEmail(), null));
                                         intent.putExtra(Intent.EXTRA_SUBJECT, "You've been invited to study through StudySlug!");
                                         intent.putExtra(Intent.EXTRA_TEXT, "Hi, I saw you were looking to study for "+ searchText+ ". We should study together! ");
                                         startActivity(Intent.createChooser(intent, "Choose application:"));
