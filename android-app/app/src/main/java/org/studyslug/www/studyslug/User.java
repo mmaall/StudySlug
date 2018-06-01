@@ -1,12 +1,14 @@
 package org.studyslug.www.studyslug;
 
 import java.util.ArrayList;
+import java.net.URI;
 
 public class User {
 
   private String name;
   private String email;
   private String bio;
+  private URI userPhotoURL;
   private ArrayList<String> courseKeys;
   private ArrayList<String> groupKeys;
 
@@ -18,10 +20,11 @@ public class User {
   }
 
 
-  public User(String name, String email, String bio) {
+  public User(String name, String email, String bio, URI uri) {
     this.name = name;
     this.email = email;
     this.bio= bio;
+    this.userPhotoURL = uri;
   }
 
   public String getName() {
@@ -47,4 +50,8 @@ public class User {
   public String getBio(){
     return this.bio;
   }
+
+  public void setURI(URI uri) {this.userPhotoURL = uri;}
+
+  public URI getURI() {return this.userPhotoURL;}
 }
