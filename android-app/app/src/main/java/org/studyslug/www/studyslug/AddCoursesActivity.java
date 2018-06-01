@@ -19,14 +19,19 @@ import android.widget.ArrayAdapter;
 import android.content.Intent;
 import android.util.Log;
 
+import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddCoursesActivity extends AppCompatActivity {
 
@@ -45,10 +50,12 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     // Database
     private DatabaseReference dbUserReference;
+    private DatabaseReference CheckClassesReference;
     private DatabaseReference dbCourseReference;
     private DatabaseReference userReference;
     private FirebaseUser currentUser;
     private String currentUserKey;
+    DatabaseReference UserToClass = FirebaseDatabase.getInstance().getReference();
 
     ArrayAdapter<Course> departmentAdapter;
     private String[] availableDepartments = {"FILTER BY SUBJECT",
@@ -71,6 +78,10 @@ public class AddCoursesActivity extends AppCompatActivity {
                 .getReference("classes");
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         currentUserKey = currentUser.getUid();
+        CheckClassesReference = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child("classes");
 
     }
 
@@ -157,7 +168,6 @@ public class AddCoursesActivity extends AppCompatActivity {
 
                 )
 
-
                 {
                     @Override
                     protected void populateViewHolder(UsersViewHolder viewHolder, final Course model,
@@ -166,17 +176,17 @@ public class AddCoursesActivity extends AppCompatActivity {
                         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                boolean exists = false;
                                 String classkey = model.getDepartment()+" "+model.getNumber()+" - "+model.getSection()+" "+model.getName();
-                                Log.d("O", classkey);
-                                userReference.child("classes").push().setValue(classkey);
 
-                                dbCourseReference.child(classkey).child("students").push().setValue(currentUser.getEmail());
+                                    userReference.child("classes").push().setValue(classkey);
+                                    UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
                             }
+
                         });
 
-
                     }
-
 
                 };
 

@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -94,6 +96,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     Log.d(TAG, "Email: "+emailAddress);
     Log.d(TAG, "Domain: "+currentDomain);
 
+
     if(isValidDomain) {
       //valid domain
       Log.d(TAG,"Valid domain given");
@@ -108,10 +111,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success");
                     FirebaseUser user = firebaseAuth.getCurrentUser();
-
+                    Log.d("name",user.getDisplayName());
                     if (user != null) {
                       //Add user to datbase if not already there.
-                      String userID = user.getUid();
+                      final String userID = user.getUid();
                       Log.d(TAG, "UID: "+ userID);
 
                       DatabaseReference currentUserReference= dbReference.child(userID);
@@ -120,7 +123,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                           if(!dataSnapshot.exists()) {
-                            //create new user
+                            DatabaseReference NewUserRef = FirebaseDatabase.getInstance().getReference("users");
+                            User newUser = new User();
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            newUser.setName(user.getDisplayName());
+                            newUser.setEmail(user.getEmail());
+                            NewUserRef.child(userID).setValue(newUser);
                             Log.d(TAG, "User not in database, must create new user");
 
 
