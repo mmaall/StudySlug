@@ -81,7 +81,7 @@ public class FindPeopleActivity extends AppCompatActivity {
     {
       userPhoto.setImageURI(null);
       userPhoto.setImageURI(userPhotoURL);
-    }gi
+    }
     else
     {
       Toast.makeText(this,"Unable to retrieve URI", Toast.LENGTH_SHORT).show();
