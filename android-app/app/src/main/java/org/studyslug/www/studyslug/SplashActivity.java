@@ -26,8 +26,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,8 +35,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private DatabaseReference dbReference;
   private GoogleSignInClient mGoogleSignInClient;
   private static final String TAG = "SplashActivity: ";
-  private final static int RCSignIn = 2;
-  private final static String validDomain= "ucsc.edu";
+  private final static int RC_SIGN_IN = 2;
+  private final static String VALID_DOMAIN = "ucsc.edu";
 
 
   @Override
@@ -50,11 +48,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     firebaseAuth = FirebaseAuth.getInstance();
     dbReference = FirebaseDatabase.getInstance().getReference("users");
 
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .setHostedDomain("ucsc.edu")
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build();
+    GoogleSignInOptions gso = new GoogleSignInOptions
+        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .setHostedDomain("ucsc.edu")
+        .requestIdToken(getString(R.string.default_web_client_id))
+        .requestEmail()
+        .build();
 
     mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     googleSignIn.setOnClickListener(this);
@@ -65,14 +64,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private void signIn() {
     Log.d(TAG, "Entered sign-in");
     Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-    startActivityForResult(signInIntent, RCSignIn);
+    startActivityForResult(signInIntent, RC_SIGN_IN);
   }
 
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
     // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-    if (requestCode == RCSignIn) {
+    if (requestCode == RC_SIGN_IN) {
       Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
       try {
         // Google Sign In was successful, authenticate with Firebase
@@ -90,99 +89,100 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
   private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
     Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-    String emailAddress= acct.getEmail();
-    final String currentDomain= emailAddress.substring(emailAddress.indexOf('@')+1,emailAddress.length());
-    boolean isValidDomain = validDomain.equals(currentDomain);
-    Log.d(TAG, "Email: "+emailAddress);
-    Log.d(TAG, "Domain: "+currentDomain);
+    String emailAddress = acct.getEmail();
+
+    final String currentDomain =
+        emailAddress.substring(emailAddress.indexOf('@') + 1, emailAddress.length());
+
+    boolean isValidDomain = VALID_DOMAIN.equals(currentDomain);
+    Log.d(TAG, "Email: " + emailAddress);
+    Log.d(TAG, "Domain: " + currentDomain);
 
 
-    if(isValidDomain) {
+    if (isValidDomain) {
       //valid domain
-      Log.d(TAG,"Valid domain given");
+      Log.d(TAG, "Valid domain given");
       AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
       Log.d("TAG", "Sign in method: " + credential.getProvider());
 
       firebaseAuth.signInWithCredential(credential)
-              .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                  if (task.isSuccessful()) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success");
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    Log.d("name",user.getDisplayName());
-                    if (user != null) {
-                      //Add user to datbase if not already there.
-                      final String userID = user.getUid();
-                      Log.d(TAG, "UID: "+ userID);
+                  .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                      if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        Log.d("name", user.getDisplayName());
+                        if (user != null) {
+                          //Add user to datbase if not already there.
+                          final String userID = user.getUid();
+                          Log.d(TAG, "UID: " + userID);
 
-                      DatabaseReference currentUserReference= dbReference.child(userID);
-                      Log.d(TAG, "DBRef: "+currentUserReference);
-                      ValueEventListener eventListener = new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                          if(!dataSnapshot.exists()) {
-                            DatabaseReference NewUserRef = FirebaseDatabase.getInstance().getReference("users");
-                            User newUser = new User();
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            newUser.setName(user.getDisplayName());
-                            newUser.setEmail(user.getEmail());
-                            NewUserRef.child(userID).setValue(newUser);
-                            Log.d(TAG, "User not in database, must create new user");
-
-
-                          } else{
-                            Log.d(TAG, "User in database. Carry on");
-                          }
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {}
-                      };
-                      currentUserReference.addListenerForSingleValueEvent(eventListener);
+                          DatabaseReference currentUserReference = dbReference.child(userID);
+                          Log.d(TAG, "DBRef: " + currentUserReference);
+                          ValueEventListener eventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                              if (!dataSnapshot.exists()) {
+                                DatabaseReference NewUserRef =
+                                    FirebaseDatabase.getInstance().getReference("users");
+                                User newUser = new User();
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                newUser.setName(user.getDisplayName());
+                                newUser.setEmail(user.getEmail());
+                                NewUserRef.child(userID).setValue(newUser);
+                                Log.d(TAG, "User not in database, must create new user");
 
 
+                              } else {
+                                Log.d(TAG, "User in database. Carry on");
+                              }
 
-                      //Goto Find People
-                      Log.d(TAG, "intent:goto FindPeople");
+                            }
 
-                      Intent findPeopleIntent =
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                          };
+                          currentUserReference.addListenerForSingleValueEvent(eventListener);
+
+
+                          //Goto Find People
+                          Log.d(TAG, "intent:goto FindPeople");
+
+                          Intent findPeopleIntent =
                               new Intent(SplashActivity.this, FindPeopleActivity.class);
-                      startActivity(findPeopleIntent);
-                    } else {
-                      /* TODO: Somehow the firlebase user is null - figure out if we need
-                       * to throw an exception or something?
-                       */
+                          startActivity(findPeopleIntent);
+                        } else {
+                          /* TODO: Somehow the firlebase user is null - figure out if we need
+                           * to throw an exception or something?
+                           */
 
-                      return;
+                          return;
+                        }
+                      } else {
+                        // If sign in fails, display a message to the user.
+                        // TODO: Figure out something useful to do if the sign-in fails
+                        Log.d(TAG, "signInWithCredential:failure", task.getException());
+                        Toast.makeText(SplashActivity.this,
+                                       "Authentication failed", Toast.LENGTH_LONG)
+                             .show();
+                      }
                     }
-                  } else {
-                    // If sign in fails, display a message to the user.
-                    // TODO: Figure out something useful to do if the sign-in fails
-                    Log.d(TAG, "signInWithCredential:failure", task.getException());
-                    Toast.makeText(SplashActivity.this,
-                            "Authentication failed", Toast.LENGTH_LONG)
-                            .show();
-                  }
-                }
-              });
-    }
-
-    else{
+                  });
+    } else {
       //invalid domain
       Toast.makeText(SplashActivity.this,
-              "Invalid domain", Toast.LENGTH_LONG)
-              .show();
+                     "Invalid domain", Toast.LENGTH_LONG)
+           .show();
       FirebaseAuth.getInstance().signOut();
       FirebaseUser user = firebaseAuth.getCurrentUser();
 
-      try{
+      try {
         Log.d(TAG, "Deleting illegal user");
         user.delete();
-      }
-      catch (Exception e){
+      } catch (Exception e) {
         Log.d(TAG, "User unable to be deleted");
       }
 
@@ -194,7 +194,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     try {
       GoogleSignInAccount account = completedTask.getResult(ApiException.class);
       Intent findPeopleIntent =
-              new Intent(SplashActivity.this, FindPeopleActivity.class);
+          new Intent(SplashActivity.this, FindPeopleActivity.class);
       startActivity(findPeopleIntent);
       // Signed in successfully, show authenticated UI.
 
@@ -203,7 +203,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
       // Please refer to the GoogleSignInStatusCodes class reference for more information.
       Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
       Intent SplashPage =
-              new Intent(SplashActivity.this, SplashActivity.class);
+          new Intent(SplashActivity.this, SplashActivity.class);
       startActivity(SplashPage);
     }
   }
@@ -217,7 +217,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     // TODO: Refactor this to have the button just call this onclick
     switch (v.getId()) {
       case R.id.g_sign_in_button:
-        Log.d(TAG,"Sign In has been clicked");
+        Log.d(TAG, "Sign In has been clicked");
         signIn();
         break;
 

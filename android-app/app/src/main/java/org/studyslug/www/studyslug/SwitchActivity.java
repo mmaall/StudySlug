@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 public class SwitchActivity {
-
+// TODO is this usable? can we implmenent it?
 
     public Activity sourceActivity;
 

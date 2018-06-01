@@ -10,9 +10,7 @@ public class User {
   private ArrayList<String> courseKeys;
   private ArrayList<String> groupKeys;
 
-  public User() {
-
-  }
+  public User() {}
 
   public User(String name, String email) {
     this.name = name;
@@ -49,10 +47,4 @@ public class User {
   public String getBio(){
     return this.bio;
   }
-
-
-
-
-
-
 }
