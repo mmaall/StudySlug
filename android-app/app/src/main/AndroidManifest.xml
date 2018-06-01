@@ -17,6 +17,9 @@
         <activity
             android:name=".AddCoursesActivity"
             android:exported="true" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

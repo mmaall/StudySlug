@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     private List<String> areas;
     private DatabaseReference dbUserReference;
     private Button RemoveClass;
-    private Spinner ClassSpinner;
+    private Spinner classSpinner;
     private String UserName,UserEmail;
 
     private void getLayout(){
@@ -35,10 +35,12 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        configureLayoutElements();
+        buildDatabaseReferences();
+        setCoursesMenu(classSpinner);
     }
 
-    private void setCoursesMenu(final Spinner peopleSpinner) {
+    private void setCoursesMenu(final Spinner classSpinner) {
 
         dbUserReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -56,10 +58,10 @@ public class ProfileActivity extends AppCompatActivity {
                                 android.R.layout.simple_spinner_item, areas);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                peopleSpinner.setAdapter(areasAdapter);
+                classSpinner.setAdapter(areasAdapter);
 
                 try {
-                    String classKey = peopleSpinner.getSelectedItem().toString();
+                    String classKey = classSpinner.getSelectedItem().toString();
                     classKey = Normalizer.normalize(classKey, Normalizer.Form.NFD);
                 } catch (Exception e) {
                     System.out.print("No classes in spinner");
@@ -88,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
     private void configureLayoutElements() {
         setContentView(R.layout.activity_profile);
-        ClassSpinner = findViewById(R.id.user_classes_spinner);
+        classSpinner = findViewById(R.id.user_classes_spinner);
         RemoveClass = findViewById(R.id.drop_button);
         TextView UserName = (TextView) findViewById(R.id.user_name);
         UserName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
