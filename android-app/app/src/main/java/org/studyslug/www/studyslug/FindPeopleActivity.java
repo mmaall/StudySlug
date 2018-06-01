@@ -72,6 +72,7 @@ public class FindPeopleActivity extends AppCompatActivity {
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
     userPhotoURL = currentUser.getPhotoUrl();
 
+
   }
 
   private void setOnClickListeners() {
