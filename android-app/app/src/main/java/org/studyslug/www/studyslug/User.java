@@ -1,5 +1,7 @@
 package org.studyslug.www.studyslug;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 import java.net.URI;
 
@@ -51,7 +53,7 @@ public class User {
     return this.bio;
   }
 
-  public void setURI(URI uri) {this.userPhotoURL = uri;}
+  public void setURI(Uri uri) {this.userPhotoURL = uri;}
 
   public URI getURI() {return this.userPhotoURL;}
 }

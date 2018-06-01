@@ -132,8 +132,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                                     FirebaseDatabase.getInstance().getReference("users");
                                 User newUser = new User();
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
-
-
+                                if(user.getPhotoUrl() != null) {
+                                  newUser.setURI(user.getPhotoUrl());
+                                }
                                 newUser.setName(user.getDisplayName());
                                 newUser.setEmail(user.getEmail());
                                 NewUserRef.child(userID).setValue(newUser);

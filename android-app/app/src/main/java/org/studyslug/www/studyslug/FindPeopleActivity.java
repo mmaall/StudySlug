@@ -74,8 +74,6 @@ public class FindPeopleActivity extends AppCompatActivity {
                                       )
                                       .child("classes");
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
     userPhotoURL = currentUser.getPhotoUrl();
     if(userPhotoURL != null)
     {
@@ -86,7 +84,6 @@ public class FindPeopleActivity extends AppCompatActivity {
     {
       Toast.makeText(this,"Unable to retrieve URI", Toast.LENGTH_SHORT).show();
     }
-
 
   }
 
