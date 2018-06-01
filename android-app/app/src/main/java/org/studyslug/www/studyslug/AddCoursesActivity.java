@@ -116,7 +116,7 @@ public class AddCoursesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String dropdownText = departmentSpinner.getSelectedItem().toString();
                 dropdownText = dropdownText.trim();
-                firebaseUserSearch(dropdownText, searchText);
+                firebaseClassSearch(dropdownText, searchText);
             }
         });
 
@@ -146,10 +146,9 @@ public class AddCoursesActivity extends AppCompatActivity {
 
     }
 
-    private void firebaseUserSearch(String dropdownText, String searchText) {
+    private void firebaseClassSearch(String dropdownText, String searchText) {
 
-
-        Toast.makeText(AddCoursesActivity.this, "Finding Slugs!", Toast.LENGTH_LONG)
+        Toast.makeText(AddCoursesActivity.this, "Finding Classes!", Toast.LENGTH_LONG)
                 .show();
 
         dbCourseReference = FirebaseDatabase.getInstance()
@@ -187,11 +186,13 @@ public class AddCoursesActivity extends AppCompatActivity {
                                         if(!dataSnapshot.child(classkey).exists()){
                                             userReference.child("classes").child(classkey).setValue("0");
                                             UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-
+                                            Toast.makeText(AddCoursesActivity.this, "You are in "+model.getName() +"!", Toast.LENGTH_LONG)
+                                                    .show();
                                         }
                                         else
                                         {
-                                            // duplicate, so don't add class
+                                            Toast.makeText(AddCoursesActivity.this, "Already enrolled in "+model.getName() +"!", Toast.LENGTH_LONG)
+                                                    .show();
                                         }
                                     }
 
