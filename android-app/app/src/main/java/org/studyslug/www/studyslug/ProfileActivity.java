@@ -5,10 +5,13 @@ import android.os.Bundle;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    // Layout
+
+
     private void getLayout(){
         setContentView(R.layout.activity_profile);
 
-        
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
