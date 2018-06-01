@@ -24,16 +24,17 @@
         android:layout_width="64dp"
         android:layout_height="52dp"
         android:layout_marginBottom="388dp"
-        android:layout_marginStart="2dp"
         android:adjustViewBounds="true"
+        android:background="@color/colorSecondary"
+        android:backgroundTint="@color/colorSecondary"
         android:cropToPadding="true"
-        android:tint="@color/colorPrimaryDark"
+        android:tint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/add_courses_big_magnifying_glass"
         app:layout_constraintEnd_toStartOf="@+id/result_list_courses"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_courses_icon_button"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
     <Spinner
         android:id="@+id/add_courses_department_spinner"
@@ -42,8 +43,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="16dp"
         android:background="@android:drawable/btn_dropdown"
-        android:backgroundTint="#545160b3"
-        android:popupBackground="#4a5160b3"
+        android:backgroundTint="@color/colorSecondary"
+
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -70,7 +71,7 @@
         android:layout_width="389dp"
         android:layout_height="56dp"
         android:layout_marginStart="2dp"
-        android:background="#545160b3"
+        android:background="@color/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
