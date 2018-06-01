@@ -18,6 +18,7 @@ import android.content.Intent;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.ArrayList;
+import java.net.URI;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,11 +43,16 @@ public class FindPeopleActivity extends AppCompatActivity {
   private DatabaseReference dbUserReference;
   private DatabaseReference dbCourseReference;
   private Spinner areaSpinner;
+  private ImageButton userPhoto;
+  private Uri userPhotoURL;
+  private FirebaseUser currentUser;
 
   private void configureLayoutElements() {
     setContentView(R.layout.activity_find_people);
     areaSpinner = findViewById(R.id.find_people_spinner);
     searchButton = findViewById(R.id.find_people_magnifying_glass);
+    userPhoto = findViewById(R.id.find_people_picture_button);
+    userPhoto.setImageURI(userPhotoURL);
     addClasses = findViewById(R.id.find_people_plus_button);
     resultList = findViewById(R.id.result_list);
     resultList.setHasFixedSize(true);
@@ -63,6 +69,9 @@ public class FindPeopleActivity extends AppCompatActivity {
                                                       .getUid()
                                       )
                                       .child("classes");
+    currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    userPhotoURL = currentUser.getPhotoUrl();
+
   }
 
   private void setOnClickListeners() {
