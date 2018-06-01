@@ -53,6 +53,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     private DatabaseReference CheckClassesReference;
     private DatabaseReference dbCourseReference;
     private DatabaseReference userReference;
+    private DatabaseReference userCourseReference;
     private FirebaseUser currentUser;
     private String currentUserKey;
     DatabaseReference UserToClass = FirebaseDatabase.getInstance().getReference();
@@ -156,6 +157,7 @@ public class AddCoursesActivity extends AppCompatActivity {
         userReference = FirebaseDatabase.getInstance().getReference()
                 .child("users")
                 .child(currentUserKey);
+        userCourseReference = userReference.child("classes");
         final Query firebaseSearchQuery = dbCourseReference.orderByKey().startAt(dropdownText).endAt(dropdownText + searchText + "\uf8ff");
 
         FirebaseRecyclerAdapter<Course, UsersViewHolder> firebaseRecyclerAdapter =
@@ -177,9 +179,26 @@ public class AddCoursesActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 boolean exists = false;
-                                String classkey = model.getDepartment()+" "+model.getNumber()+" - "+model.getSection()+" "+model.getName();
+                                final String classkey = model.getDepartment()+" "+model.getNumber()+" - "+model.getSection()+" "+model.getName();
 
-                                    userReference.child("classes").push().setValue(classkey);
+                                userCourseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        if(!dataSnapshot.child(classkey).exists()){
+                                            userReference.child("classes").push().setValue(classkey);
+                                        }
+                                        else
+                                        {
+                                            // duplicate, so don't add class
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                                   
                                     UserToClass.child("StudySlugClasses").child(classkey).child("students").push().setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
                             }
