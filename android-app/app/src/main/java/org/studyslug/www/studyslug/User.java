@@ -2,7 +2,7 @@ package org.studyslug.www.studyslug;
 
 import android.net.Uri;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
 
@@ -10,14 +10,14 @@ public class User {
   private String email;
   private String bio;
   private String userPhotoURI;
-  private ArrayList<String> courseKeys;
-  private ArrayList<String> groupKeys;
+  private HashMap<String, String> courses;
 
-  public User() {}
+  public User() { this.courses = new HashMap<>();}
 
   public User(String name, String email) {
     this.name = name;
     this.email = email;
+    this.courses = new HashMap<>();
   }
 
 
@@ -26,6 +26,7 @@ public class User {
     this.email = email;
     this.bio= bio;
     this.userPhotoURI = uri.toString();
+    this.courses = new HashMap<>();
   }
 
   public User(String name, String email, String bio, String uri) {
@@ -33,6 +34,7 @@ public class User {
     this.email = email;
     this.bio = bio;
     this.userPhotoURI = uri;
+    this.courses = new HashMap<>();
   }
 
   public String getName() {
@@ -62,4 +64,12 @@ public class User {
   public void setURI(String uri) {this.userPhotoURI = uri;}
 
   public String getURI() {return this.userPhotoURI;}
+
+  public void setCourses(HashMap<String,String> courses) {this.courses = courses;}
+
+  public HashMap<String, String> getCourses() { return this.courses; }
+
+  public void addCourse(String course) {
+    this.courses.put(course, "0");
+  }
 }
