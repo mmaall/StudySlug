@@ -4,11 +4,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 public class CourseTest {
 
   private Course testCourse;
-  private static final String TAG = "CourseTest: ";
   private static final String TEST_NUMBER = "Test Number";
+  private static final String TEST_NAME = "Test Name";
   private static final String TEST_DEPARTMENT = "Test Department";
   private static final String TEST_SECTION = "Test Section";
   private static final String STUDENT_1_NAME = "Student1";
@@ -18,12 +20,18 @@ public class CourseTest {
   private User student1;
   private User student2;
 
-  @Before
-  public void setUp() {
+  @Test
+  public void testEmptyConstructor() {
+    Assert.assertNull(testCourse);
     testCourse = new Course();
-    testCourse.setSection(TEST_SECTION);
-    testCourse.setDepartment(TEST_DEPARTMENT);
-    testCourse.setNumber(TEST_NUMBER);
+    Assert.assertNotNull(testCourse);
+  }
+
+  @Test
+  public void testFullConstructor() {
+    Assert.assertNull(testCourse);
+    HashMap<String, String> testStudents = new HashMap<>();
+    testCourse = new Course(TEST_DEPARTMENT, TEST_NAME, TEST_NUMBER, TEST_SECTION, testStudents);
   }
 
   @Test
@@ -45,9 +53,8 @@ public class CourseTest {
     student1.setName(STUDENT_1_NAME);
     student1.setEmail(STUDENT_1_EMAIL);
     testCourse.addStudent(student1);
-    Assert.assertEquals(testCourse.getStudents().isEmpty(), false);
-    Assert.assertEquals(testCourse.getStudents().containsKey("ID 0"), true);
-    Assert.assertEquals(testCourse.getStudents().get("ID 0"), student1.getEmail());
+    Assert.assertFalse(testCourse.getStudents().isEmpty());
+    Assert.assertTrue(testCourse.getStudents().containsKey("ID 0"));
   }
 
   @Test
