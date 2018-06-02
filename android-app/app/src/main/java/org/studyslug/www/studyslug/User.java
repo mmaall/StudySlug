@@ -3,14 +3,13 @@ package org.studyslug.www.studyslug;
 import android.net.Uri;
 
 import java.util.ArrayList;
-import java.net.URI;
 
 public class User {
 
   private String name;
   private String email;
   private String bio;
-  private URI userPhotoURL;
+  private String userPhotoURI;
   private ArrayList<String> courseKeys;
   private ArrayList<String> groupKeys;
 
@@ -22,11 +21,18 @@ public class User {
   }
 
 
-  public User(String name, String email, String bio, URI uri) {
+  public User(String name, String email, String bio, Uri uri) {
     this.name = name;
     this.email = email;
     this.bio= bio;
-    this.userPhotoURL = uri;
+    this.userPhotoURI = uri.toString();
+  }
+
+  public User(String name, String email, String bio, String uri) {
+    this.name = name;
+    this.email = email;
+    this.bio = bio;
+    this.userPhotoURI = uri;
   }
 
   public String getName() {
@@ -53,7 +59,7 @@ public class User {
     return this.bio;
   }
 
-  public void setURI(Uri uri) {this.userPhotoURL = uri;}
+  public void setURI(String uri) {this.userPhotoURI = uri;}
 
-  public URI getURI() {return this.userPhotoURL;}
+  public String getURI() {return this.userPhotoURI;}
 }

@@ -1,11 +1,15 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.ArrayList;
@@ -46,22 +52,17 @@ public class FindPeopleActivity extends AppCompatActivity {
   private ImageButton userPhoto;
   private Uri userPhotoURL;
   private FirebaseUser currentUser;
+  private static final String TAG = "FindPeopleActivity";
 
   private void configureLayoutElements() {
     setContentView(R.layout.activity_find_people);
     areaSpinner = findViewById(R.id.find_people_spinner);
     searchButton = findViewById(R.id.find_people_magnifying_glass);
     userPhoto = findViewById(R.id.find_people_picture_button);
-
-
-
-
-
     addClasses = findViewById(R.id.find_people_plus_button);
     resultList = findViewById(R.id.result_list);
     resultList.setHasFixedSize(true);
     resultList.setLayoutManager(new LinearLayoutManager(this));
-    setCoursesMenu(areaSpinner);
   }
 
   private void buildDatabaseReferences() {
@@ -75,16 +76,16 @@ public class FindPeopleActivity extends AppCompatActivity {
                                       .child("classes");
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
     userPhotoURL = currentUser.getPhotoUrl();
+    Log.d(TAG, "userPhotoURL: " + userPhotoURL);
     if(userPhotoURL != null)
     {
-      userPhoto.setImageURI(null);
-      userPhoto.setImageURI(userPhotoURL);
+//        userPhoto.setImageURI(null);
+        new ASyncTaskLoadImage(userPhoto).execute(userPhotoURL.toString());
     }
     else
     {
       Toast.makeText(this,"Unable to retrieve URI", Toast.LENGTH_SHORT).show();
     }
-
   }
 
   private void setOnClickListeners() {
@@ -107,9 +108,10 @@ public class FindPeopleActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    buildDatabaseReferences();
     configureLayoutElements();
+    buildDatabaseReferences();
     setOnClickListeners();
+    setCoursesMenu(areaSpinner);
   }
 
   private void setCoursesMenu(final Spinner peopleSpinner) {

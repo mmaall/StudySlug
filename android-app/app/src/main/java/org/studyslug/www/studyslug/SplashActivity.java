@@ -113,61 +113,59 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                       if (task.isSuccessful()) {
+
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
+
                         FirebaseUser user = firebaseAuth.getCurrentUser();
-                        Log.d("name", user.getDisplayName());
-                        if (user != null) {
-                          //Add user to datbase if not already there.
-                          final String userID = user.getUid();
+
+                        try {
+                          boolean newAuth = task.getResult()
+                                                .getAdditionalUserInfo()
+                                                .isNewUser();
+
+                          Log.d("name", user.getDisplayName());
+
+                          String userID = user.getUid();
                           Log.d(TAG, "UID: " + userID);
 
-                          DatabaseReference currentUserReference = dbReference.child(userID);
-                          Log.d(TAG, "DBRef: " + currentUserReference);
-                          ValueEventListener eventListener = new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                              if (!dataSnapshot.exists()) {
-                                DatabaseReference NewUserRef =
-                                    FirebaseDatabase.getInstance().getReference("users");
-                                User newUser = new User();
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
-                                if(user.getPhotoUrl() != null) {
-                                  newUser.setURI(user.getPhotoUrl());
-                                }
-                                newUser.setName(user.getDisplayName());
-                                newUser.setEmail(user.getEmail());
-                                NewUserRef.child(userID).setValue(newUser);
-                                Log.d(TAG, "User not in database, must create new user");
+                          if (newAuth) {
+                            // Add new user to database
+                            User newUser = new User();
 
-
-                              } else {
-                                Log.d(TAG, "User in database. Carry on");
-                              }
-
+                            if (user.getPhotoUrl() != null) {
+                              newUser.setURI(user.getPhotoUrl().toString());
+                              Log.d(TAG, "Setting user PhotoURI: " + user.getPhotoUrl());
                             }
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                            }
-                          };
-                          currentUserReference.addListenerForSingleValueEvent(eventListener);
+                            newUser.setName(user.getDisplayName());
+                            newUser.setEmail(user.getEmail());
+                            DatabaseReference newUserRef = dbReference.push();
+                            Log.d(TAG, "newUserRef: " + newUserRef.toString());
+                            newUserRef.setValue(newUser);
 
+                            Log.d(TAG, "User not in database, must create new user");
 
-                          //Goto Find People
-                          Log.d(TAG, "intent:goto FindPeople");
+                          } else {
+                            Log.d(TAG, "User in database. Carry on");
+                          }
 
-                          Intent findPeopleIntent =
-                              new Intent(SplashActivity.this, FindPeopleActivity.class);
-                          startActivity(findPeopleIntent);
-                        } else {
-                          /* TODO: Somehow the firlebase user is null - figure out if we need
-                           * to throw an exception or something?
-                           */
-
-                          return;
+                        } catch (Exception e) {
+                          Log.d(TAG, "User auth null reference exception " + e.toString());
                         }
-                      } else {
+
+
+                        // currentUserReference.addListenerForSingleValueEvent(eventListener);
+
+
+                        //Goto Find People
+                        Log.d(TAG, "intent:goto FindPeople");
+
+                        Intent findPeopleIntent =
+                            new Intent(SplashActivity.this, FindPeopleActivity.class);
+                        startActivity(findPeopleIntent);
+
+                      } else{
                         // If sign in fails, display a message to the user.
                         // TODO: Figure out something useful to do if the sign-in fails
                         Log.d(TAG, "signInWithCredential:failure", task.getException());
@@ -197,6 +195,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   }
 
   private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    // TODO this method isn't used?
     try {
       GoogleSignInAccount account = completedTask.getResult(ApiException.class);
       Intent findPeopleIntent =
