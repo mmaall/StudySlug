@@ -3,6 +3,7 @@ jobs:
   build:
     working_directory: ~/android-app/app
     docker:
+      - image: google/cloud-sdk
       - image: circleci/android:api-27-alpha
     environment:
       JVM_OPTS: -Xmx3200m
@@ -18,7 +19,7 @@ jobs:
                   sudo /opt/google-cloud-sdk/bin/gcloud config set project $FIREBASE_SERVICE_ACCOUNT
       - run:
          name: Download Dependencies
-         command: cd android-app && ./gradlew androidDependencies
+          command: cd android-app && ./gradlew androidDependencies
       - save_cache:
           paths:
             - ~/android-app/
