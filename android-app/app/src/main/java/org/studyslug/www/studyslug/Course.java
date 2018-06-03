@@ -7,6 +7,7 @@ public class Course {
   private String name;
   private String number;
   private String section;
+  private String key;
   private HashMap<String, String> students;
 
   public Course() {
@@ -22,12 +23,28 @@ public class Course {
     this.number = number;
     this.section = section;
     this.name = name;
+    this.key=department + " " +
+             number + " " +
+             name + " " +
+             section;
     if (this.students == null) {
       this.students = new HashMap<>(students);
     } else {
       this.students = students;
     }
   }
+
+  public String getKey() {
+    if (key == null) {
+      key = department + " " +
+            number + " " +
+            name + " " +
+            section;
+    }
+    return key;
+  }
+
+  public void setKey(String key) { this.key = key;}
 
   public String getName() {
     return name;

@@ -34,25 +34,24 @@ public class AddCoursesActivity extends AppCompatActivity {
   // Layout
   private String dropdownText = "";
   private String searchText = "";
-  private EditText searchField;
   private ImageButton searchButton;
   private ImageButton imageButton;
   private Spinner departmentSpinner;
 
   // Output
   private RecyclerView resultList;
-  private List<String> areas;
-  private List<String> classes;
 
   // Database
+  private DatabaseReference dbReference;
   private DatabaseReference dbUserReference;
   private DatabaseReference checkClassesReference;
   private DatabaseReference dbCourseReference;
-  private DatabaseReference userReference;
   private DatabaseReference userCourseReference;
-  private DatabaseReference userToClass;
-  private FirebaseUser currentUser;
-  private String currentUserKey;
+  private User user;
+
+  private static final Client CLIENT = new Client(FirebaseAuth.getInstance().getCurrentUser());
+  private static final String CLIENT_KEY = CLIENT.getUserName();
+  private static final String TAG = "AddCoursesActivity";
 
   ArrayAdapter<Course> departmentAdapter;
 
@@ -74,23 +73,25 @@ public class AddCoursesActivity extends AppCompatActivity {
 
   public void buildDatabaseReferences() {
     // TODO add log messages in verbose log for all these refs
+
+    dbReference = FirebaseDatabase.getInstance().getReference();
+
     dbUserReference = FirebaseDatabase.getInstance()
-                                      .getReference("classes");
+                                      .getReference("users")
+                                      .child(CLIENT_KEY);
 
-    currentUser = FirebaseAuth.getInstance()
-                              .getCurrentUser();
-
-    userToClass = FirebaseDatabase.getInstance()
-                                  .getReference();
-
-    currentUserKey = currentUser.getUid();
+    user = new User(CLIENT);
 
     checkClassesReference = FirebaseDatabase.getInstance()
                                             .getReference("users")
-                                            .child(FirebaseAuth.getInstance()
-                                                               .getCurrentUser()
-                                                               .getUid())
+                                            .child(CLIENT_KEY)
                                             .child("classes");
+
+    dbCourseReference = FirebaseDatabase.getInstance()
+                                        .getReference("classes");
+
+    userCourseReference = dbUserReference.child("classes");
+
   }
 
   public void getLayout() {
@@ -146,9 +147,8 @@ public class AddCoursesActivity extends AppCompatActivity {
     getLayout();
     getDepartmentAdapter();
     chooseDepartment();
-    //addCoursesToUser(classes);
 
-    Log.d("SpinnerGot", dropdownText);
+    Log.d(TAG, "SpinnerGot " + dropdownText);
     ImageButton findPeople = findViewById(R.id.add_courses_little_magnifying_glass);
 
     findPeople.setOnClickListener(new View.OnClickListener() {
@@ -166,12 +166,6 @@ public class AddCoursesActivity extends AppCompatActivity {
     Toast.makeText(AddCoursesActivity.this, "Finding Classes!", Toast.LENGTH_SHORT)
          .show();
 
-    dbCourseReference = FirebaseDatabase.getInstance()
-                                        .getReference("classes");
-    userReference = FirebaseDatabase.getInstance().getReference()
-                                    .child("users")
-                                    .child(currentUserKey);
-    userCourseReference = userReference.child("classes");
     final Query firebaseSearchQuery = dbCourseReference.orderByKey()
                                                        .startAt(dropdownText)
                                                        .endAt(dropdownText + searchText + "\uf8ff");
@@ -190,76 +184,52 @@ public class AddCoursesActivity extends AppCompatActivity {
             viewHolder.mView.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                final String classkey =
-                    model.getDepartment() + " " +
-                    model.getNumber() + " - " +
-                    model.getSection() + " " +
-                    model.getName();
+                final String courseKey = model.getKey();
+                Log.d(TAG, "courseKey: " + courseKey);
 
                 userCourseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                   @Override
                   public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (!dataSnapshot.child(classkey).exists()) {
+                    if (!dataSnapshot.child(courseKey).exists()) {
 
-                      userReference.child("classes")
-                                   .child(classkey)
-                                   .setValue("0");
+                      dbUserReference.child("classes")
+                                     .child(courseKey)
+                                     .setValue("0");
 
-                      userToClass.child("StudySlugClasses")
-                                 .child(classkey)
+                      dbReference.child("StudySlugClasses")
+                                 .child(courseKey)
                                  .child("students")
-                                 .child
-                                     (
-                                         FirebaseAuth.getInstance()
-                                                     .getCurrentUser()
-                                                     .getEmail()
-                                                     .split("@")[0]
-                                     )
+                                 .child(CLIENT_KEY)
                                  .child("name")
-                                 .setValue
-                                     (
-                                         FirebaseAuth.getInstance()
-                                                     .getCurrentUser()
-                                                     .getDisplayName()
-                                     );
+                                 .setValue(CLIENT.getDisplayName());
 
-                      // client.getUserName()
-                      userToClass.child("StudySlugClasses")
-                                 .child(classkey)
+
+                      dbReference.child("StudySlugClasses")
+                                 .child(courseKey)
                                  .child("students")
-                                 .child
-                                     (
-                                         FirebaseAuth.getInstance()
-                                                     .getCurrentUser()
-                                                     .getEmail()
-                                                     .split("@")[0]
-                                     )
+                                 .child(CLIENT_KEY)
                                  .child("email")
-                                 .setValue
-                                     (
-                                         FirebaseAuth.getInstance()
-                                                     .getCurrentUser()
-                                                     .getEmail()
-                                     );
+                                 .setValue(CLIENT.getEmail());
 
-                      Toast.makeText(AddCoursesActivity.this,
-                                     "You are now enrolled in " + model.getName() + "!",
-                                     Toast.LENGTH_LONG)
+                      Toast.makeText(
+                              AddCoursesActivity.this,
+                              "You are now enrolled in " + model.getName() + "!",
+                              Toast.LENGTH_LONG)
                            .show();
-                      // TODO add log message for successful enrollment
-
+                      Log.d(TAG, "Enrolled user in course " + courseKey);
                     } else {
-                      Toast.makeText(AddCoursesActivity.this,
-                                     "Already enrolled in " + model.getName() + "!",
-                                     Toast.LENGTH_LONG)
+                      Toast.makeText(
+                              AddCoursesActivity.this,
+                              "Already enrolled in " + model.getName() + "!",
+                              Toast.LENGTH_LONG)
                            .show();
-                      // TODO add log message for 'already enrolled'
+                      Log.d(TAG, "User already enrolled in course " + courseKey);
                     }
                   }
 
                   @Override
                   public void onCancelled(DatabaseError databaseError) {
-                    // TODO add at least a log message here
+                    Log.d(TAG, "Canceled?");
                   }
                 });
               }
@@ -279,38 +249,21 @@ public class AddCoursesActivity extends AppCompatActivity {
     public UsersViewHolder(View itemView) {
       super(itemView);
       mView = itemView;
-      itemView.setOnClickListener((View.OnClickListener) this);  // listener for each row.
+      itemView.setOnClickListener(this);  // listener for each row.
     }
 
-
     public void setDetails(Context ctx, Course temp) {
-      TextView classname = (TextView) mView.findViewById(R.id.User1_name);
-      TextView classnumber = (TextView) mView.findViewById(R.id.Class_number);
-      TextView section = (TextView) mView.findViewById(R.id.Course_section);
+      TextView classname = mView.findViewById(R.id.User1_name);
+      TextView classnumber = mView.findViewById(R.id.Class_number);
+      TextView section = mView.findViewById(R.id.Course_section);
       classname.setText(temp.getName());
       classnumber.setText(temp.getNumber());
       section.setText(temp.getSection());
     }
-
 
     @Override
     public void onClick(View v) {
       int clickPosition = getAdapterPosition();
     }
   }
-
-
- /*   public void addCoursesToUser(List<String> classesChosenByUser){
-
-        userReference = FirebaseDatabase.getInstance().getReference()
-                .child("users")
-                .child(currentUserKey);
-        for (String currentCourse : classesChosenByUser) {
-
-            userReference.child("classes").push().setValue(currentCourse);
-
-        }
-    }
-}
-*/
 }
