@@ -20,15 +20,15 @@ public class UserTest {
   private static final String TEST_URI_STRING = "https://test.uri";
   private static final String TEST_COURSE_1 = "Test Course 1";
   private static final String TEST_COURSE_2 = "Test Course 2";
-  private Client testClient = mock(Client.class);
-  private Uri testUri = mock(Uri.class, TEST_URI_STRING);
+  private Client mockClient = mock(Client.class);
+  private Uri mockUri = mock(Uri.class, TEST_URI_STRING);
 
   @Before
   public void setup() {
-    when(testClient.getDisplayName()).thenReturn(TEST_NAME);
-    when(testClient.getEmail()).thenReturn(TEST_EMAIL);
-    when(testClient.getPhotoUri()).thenReturn(testUri);
-    when(testClient.getUserName()).thenReturn(TEST_EMAIL.split("@")[0]);
+    when(mockClient.getDisplayName()).thenReturn(TEST_NAME);
+    when(mockClient.getEmail()).thenReturn(TEST_EMAIL);
+    when(mockClient.getPhotoUri()).thenReturn(mockUri);
+    when(mockClient.getUserName()).thenReturn(TEST_EMAIL.split("@")[0]);
   }
 
   @Test
@@ -50,18 +50,30 @@ public class UserTest {
   @Test
   public void testSecondConstructor() {
     Assert.assertNull(testUser);
-    testUser = new User(TEST_NAME, TEST_EMAIL, TEST_BIO, testUri);
+    testUser = new User(TEST_NAME, TEST_EMAIL, TEST_BIO, mockUri);
     Assert.assertNotNull(testUser);
     Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
     Assert.assertEquals(testUser.getBio(), TEST_BIO);
     Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
+    Assert.assertEquals(testUser.getURI(), mockUri.toString());
   }
   @Test
   public void testThirdConstructor() {
+    Assert.assertNull(testUser);
     testUser = new User(TEST_NAME, TEST_EMAIL, TEST_BIO, TEST_URI_STRING);
     Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
     Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
     Assert.assertEquals(testUser.getBio(), TEST_BIO);
+    Assert.assertEquals(testUser.getURI(), TEST_URI_STRING);
+  }
+
+  @Test
+  public void testFourthConstructor() {
+    Assert.assertNull(testUser);
+    testUser = new User(mockClient);
+    Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
+    Assert.assertEquals(testUser.getBio(), TEST_BIO);
+    Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
     Assert.assertEquals(testUser.getURI(), TEST_URI_STRING);
   }
 
