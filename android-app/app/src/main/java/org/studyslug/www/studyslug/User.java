@@ -15,29 +15,6 @@ public class User {
 
   public User() { this.courses = new HashMap<>();}
 
-  public User(String displayName, String email) {
-    this.displayName = displayName;
-    this.email = email;
-    this.courses = new HashMap<>();
-  }
-
-
-  public User(String displayName, String email, String bio, Uri uri) {
-    this.displayName = displayName;
-    this.email = email;
-    this.bio= bio;
-    this.userPhotoURI = uri.toString();
-    this.courses = new HashMap<>();
-  }
-
-  public User(String displayName, String email, String bio, String uri) {
-    this.displayName = displayName;
-    this.email = email;
-    this.bio = bio;
-    this.userPhotoURI = uri;
-    this.courses = new HashMap<>();
-  }
-
   public User(Client client) {
     this.displayName = client.getDisplayName();
     this.userName = client.getUserName();
@@ -45,6 +22,10 @@ public class User {
     this.email = client.getEmail();
     this.courses = new HashMap<>();
   }
+
+  public String getUserName() { return userName; }
+
+  public void setUserName(String userName) { this.userName = userName; }
 
   public String getDisplayName() {
     return displayName;
@@ -60,14 +41,6 @@ public class User {
 
   public String getEmail() {
     return this.email;
-  }
-
-  public void setBio(String bio){
-    this.bio=bio;
-  }
-
-  public String getBio(){
-    return this.bio;
   }
 
   public void setURI(String uri) {this.userPhotoURI = uri;}

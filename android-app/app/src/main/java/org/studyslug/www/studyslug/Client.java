@@ -1,6 +1,8 @@
 package org.studyslug.www.studyslug;
 
 import android.net.Uri;
+import android.util.Log;
+
 import com.google.firebase.auth.FirebaseUser;
 
 public class Client {
@@ -10,6 +12,7 @@ public class Client {
   private String displayName;
   private Uri photoUri;
   private String UID;
+  private static final String TAG = "Client";
 
   public Client() {}
 
@@ -20,6 +23,11 @@ public class Client {
     this.userName = user.getEmail().split("@")[0];
     this.photoUri = user.getPhotoUrl();
     this.UID = user.getUid();
+    Log.d(TAG, "Email: " + this.email);
+    Log.d(TAG, "Display name: " + this.displayName);
+    Log.d(TAG, "User name: " + userName);
+    Log.d(TAG, "Photo URL: " + this.photoUri.toString());
+    Log.d(TAG, "UID: " + this.UID);
   }
 
   public FirebaseUser getUser() {

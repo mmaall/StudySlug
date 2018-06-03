@@ -119,24 +119,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                                                 .getAdditionalUserInfo()
                                                 .isNewUser();
 
-                          Log.d("name", client.getDisplayName());
 
                           String userID = user.getUid();
-                          Log.d(TAG, "UID: " + userID);
 
                           if (newAuth) {
                             // Add new user to database
-                            User newUser = new User();
+                            User newUser = new User(client);
 
-                            if (user.getPhotoUrl() != null) {
-                              newUser.setURI(user.getPhotoUrl().toString());
-                              Log.d(TAG, "Setting user PhotoURI: " + user.getPhotoUrl());
-                            }
-
-                            newUser.setDisplayName(user.getDisplayName());
-                            newUser.setEmail(user.getEmail());
-                            DatabaseReference newUserRef = dbReference.push();
-                            Log.d(TAG, "newUserRef: " + newUserRef.toString());
+                            DatabaseReference newUserRef = dbReference.child(client.getUserName());
                             newUserRef.setValue(newUser);
 
                             Log.d(TAG, "User not in database, must create new user");

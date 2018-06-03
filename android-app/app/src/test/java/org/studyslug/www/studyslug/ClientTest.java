@@ -7,10 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,15 +16,15 @@ public class ClientTest {
   private static final String TEST_DISPLAYNAME = "Test Displayname";
   private static final String TEST_URI_STRING = "http://test.url.string";
   private static final String TEST_UID = "Test UID";
-  private FirebaseUser TEST_USER = mock(FirebaseUser.class);
-  private Uri TEST_URI = mock(Uri.class, TEST_URI_STRING);
+  private FirebaseUser mockUser = mock(FirebaseUser.class);
+  private Uri mockUri = mock(Uri.class, TEST_URI_STRING);
   private Client testClient;
 
   @Before
   public void setup() throws Exception {
-    when(TEST_USER.getEmail()).thenReturn(TEST_EMAIL);
-    when(TEST_USER.getDisplayName()).thenReturn(TEST_DISPLAYNAME);
-    when(TEST_USER.getPhotoUrl()).thenReturn(TEST_URI);
+    when(mockUser.getEmail()).thenReturn(TEST_EMAIL);
+    when(mockUser.getDisplayName()).thenReturn(TEST_DISPLAYNAME);
+    when(mockUser.getPhotoUrl()).thenReturn(mockUri);
   }
 
   @Test
@@ -41,7 +37,7 @@ public class ClientTest {
   @Test
   public void testNonEmptyConstructor() {
     Assert.assertNull(testClient);
-    testClient = new Client(TEST_USER);
+    testClient = new Client(mockUser);
     Assert.assertNotNull(testClient);
   }
 
@@ -49,8 +45,8 @@ public class ClientTest {
   public void testUserSetter() {
     testClient = new Client();
     Assert.assertNull(testClient.getUser());
-    testClient.setUser(TEST_USER);
-    Assert.assertEquals(testClient.getUser(), TEST_USER);
+    testClient.setUser(mockUser);
+    Assert.assertEquals(testClient.getUser(), mockUser);
   }
 
   @Test
@@ -81,8 +77,8 @@ public class ClientTest {
   public void testPhotoUriSetter() {
     testClient = new Client();
     Assert.assertNull(testClient.getPhotoUri());
-    testClient.setPhotoUri(TEST_URI);
-    Assert.assertEquals(testClient.getPhotoUri(), TEST_URI);
+    testClient.setPhotoUri(mockUri);
+    Assert.assertEquals(testClient.getPhotoUri(), mockUri);
   }
 
   @Test

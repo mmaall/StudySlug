@@ -226,3 +226,6 @@ TSWLatexianTemp*
 google-services.json
 build_file_checksums.ser
 android-app/.idea/*
+.idea/*
+build/*
+gradle/*
