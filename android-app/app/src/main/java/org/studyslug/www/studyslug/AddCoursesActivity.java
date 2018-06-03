@@ -1,6 +1,7 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,11 +38,12 @@ public class AddCoursesActivity extends AppCompatActivity {
   private ImageButton searchButton;
   private ImageButton imageButton;
   private Spinner departmentSpinner;
-
+  private ImageButton userPhoto;
   // Output
   private RecyclerView resultList;
 
   // Database
+  private FirebaseUser currentUser;
   private DatabaseReference dbReference;
   private DatabaseReference dbUserReference;
   private DatabaseReference checkClassesReference;
@@ -53,8 +55,21 @@ public class AddCoursesActivity extends AppCompatActivity {
   private static final String CLIENT_KEY = CLIENT.getUserName();
   private static final String TAG = "AddCoursesActivity";
 
-  ArrayAdapter<Course> departmentAdapter;
 
+  ArrayAdapter<Course> departmentAdapter;
+  private void setUserImage() {
+     Uri userPhotoURL = currentUser.getPhotoUrl();
+     Log.d(TAG, "userPhotoURL: " + userPhotoURL);
+     if(userPhotoURL != null)
+     {
+//         userPhoto.setImageURI(null);
+         new ASyncTaskLoadImage(userPhoto).execute(userPhotoURL.toString());
+     }
+     else
+     {
+         Toast.makeText(this,"Unable to retrieve URI", Toast.LENGTH_SHORT).show();
+     }
+}
   // TODO I thought we were going to make this read from the db?
   private String[] availableDepartments = {"FILTER BY SUBJECT",
       "ACEN", "AMST", "ANTH", "APLX", "AMS", "ARAB", "ARTG",
@@ -79,7 +94,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     dbUserReference = FirebaseDatabase.getInstance()
                                       .getReference("users")
                                       .child(CLIENT_KEY);
-
+    currentUser = FirebaseAuth.getInstance().getCurrentUser();
     user = new User(CLIENT);
 
     checkClassesReference = FirebaseDatabase.getInstance()
@@ -96,7 +111,7 @@ public class AddCoursesActivity extends AppCompatActivity {
   public void getLayout() {
     setContentView(R.layout.activity_add_courses);
     departmentSpinner = findViewById(R.id.add_courses_department_spinner);
-
+    userPhoto = findViewById(R.id.add_courses_icon_button);
     searchButton = findViewById(R.id.add_courses_big_magnifying_glass);
     imageButton = findViewById(R.id.add_courses_icon_button);
     resultList = findViewById(R.id.result_list_courses);
@@ -146,6 +161,7 @@ public class AddCoursesActivity extends AppCompatActivity {
     getLayout();
     getDepartmentAdapter();
     chooseDepartment();
+      setUserImage();
 
     Log.d(TAG, "SpinnerGot " + dropdownText);
     ImageButton findPeople = findViewById(R.id.add_courses_little_magnifying_glass);
@@ -157,6 +173,11 @@ public class AddCoursesActivity extends AppCompatActivity {
       }
     });
 
+
+    userPhoto.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) { startActivity(new Intent(AddCoursesActivity.this, ProfileActivity.class)); }
+      });
 
   }
 

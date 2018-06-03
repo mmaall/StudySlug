@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@color/colorBackground">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,18 +46,10 @@
         </LinearLayout>
     </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Spinner
         android:id="@+id/user_classes_spinner"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
         android:backgroundTint="#545160b3" />
 
@@ -62,9 +57,28 @@
         android:id="@+id/drop_button"
         android:layout_width="match_parent"
         android:layout_height="28dp"
-        android:background="#9c4e4e"
-        android:text="DROP CLASS" />
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#9c4e4e"
+        android:background="@drawable/layout_bg"
+        android:text="DROP SELECTED CLASS" />
 
+    <Button
+        android:id="@+id/add_courses_button"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:background="@drawable/layout_bg"
+        android:text="ADD A CLASS" />
+
+    <Button
+        android:id="@+id/find_people_button"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/layout_bg"
+        android:text="FIND STUDY SLUGS" />
     <Button
         android:id="@+id/signout_button"
         android:layout_width="match_parent"

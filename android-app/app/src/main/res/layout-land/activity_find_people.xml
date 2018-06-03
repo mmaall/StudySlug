@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,53 +10,70 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/result_list"
-        android:layout_width="366dp"
-        android:layout_height="443dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="500dp"
+        android:layout_height="257dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="60dp"
         android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/find_people_plus_button"
         style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="61dp"
-        android:layout_height="53dp"
+        android:layout_width="58dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
+        android:background="@color/colorSecondary"
         android:cropToPadding="true"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:tint="@android:color/holo_green_light"
+        app:layout_constraintEnd_toStartOf="@+id/result_list"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/find_people_picture_button"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <Spinner
+        android:id="@+id/find_people_spinner"
+        android:layout_width="489dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:backgroundTint="@color/colorSecondary"
+
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/find_people_picture_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/find_people_picture_button"
+        android:layout_width="64dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/common_google_signin_btn_text_light_disabled"
+        app:layout_constraintBottom_toTopOf="@+id/find_people_plus_button"
+        app:layout_constraintEnd_toStartOf="@+id/find_people_spinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <ImageButton
         android:id="@+id/find_people_magnifying_glass"
         style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#545160b3"
+        android:layout_width="576dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="2dp"
+        android:background="@color/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_search" />
-
-    <Spinner
-        android:id="@+id/find_people_spinner"
-        android:layout_width="515dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:backgroundTint="#545160b3"
-        android:popupBackground="#4a5160b3"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/result_list"
-        app:layout_constraintEnd_toStartOf="@+id/find_people_plus_button"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/result_list"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

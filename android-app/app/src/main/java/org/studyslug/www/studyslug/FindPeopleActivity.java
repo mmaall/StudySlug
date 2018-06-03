@@ -102,6 +102,9 @@ public class FindPeopleActivity extends AppCompatActivity {
         startActivity(new Intent(FindPeopleActivity.this, AddCoursesActivity.class));
       }
     });
+    userPhoto.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) { startActivity(new Intent(FindPeopleActivity.this, ProfileActivity.class)); }});
   }
 
   @Override

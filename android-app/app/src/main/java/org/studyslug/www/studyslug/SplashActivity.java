@@ -179,25 +179,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
   }
 
-  private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-    // TODO this method isn't used?
-    try {
-      GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-      Intent findPeopleIntent =
-          new Intent(SplashActivity.this, FindPeopleActivity.class);
-      startActivity(findPeopleIntent);
-      // Signed in successfully, show authenticated UI.
-
-    } catch (ApiException e) {
-      // The ApiException status code indicates the detailed failure reason.
-      // Please refer to the GoogleSignInStatusCodes class reference for more information.
-      Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-      Intent SplashPage =
-          new Intent(SplashActivity.this, SplashActivity.class);
-      startActivity(SplashPage);
-    }
-  }
-
   @Override
   public void onStart() {
     super.onStart();
