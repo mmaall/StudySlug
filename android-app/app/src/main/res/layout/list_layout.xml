@@ -19,7 +19,7 @@
         android:text="Name"
         android:textColor="#555555"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/personImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/User1.name" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/personImage"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"

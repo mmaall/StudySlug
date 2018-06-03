@@ -1,11 +1,8 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,12 +16,9 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.ArrayList;
-import java.net.URI;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -217,11 +211,24 @@ public class FindPeopleActivity extends AppCompatActivity {
 
     public void setDetails(Context ctx, User model) {
       TextView user_name = (TextView) mView.findViewById(R.id.User1_name);
-
+      ImageButton personPhoto = (ImageButton) mView.findViewById(R.id.personImage) ;
       user_name.setText(
           model.getDisplayName().split(" ")[0] +
           model.getDisplayName().split(" ")[1].charAt(0)
       );
+
+        Uri personPhotoURL = Uri.parse(model.getURI());
+        Log.d(TAG, "userPhotoURL: " + personPhotoURL);
+        if(personPhotoURL != null)
+        {
+//        userPhoto.setImageURI(null);
+            new ASyncTaskLoadImage(personPhoto).execute(personPhotoURL.toString());
+        }
+        else
+        {
+            Log.d("PERSON URI","Unable to retrieve URI");
+        }
+
     }
   }
 }
