@@ -64,14 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //SignOut();
-                if(view.getId() == R.id.signout_button) {
-                    FirebaseAuth.getInstance()
-                            .signOut();
-                    Intent backToSplash =
-                            new Intent(ProfileActivity.this, SplashActivity.class);
-                    startActivity(backToSplash);
-                }
+                signOut(view);
 
             }
         });
@@ -170,6 +163,17 @@ public class ProfileActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"Unable to retrieve URI", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void signOut(View itemView){
+        if(itemView.getId() == R.id.signout_button) {
+            FirebaseAuth.getInstance()
+                    .signOut();
+            Intent backToSplash =
+                    new Intent(ProfileActivity.this, SplashActivity.class);
+            startActivity(backToSplash);
+        }
+
     }
 
 }
