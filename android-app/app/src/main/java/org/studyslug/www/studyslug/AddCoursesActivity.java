@@ -91,7 +91,6 @@ public class AddCoursesActivity extends AppCompatActivity {
                                         .getReference("classes");
 
     userCourseReference = dbUserReference.child("classes");
-
   }
 
   public void getLayout() {
@@ -200,16 +199,23 @@ public class AddCoursesActivity extends AppCompatActivity {
                                  .child(courseKey)
                                  .child("students")
                                  .child(CLIENT_KEY)
-                                 .child("name")
+                                 .child("displayName")
                                  .setValue(CLIENT.getDisplayName());
 
 
                       dbReference.child("StudySlugClasses")
-                                 .child(courseKey)
-                                 .child("students")
-                                 .child(CLIENT_KEY)
-                                 .child("email")
-                                 .setValue(CLIENT.getEmail());
+                              .child(courseKey)
+                              .child("students")
+                              .child(CLIENT_KEY)
+                              .child("email")
+                              .setValue(CLIENT.getEmail());
+
+                      dbReference.child("StudySlugClasses")
+                              .child(courseKey)
+                              .child("students")
+                              .child(CLIENT_KEY)
+                              .child("uri")
+                              .setValue(CLIENT.getPhotoUri().toString());
 
                       Toast.makeText(
                               AddCoursesActivity.this,

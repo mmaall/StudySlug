@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Spinner;
@@ -47,6 +48,7 @@ public class FindPeopleActivity extends AppCompatActivity {
   private Uri userPhotoURL;
   private FirebaseUser currentUser;
   private static final String TAG = "FindPeopleActivity";
+    private static final Client CLIENT = new Client(FirebaseAuth.getInstance().getCurrentUser());
 
   private void configureLayoutElements() {
     setContentView(R.layout.activity_find_people);
@@ -64,8 +66,8 @@ public class FindPeopleActivity extends AppCompatActivity {
                                       .getReference("users")
                                       .child(
                                           FirebaseAuth.getInstance()
-                                                      .getCurrentUser()
-                                                      .getUid()
+                                                      .getCurrentUser().getEmail().split("@")[0]
+
                                       )
                                       .child("classes");
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -211,12 +213,11 @@ public class FindPeopleActivity extends AppCompatActivity {
 
     public void setDetails(Context ctx, User model) {
       TextView user_name = (TextView) mView.findViewById(R.id.User1_name);
-      ImageButton personPhoto = (ImageButton) mView.findViewById(R.id.personImage) ;
+      ImageView personPhoto = (ImageView) mView.findViewById(R.id.personImage) ;
       user_name.setText(
           model.getDisplayName().split(" ")[0] +
           model.getDisplayName().split(" ")[1].charAt(0)
       );
-
         Uri personPhotoURL = Uri.parse(model.getURI());
         Log.d(TAG, "userPhotoURL: " + personPhotoURL);
         if(personPhotoURL != null)
@@ -226,9 +227,8 @@ public class FindPeopleActivity extends AppCompatActivity {
         }
         else
         {
-            Log.d("PERSON URI","Unable to retrieve URI");
+            Log.d("PersonPhoto","Unable to retrieve URI");
         }
-
     }
   }
 }

@@ -8,7 +8,6 @@ public class User {
 
   private String displayName;
   private String email;
-  private String bio;
   private String userPhotoURI;
   private String userName;
   private HashMap<String, String> courses;

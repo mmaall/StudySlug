@@ -24,9 +24,9 @@ public class Course {
     this.section = section;
     this.name = name;
     this.key=department + " " +
-             number + " " +
-             name + " " +
-             section;
+             number + " - " +section
+             + " " + name;
+
     if (this.students == null) {
       this.students = new HashMap<>(students);
     } else {
@@ -35,7 +35,9 @@ public class Course {
   }
 
   public String getKey() {
-    return key;
+    return department + " " +
+            number + " - " +section
+            + " " + name;
   }
 
   public void setKey(String key) { this.key = key;}

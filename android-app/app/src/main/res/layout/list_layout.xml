@@ -32,15 +32,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/User1.name" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/personImage"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:contentDescription="user1.pic"
-        app:srcCompat="@android:drawable/sym_def_app_icon"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
         android:id="@+id/imageView3"
