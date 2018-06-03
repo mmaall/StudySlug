@@ -13,9 +13,9 @@ jobs:
       - run:
          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
          command: sudo chmod +x ./gradlew
-	  - run:
-		 name: Authenticate
-		 command: echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/google-services.json
+      - run:
+         name: Authenticate
+         command: echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/google-services.json
       - run:
           name: Download Dependencies
           command: cd android-app && ./gradlew androidDependencies
