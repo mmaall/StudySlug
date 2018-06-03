@@ -35,12 +35,6 @@ public class Course {
   }
 
   public String getKey() {
-    if (key == null) {
-      key = department + " " +
-            number + " " +
-            name + " " +
-            section;
-    }
     return key;
   }
 
