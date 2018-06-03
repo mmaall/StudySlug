@@ -16,7 +16,6 @@ public class ASyncTaskLoadImage extends AsyncTask<String, String, Bitmap> {
 
   public ASyncTaskLoadImage(ImageView imageView) {
     this.imageView = imageView;
-
   }
   @Override
   protected Bitmap doInBackground(String... params) {

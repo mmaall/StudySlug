@@ -31,6 +31,7 @@ public class CourseTest {
   public void testFullConstructor() {
     Assert.assertNull(testCourse);
     HashMap<String, String> testStudents = new HashMap<>();
+    testStudents.put(student1.toString(),"0");
     testCourse = new Course(TEST_DEPARTMENT, TEST_NAME, TEST_NUMBER, TEST_SECTION, testStudents);
   }
 

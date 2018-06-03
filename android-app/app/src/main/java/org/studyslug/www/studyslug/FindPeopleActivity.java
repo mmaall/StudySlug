@@ -75,12 +75,15 @@ public class FindPeopleActivity extends AppCompatActivity {
                                       )
                                       .child("classes");
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
+  }
+
+  private void setUserImage() {
     userPhotoURL = currentUser.getPhotoUrl();
     Log.d(TAG, "userPhotoURL: " + userPhotoURL);
     if(userPhotoURL != null)
     {
 //        userPhoto.setImageURI(null);
-        new ASyncTaskLoadImage(userPhoto).execute(userPhotoURL.toString());
+      new ASyncTaskLoadImage(userPhoto).execute(userPhotoURL.toString());
     }
     else
     {
@@ -111,6 +114,7 @@ public class FindPeopleActivity extends AppCompatActivity {
     configureLayoutElements();
     buildDatabaseReferences();
     setOnClickListeners();
+    setUserImage();
     setCoursesMenu(areaSpinner);
   }
 
