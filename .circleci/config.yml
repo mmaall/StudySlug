@@ -11,6 +11,9 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
       - run:
+         name: Install Sudo
+         command: apt-get install -y sudo
+      - run:
          name: Authenticate
          command: echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/google-services.json && \
                   sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update && \
