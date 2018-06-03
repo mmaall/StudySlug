@@ -223,6 +223,7 @@ public class AddCoursesActivity extends AppCompatActivity {
                                                      .getDisplayName()
                                      );
 
+                      // client.getUserName()
                       userToClass.child("StudySlugClasses")
                                  .child(classkey)
                                  .child("students")

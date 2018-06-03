@@ -193,7 +193,7 @@ public class FindPeopleActivity extends AppCompatActivity {
                                 "You've been invited to study through StudySlug!");
 
                 intent.putExtra(Intent.EXTRA_TEXT,
-                                "Hi " + model.getName() + ",\nI saw you were looking to study for "
+                                "Hi " + model.getDisplayName() + ",\nI saw you were looking to study for "
                                 + searchText + ". We should study together!  \n\n -" + FirebaseAuth
                                     .getInstance().getCurrentUser().getDisplayName());
                 startActivity(Intent.createChooser(intent, "Choose application:"));
@@ -219,8 +219,8 @@ public class FindPeopleActivity extends AppCompatActivity {
       TextView user_name = (TextView) mView.findViewById(R.id.User1_name);
 
       user_name.setText(
-          model.getName().split(" ")[0] +
-          model.getName().split(" ")[1].charAt(0)
+          model.getDisplayName().split(" ")[0] +
+          model.getDisplayName().split(" ")[1].charAt(0)
       );
     }
   }

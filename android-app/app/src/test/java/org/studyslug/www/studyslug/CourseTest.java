@@ -1,7 +1,6 @@
 package org.studyslug.www.studyslug;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -51,7 +50,7 @@ public class CourseTest {
   @Test
   public void course_test_firstStudent() {
     student1 = new User();
-    student1.setName(STUDENT_1_NAME);
+    student1.setDisplayName(STUDENT_1_NAME);
     student1.setEmail(STUDENT_1_EMAIL);
     testCourse.addStudent(student1);
     Assert.assertFalse(testCourse.getStudents().isEmpty());
@@ -61,11 +60,11 @@ public class CourseTest {
   @Test
   public void course_test_secondStudent() {
     student1 = new User();
-    student1.setName(STUDENT_1_NAME);
+    student1.setDisplayName(STUDENT_1_NAME);
     student1.setEmail(STUDENT_1_EMAIL);
     testCourse.addStudent(student1);
     student2 = new User();
-    student2.setName(STUDENT_2_NAME);
+    student2.setDisplayName(STUDENT_2_NAME);
     student2.setEmail(STUDENT_2_EMAIL);
     testCourse.addStudent(student2);
     Assert.assertEquals(testCourse.getStudents().isEmpty(), false);

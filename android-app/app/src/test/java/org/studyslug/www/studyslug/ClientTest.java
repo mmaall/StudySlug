@@ -19,6 +19,7 @@ public class ClientTest {
   private static final String TEST_USERNAME = "Test Username";
   private static final String TEST_DISPLAYNAME = "Test Displayname";
   private static final String TEST_URI_STRING = "http://test.url.string";
+  private static final String TEST_UID = "Test UID";
   private FirebaseUser TEST_USER = mock(FirebaseUser.class);
   private Uri TEST_URI = mock(Uri.class, TEST_URI_STRING);
   private Client testClient;
@@ -82,5 +83,13 @@ public class ClientTest {
     Assert.assertNull(testClient.getPhotoUri());
     testClient.setPhotoUri(TEST_URI);
     Assert.assertEquals(testClient.getPhotoUri(), TEST_URI);
+  }
+
+  @Test
+  public void testUID() {
+    testClient = new Client();
+    Assert.assertNull(testClient.getUID());
+    testClient.setUID(TEST_UID);
+    Assert.assertEquals(testClient.getUID(), TEST_UID);
   }
 }

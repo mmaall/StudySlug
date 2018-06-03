@@ -9,6 +9,7 @@ public class Client {
   private String userName;
   private String displayName;
   private Uri photoUri;
+  private String UID;
 
   public Client() {}
 
@@ -18,6 +19,7 @@ public class Client {
     this.displayName = user.getDisplayName();
     this.userName = user.getEmail().split("@")[0];
     this.photoUri = user.getPhotoUrl();
+    this.UID = user.getUid();
   }
 
   public FirebaseUser getUser() {
@@ -58,5 +60,13 @@ public class Client {
 
   public void setPhotoUri(Uri photoUri) {
     this.photoUri = photoUri;
+  }
+
+  public void setUID(String UID) {
+    this.UID = UID;
+  }
+
+  public String getUID() {
+    return UID;
   }
 }

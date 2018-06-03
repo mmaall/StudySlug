@@ -1,10 +1,15 @@
 package org.studyslug.www.studyslug;
 
+import android.net.Uri;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class UserTest {
   private User testUser;
@@ -12,30 +17,52 @@ public class UserTest {
   private static final String TEST_NAME = "Test Name";
   private static final String TEST_EMAIL = "Test Email";
   private static final String TEST_BIO = "Test Bio";
-  private static final String TEST_PHOTO = "Test URI";
+  private static final String TEST_URI_STRING = "https://test.uri";
   private static final String TEST_COURSE_1 = "Test Course 1";
   private static final String TEST_COURSE_2 = "Test Course 2";
+  private Client testClient = mock(Client.class);
+  private Uri testUri = mock(Uri.class, TEST_URI_STRING);
+
+  @Before
+  public void setup() {
+    when(testClient.getDisplayName()).thenReturn(TEST_NAME);
+    when(testClient.getEmail()).thenReturn(TEST_EMAIL);
+    when(testClient.getPhotoUri()).thenReturn(testUri);
+    when(testClient.getUserName()).thenReturn(TEST_EMAIL.split("@")[0]);
+  }
 
   @Test
   public void testEmptyConstructor() {
+    Assert.assertNull(testUser);
     testUser = new User();
     Assert.assertNotNull(testUser);
   }
 
   @Test
   public void testFirstConstructor() {
+    Assert.assertNull(testUser);
     testUser = new User(TEST_NAME, TEST_EMAIL);
-    Assert.assertEquals(testUser.getName(), TEST_NAME);
+    Assert.assertNotNull(testUser);
+    Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
     Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
   }
 
   @Test
   public void testSecondConstructor() {
-    testUser = new User(TEST_NAME, TEST_EMAIL, TEST_BIO, TEST_PHOTO);
-    Assert.assertEquals(testUser.getName(), TEST_NAME);
+    Assert.assertNull(testUser);
+    testUser = new User(TEST_NAME, TEST_EMAIL, TEST_BIO, testUri);
+    Assert.assertNotNull(testUser);
+    Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
+    Assert.assertEquals(testUser.getBio(), TEST_BIO);
+    Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
+  }
+  @Test
+  public void testThirdConstructor() {
+    testUser = new User(TEST_NAME, TEST_EMAIL, TEST_BIO, TEST_URI_STRING);
+    Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
     Assert.assertEquals(testUser.getEmail(), TEST_EMAIL);
     Assert.assertEquals(testUser.getBio(), TEST_BIO);
-    Assert.assertEquals(testUser.getURI(), TEST_PHOTO);
+    Assert.assertEquals(testUser.getURI(), TEST_URI_STRING);
   }
 
   @Test
@@ -53,9 +80,9 @@ public class UserTest {
   @Test
   public void testNameSetter() {
     testUser = new User();
-    Assert.assertNull(testUser.getName());
-    testUser.setName(TEST_NAME);
-    Assert.assertEquals(testUser.getName(), TEST_NAME);
+    Assert.assertNull(testUser.getDisplayName());
+    testUser.setDisplayName(TEST_NAME);
+    Assert.assertEquals(testUser.getDisplayName(), TEST_NAME);
   }
 
   @Test
@@ -77,8 +104,8 @@ public class UserTest {
   public void testUserPhotoSetter() {
     testUser = new User();
     Assert.assertNull(testUser.getURI());
-    testUser.setURI(TEST_PHOTO);
-    Assert.assertEquals(testUser.getURI(),TEST_PHOTO);
+    testUser.setURI(TEST_URI_STRING);
+    Assert.assertEquals(testUser.getURI(), TEST_URI_STRING);
   }
 
   @Test

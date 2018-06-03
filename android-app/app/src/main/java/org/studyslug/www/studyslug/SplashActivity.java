@@ -1,7 +1,6 @@
 package org.studyslug.www.studyslug;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,13 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.net.URI;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,10 +31,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   private FirebaseAuth firebaseAuth;
   private DatabaseReference dbReference;
   private GoogleSignInClient mGoogleSignInClient;
-  private static final String TAG = "SplashActivity: ";
+  private Client client;
+  private static final String TAG = "SplashActivity";
   private final static int RC_SIGN_IN = 2;
   private final static String VALID_DOMAIN = "ucsc.edu";
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +57,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
   }
 
-
   private void signIn() {
     Log.d(TAG, "Entered sign-in");
     Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -83,7 +76,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         //handleSignInResult(task);
       } catch (ApiException e) {
         // Google Sign In failed, update UI appropriately
-        Log.d("TAG", "Google sign in failed", e);
+        Log.d(TAG, "Google sign in failed", e);
         return;
         // TODO: Figure out something useful to do here
       }
@@ -119,12 +112,14 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
                         FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                        client = new Client(user);
+
                         try {
                           boolean newAuth = task.getResult()
                                                 .getAdditionalUserInfo()
                                                 .isNewUser();
 
-                          Log.d("name", user.getDisplayName());
+                          Log.d("name", client.getDisplayName());
 
                           String userID = user.getUid();
                           Log.d(TAG, "UID: " + userID);
@@ -138,7 +133,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                               Log.d(TAG, "Setting user PhotoURI: " + user.getPhotoUrl());
                             }
 
-                            newUser.setName(user.getDisplayName());
+                            newUser.setDisplayName(user.getDisplayName());
                             newUser.setEmail(user.getEmail());
                             DatabaseReference newUserRef = dbReference.push();
                             Log.d(TAG, "newUserRef: " + newUserRef.toString());

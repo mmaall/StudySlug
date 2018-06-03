@@ -6,43 +6,52 @@ import java.util.HashMap;
 
 public class User {
 
-  private String name;
+  private String displayName;
   private String email;
   private String bio;
   private String userPhotoURI;
+  private String userName;
   private HashMap<String, String> courses;
 
   public User() { this.courses = new HashMap<>();}
 
-  public User(String name, String email) {
-    this.name = name;
+  public User(String displayName, String email) {
+    this.displayName = displayName;
     this.email = email;
     this.courses = new HashMap<>();
   }
 
 
-  public User(String name, String email, String bio, Uri uri) {
-    this.name = name;
+  public User(String displayName, String email, String bio, Uri uri) {
+    this.displayName = displayName;
     this.email = email;
     this.bio= bio;
     this.userPhotoURI = uri.toString();
     this.courses = new HashMap<>();
   }
 
-  public User(String name, String email, String bio, String uri) {
-    this.name = name;
+  public User(String displayName, String email, String bio, String uri) {
+    this.displayName = displayName;
     this.email = email;
     this.bio = bio;
     this.userPhotoURI = uri;
     this.courses = new HashMap<>();
   }
 
-  public String getName() {
-    return name;
+  public User(Client client) {
+    this.displayName = client.getDisplayName();
+    this.userName = client.getUserName();
+    this.userPhotoURI = client.getPhotoUri().toString();
+    this.email = client.getEmail();
+    this.courses = new HashMap<>();
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public String getDisplayName() {
+    return displayName;
+  }
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
   public void setEmail(String email) {
