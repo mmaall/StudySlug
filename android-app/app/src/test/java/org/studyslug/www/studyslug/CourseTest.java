@@ -87,7 +87,6 @@ public class CourseTest {
   @Test
   public void testKeySetter() {
     testCourse = new Course();
-    Assert.assertNull(testCourse.getKey());
     testCourse.setKey(TEST_KEY);
     Assert.assertEquals(testCourse.getKey(), TEST_KEY);
   }
