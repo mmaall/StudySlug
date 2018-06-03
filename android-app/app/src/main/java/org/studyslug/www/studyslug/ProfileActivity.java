@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     private List<String> areas;
     private DatabaseReference dbUserReference;
     private DatabaseReference dbCourseReference;
+    private FirebaseAuth auth;
     private Button removeCourse;
     private Button addCourse;
     private Button findPeople;
@@ -59,12 +61,18 @@ public class ProfileActivity extends AppCompatActivity {
                 firebaseDeleteCourse(courseKey);
             }
         });
-        /* signOut.setOnClickListener(new View.OnClickListener() {
+        signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //SignOut();                               TO DO:
+                //SignOut();
+                FirebaseAuth.getInstance().signOut();
+                   Intent backToSplash =
+                           new Intent(ProfileActivity.this,SplashActivity.class);
+                   startActivity(backToSplash);
+
+
             }
-        });*/
+        });
         addCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
