@@ -65,11 +65,13 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //SignOut();
-                FirebaseAuth.getInstance().signOut();
-                   Intent backToSplash =
-                           new Intent(ProfileActivity.this,SplashActivity.class);
-                   startActivity(backToSplash);
-
+                if(view.getId() == R.id.signout_button) {
+                    FirebaseAuth.getInstance()
+                            .signOut();
+                    Intent backToSplash =
+                            new Intent(ProfileActivity.this, SplashActivity.class);
+                    startActivity(backToSplash);
+                }
 
             }
         });
