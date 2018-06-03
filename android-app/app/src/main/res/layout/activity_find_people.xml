@@ -25,7 +25,8 @@
         android:layout_height="52dp"
         android:layout_marginBottom="388dp"
         android:adjustViewBounds="true"
-        android:background="@color/colorSecondary"
+        android:backgroundTint="@color/colorSecondary"
+        android:background="@drawable/layout_bg"
         android:cropToPadding="true"
         android:tint="@android:color/holo_green_light"
         app:layout_constraintBottom_toTopOf="@+id/find_people_magnifying_glass"
@@ -42,7 +43,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@android:drawable/btn_dropdown"
+        android:background="@drawable/layout_bg"
         android:backgroundTint="@color/colorSecondary"
 
         android:visibility="visible"

@@ -81,10 +81,11 @@
         android:text="FIND STUDY SLUGS" />
     <Button
         android:id="@+id/signout_button"
+        android:background="@drawable/layout_bg"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="200dp"
-        android:background="#9c4e4e"
+        android:backgroundTint="#9c4e4e"
         android:baselineAligned="false"
         android:text="SIGN OUT" />
 

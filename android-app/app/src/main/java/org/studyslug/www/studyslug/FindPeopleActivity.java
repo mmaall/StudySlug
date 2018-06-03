@@ -221,6 +221,7 @@ public class FindPeopleActivity extends AppCompatActivity {
           model.getDisplayName().split(" ")[0] +
           model.getDisplayName().split(" ")[1].charAt(0)
       );
+
         Uri personPhotoURL = Uri.parse(model.getURI());
         Log.d(TAG, "userPhotoURL: " + personPhotoURL);
         if(personPhotoURL != null)
