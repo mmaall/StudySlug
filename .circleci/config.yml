@@ -11,15 +11,12 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
       - run:
-         name: Install Sudo
-         command: apt-get install -y sudo
-      - run:
          name: Authenticate
          command: echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/google-services.json && \
-                  sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update && \
-                  sudo /opt/google-cloud-sdk/bin/gcloud config set project $FIREBASE_PROJECT && \
-                  sudo /opt/google-cloud-sdk/bin/gcloud --quiet components install beta && \
-                  sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/google-services.json
+                  /opt/google-cloud-sdk/bin/gcloud --quiet components update && \
+                  /opt/google-cloud-sdk/bin/gcloud config set project $FIREBASE_PROJECT && \
+                  /opt/google-cloud-sdk/bin/gcloud --quiet components install beta && \
+                  /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/google-services.json
       - run:
           name: Download Dependencies
           command: cd android-app && ./gradlew androidDependencies
