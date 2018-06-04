@@ -11,26 +11,18 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
       - run:
-          name: Authenticate
+          name: Do Everything
           command: |
             sudo apt-get update 
             sudo apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-datalab google-cloud-sdk-app-engine-java
             echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/code/android-app/app/google-services.json
             sudo gcloud auth activate-service-account --key-file ${HOME}/code/android-app/app/google-services.json
             sudo gcloud config set project $FIREBASE_PROJECT
-      - run:
-          name: Download Dependencies
-          command: cd android-app && ./gradlew androidDependencies
-      - run:
-          name: Sanity Check
-          command: ls
-      - save_cache:
-          paths:
-            - android-app/
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Run Tests
-          command: cd android-app && ./gradlew lint test
+            cd android-app
+            ./gradlew androidDependencies
+            ls
+            ls app/
+            ./gradlew lint test
       - store_artifacts:
           path: android-app/app/build/reports
           destination: reports
