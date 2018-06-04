@@ -117,9 +117,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                                                 .getAdditionalUserInfo()
                                                 .isNewUser();
 
-
-                          String userID = user.getUid();
-
                           if (newAuth) {
                             // Add new user to database
                             User newUser = new User(client);
@@ -134,12 +131,9 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                           }
 
                         } catch (Exception e) {
-                          Log.d(TAG, "User auth null reference exception " + e.toString());
+                          Log.d(TAG, "User auth null reference exception ");
+                          e.printStackTrace();
                         }
-
-
-                        // currentUserReference.addListenerForSingleValueEvent(eventListener);
-
 
                         //Goto Find People
                         Log.d(TAG, "intent:goto FindPeople");
@@ -147,11 +141,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                         Intent findPeopleIntent =
                             new Intent(SplashActivity.this, FindPeopleActivity.class);
                         startActivity(findPeopleIntent);
-
-                      } else{
+                      } else {
                         // If sign in fails, display a message to the user.
                         // TODO: Figure out something useful to do if the sign-in fails
-                        Log.d(TAG, "signInWithCredential:failure", task.getException());
+                        Log.d(TAG, "signInWithCredential:failure");
+                        Exception e = task.getException();
+                        e.printStackTrace();
                         Toast.makeText(SplashActivity.this,
                                        "Authentication failed", Toast.LENGTH_LONG)
                              .show();
@@ -161,7 +156,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     } else {
       //invalid domain
       Toast.makeText(SplashActivity.this,
-                     "Invalid domain", Toast.LENGTH_LONG)
+                     "Invalid domain - use UCSC email", Toast.LENGTH_LONG)
            .show();
       FirebaseAuth.getInstance().signOut();
       FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -171,6 +166,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         user.delete();
       } catch (Exception e) {
         Log.d(TAG, "User unable to be deleted");
+        e.printStackTrace();
       }
 
       return;
@@ -183,15 +179,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
   }
 
   public void onClick(View v) {
-    // TODO: Refactor this to have the button just call this onclick
-    switch (v.getId()) {
-      case R.id.g_sign_in_button:
-        Log.d(TAG, "Sign In has been clicked");
-        signIn();
-        break;
-
-    }
+    Log.d(TAG, "Sign In has been clicked");
+    signIn();
   }
-
-
 }
