@@ -1,7 +1,5 @@
 package org.studyslug.www.studyslug;
 
-import android.net.Uri;
-
 import java.util.HashMap;
 
 public class User {

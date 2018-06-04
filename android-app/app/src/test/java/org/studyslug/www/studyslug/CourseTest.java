@@ -59,6 +59,8 @@ public class CourseTest {
     testStudents.put(mockUser1.getUserName(), newStudentEntry1);
     testStudents.put(mockUser2.getUserName(), newStudentEntry2);
     testCourse = new Course(TEST_DEPARTMENT, TEST_NAME, TEST_NUMBER, TEST_SECTION, testStudents);
+    Assert.assertNotNull(testCourse);
+
   }
 
   @Test
@@ -128,7 +130,38 @@ public class CourseTest {
     mockUser2.setDisplayName(MOCK_USER_2_NAME);
     mockUser2.setEmail(MOCK_USER_2_EMAIL);
     testCourse.addStudent(mockUser2);
-    Assert.assertEquals(testCourse.getStudents().isEmpty(), false);
+    Assert.assertFalse(testCourse.getStudents().isEmpty());
     Assert.assertTrue(testCourse.getStudents().containsKey(mockUser2.getUserName()));
+  }
+
+  @Test
+  public void course_test_setStudents() {
+    testCourse = new Course();
+    Assert.assertTrue(testCourse.getStudents().isEmpty());
+    HashMap<String, HashMap<String, String>> testStudents = new HashMap<>();
+    HashMap<String, String> newStudentEntry1 = new HashMap<>();
+    HashMap<String, String> newStudentEntry2 = new HashMap<>();
+    newStudentEntry1.put("displayName", mockUser1.getDisplayName());
+    newStudentEntry1.put("email", mockUser1.getEmail());
+    newStudentEntry1.put("uri", mockUser1.getURI());
+    newStudentEntry2.put("displayName", mockUser2.getDisplayName());
+    newStudentEntry2.put("email", mockUser2.getEmail());
+    newStudentEntry2.put("uri", mockUser2.getURI());
+    testStudents.put(mockUser1.getUserName(), newStudentEntry1);
+    testStudents.put(mockUser2.getUserName(), newStudentEntry2);
+    testCourse.setStudents(testStudents);
+    Assert.assertFalse(testCourse.getStudents().isEmpty());
+    Assert.assertTrue(testCourse.getStudents().containsKey(mockUser1.getUserName()));
+    Assert.assertTrue(testCourse.getStudents().containsKey(mockUser2.getUserName()));
+  }
+
+  @Test
+  public void course_test_equals() {
+    HashMap<String, HashMap<String, String>> testStudents = new HashMap<>();
+    Course testCourse1 = new Course(TEST_DEPARTMENT, TEST_NAME, TEST_NUMBER, TEST_SECTION, testStudents);
+    Course testCourse2 = new Course();
+    Assert.assertFalse(testCourse1.equals(testCourse2));
+    testCourse2 = new Course(TEST_DEPARTMENT, TEST_NAME, TEST_NUMBER, TEST_SECTION, testStudents);
+    Assert.assertTrue(testCourse1.equals(testCourse2));
   }
 }
