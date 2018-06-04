@@ -108,6 +108,12 @@ public class UserTest {
     Assert.assertFalse(testUser.getCourses().isEmpty());
     Assert.assertTrue(testUser.getCourses().containsKey(TEST_COURSE_2));
   }
+
+  @Test
+  public void testCourseEntry() {
+    testUser = new User(mockClient);
+    Assert.assertEquals(testUser.getCourseEntry().get("displayName"), TEST_DISPLAYNAME);
+    Assert.assertEquals(testUser.getCourseEntry().get("email"), TEST_EMAIL);
+    Assert.assertEquals(testUser.getCourseEntry().get("uri"), TEST_URI_STRING);
+  }
 }
-
-

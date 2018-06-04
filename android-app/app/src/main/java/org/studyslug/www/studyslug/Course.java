@@ -79,11 +79,7 @@ public class Course {
   }
 
   public void addStudent(User student) {
-    HashMap<String, String> newStudentEntry = new HashMap<>();
-    newStudentEntry.put("displayName", student.getDisplayName());
-    newStudentEntry.put("email", student.getEmail());
-    newStudentEntry.put("uri", student.getURI());
-    this.students.put(student.getUserName(), newStudentEntry);
+    this.students.put(student.getUserName(), student.getCourseEntry());
   }
 
   public boolean equals(Course other) {

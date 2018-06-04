@@ -51,4 +51,12 @@ public class User {
   public void addCourse(String course) {
     this.courses.put(course, "0");
   }
+
+  public HashMap<String, String> getCourseEntry() {
+    HashMap<String, String> courseEntry = new HashMap<>();
+    courseEntry.put("displayName", this.displayName);
+    courseEntry.put("email", this.email);
+    courseEntry.put("uri", this.getURI());
+    return courseEntry;
+  }
 }
