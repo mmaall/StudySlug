@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+
+    <ImageButton
+        android:id="@+id/add_courses_little_magnifying_glass"
+        style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_width="64dp"
+        android:layout_height="52dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/layout_bg"
+        android:backgroundTint="@color/colorSecondary"
+        android:cropToPadding="true"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_courses_icon_button"
+        app:layout_constraintVertical_bias="0.062"
+        app:srcCompat="@android:drawable/ic_menu_myplaces"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Spinner
+        android:id="@+id/add_courses_department_spinner"
+        android:layout_width="372dp"
+        android:layout_height="45dp"
+        android:background="@drawable/layout_bg"
+        android:backgroundTint="@color/colorSecondary"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintStart_toEndOf="@+id/add_courses_icon_button"
+        tools:layout_editor_absoluteY="23dp" />
+
+    <ImageButton
+        android:id="@+id/add_courses_icon_button"
+        android:layout_width="64dp"
+        android:layout_height="52dp"
+        android:background="@color/common_google_signin_btn_text_light_disabled"
+        app:srcCompat="@android:drawable/sym_def_app_icon"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageButton
+        android:id="@+id/add_courses_big_magnifying_glass"
+        style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_width="389dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/layout_bg"
+        android:backgroundTint="@color/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list_courses"
+        android:layout_width="446dp"
+        android:layout_height="225dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="68dp"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
