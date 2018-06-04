@@ -13,9 +13,9 @@ jobs:
       - run:
           name: Authenticate
           command: |
-            echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/android-app/app/study-slug-274435baf057.json
+            echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/code/android-app/app/study-slug-274435baf057.json
             sudo gcloud --quiet components update
-            sudo gcloud auth activate-service-account --key-file ${HOME}/android-app/app/study-slug-274435baf057.json
+            sudo gcloud auth activate-service-account --key-file ${HOME}/code/android-app/app/study-slug-274435baf057.json
             sudo gcloud config set project $FIREBASE_SERVICE_ACCOUNT
       - run:
           name: Download Dependencies
