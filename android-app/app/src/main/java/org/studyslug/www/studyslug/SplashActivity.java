@@ -54,7 +54,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
     mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     googleSignIn.setOnClickListener(this);
-
   }
 
   private void signIn() {
@@ -73,7 +72,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         // Google Sign In was successful, authenticate with Firebase
         GoogleSignInAccount account = task.getResult(ApiException.class);
         firebaseAuthWithGoogle(account);
-        //handleSignInResult(task);
       } catch (ApiException e) {
         // Google Sign In failed, update UI appropriately
         Log.d(TAG, "Google sign in failed", e);
