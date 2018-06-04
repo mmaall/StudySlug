@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Authenticate
           command: |
+            sudo apt-get update && sudo apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-datalab google-cloud-sdk-app-engine-java
             echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/code/android-app/app/study-slug-274435baf057.json
             sudo gcloud --quiet components update
             sudo gcloud auth activate-service-account --key-file ${HOME}/code/android-app/app/study-slug-274435baf057.json
