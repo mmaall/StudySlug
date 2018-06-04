@@ -70,6 +70,14 @@ public class UserTest {
   }
 
   @Test
+  public void testUserNameSetter() {
+    testUser = new User();
+    Assert.assertNull(testUser.getUserName());
+    testUser.setUserName(TEST_USERNAME);
+    Assert.assertEquals(testUser.getUserName(), TEST_USERNAME);
+  }
+
+  @Test
   public void testEmailSetter() {
     testUser = new User();
     Assert.assertNull(testUser.getEmail());
