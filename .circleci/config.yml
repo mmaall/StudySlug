@@ -51,5 +51,7 @@ jobs:
           destination: apks/
       - run:
           name: Deploy
-          command: cp apks/release/app-release-unsigned.apk apks/release/$CIRCLE_BRANCH.apk
+          command: |
+            echo 'export CIRCLE_BRANCH="$CIRCLE_BRANCH"' >> $BASH_ENV
+            mv apks/release/app-release-unsigned.apk apks/release/$CIRCLE_BRANCH.apk
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples    
