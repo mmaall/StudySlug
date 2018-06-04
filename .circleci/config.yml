@@ -11,17 +11,11 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
       - run:
-          name: Install gcloud
-          command: export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-          command: echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-          command: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-          command: sudo apt-get update && sudo apt-get install google-cloud-sdk
-      - run:
           name: Authenticate
           command: echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/android-app/app/study-slug-274435baf057.json
-          command: sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
-          command: sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/android-app/app/study-slug-274435baf057.json
-          command: sudo /opt/google-cloud-sdk/bin/gcloud config set project $FIREBASE_SERVICE_ACCOUNT
+          command: sudo gcloud --quiet components update
+          command: sudo gcloud auth activate-service-account --key-file ${HOME}/android-app/app/study-slug-274435baf057.json
+          command: sudo gcloud config set project $FIREBASE_SERVICE_ACCOUNT
       - run:
           name: Download Dependencies
           command: cd android-app && ./gradlew androidDependencies
