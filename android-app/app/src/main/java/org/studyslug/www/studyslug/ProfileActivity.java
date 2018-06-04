@@ -42,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
     String courseKey;
     private static final Client CLIENT = new Client(FirebaseAuth.getInstance().getCurrentUser());
     private static final User currentUser = new User(CLIENT);
+    private static final String TAG = "ProfileActivity";
 
 
     @Override
@@ -50,42 +51,48 @@ public class ProfileActivity extends AppCompatActivity {
         configureLayoutElements();
         buildDatabaseReferences();
         setCoursesMenu(classSpinner);
-
-        setOnClickListeners();
     }
-    private void setOnClickListeners() {
-        removeCourse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                courseKey = classSpinner.getSelectedItem().toString();
-                firebaseDeleteCourse(courseKey);
-            }
-        });
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut(view);
-
-            }
-        });
-        addCourse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addCourses =
-                        new Intent(ProfileActivity.this, AddCoursesActivity.class);
-                startActivity(addCourses);
-            }
-        });
-        findPeople.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent findPeople =
-                        new Intent(ProfileActivity.this, FindPeopleActivity.class);
-                startActivity(findPeople);
-
-            }
-        });
+    public void onClickRemove(View view) {
+      try {
+        courseKey = classSpinner.getSelectedItem().toString();
+        firebaseDeleteCourse(courseKey);
+      } catch (Exception e) {
+        Log.d(TAG, "Drop courses exception");
+        e.printStackTrace();
+      }
     }
+
+    public void onClickSignOut(View view) {
+      try {
+        signOut(view);
+      } catch (Exception e) {
+        Log.d(TAG, "Sign out exception");
+        e.printStackTrace();
+      }
+    }
+
+    public void onClickFindPeople(View view) {
+      try {
+        Intent findPeople =
+            new Intent(ProfileActivity.this, FindPeopleActivity.class);
+        startActivity(findPeople);
+      } catch (Exception e) {
+        Log.d(TAG, "Find people exception" );
+        e.printStackTrace();
+      }
+    }
+
+    public void onClickAddCourse(View view) {
+      try {
+        Intent addCourses =
+            new Intent(ProfileActivity.this, AddCoursesActivity.class);
+        startActivity(addCourses);
+      } catch (Exception e) {
+        Log.d(TAG, "Add courses exception");
+        e.printStackTrace();
+      }
+    }
+
     protected void firebaseDeleteCourse(String courseKey)
     {
         dbCourseReference.child(courseKey).child("students").child(currentUser.getUserName()).removeValue();

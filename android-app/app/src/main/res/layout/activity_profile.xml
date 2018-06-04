@@ -58,12 +58,14 @@
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:layout_marginTop="2dp"
+        android:onClick="onClickRemove"
         android:backgroundTint="#9c4e4e"
         android:background="@drawable/layout_bg"
         android:text="DROP SELECTED CLASS" />
 
     <Button
         android:id="@+id/add_courses_button"
+        android:onClick="onClickAddCourse"
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:layout_marginTop="2dp"
@@ -73,6 +75,7 @@
 
     <Button
         android:id="@+id/find_people_button"
+        android:onClick="onClickFindPeople"
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:layout_marginTop="2dp"
@@ -81,6 +84,7 @@
         android:text="FIND STUDY SLUGS" />
     <Button
         android:id="@+id/signout_button"
+        android:onClick="onClickSignOut"
         android:background="@drawable/layout_bg"
         android:layout_width="match_parent"
         android:layout_height="55dp"
