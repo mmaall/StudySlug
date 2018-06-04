@@ -17,7 +17,6 @@ jobs:
             sudo apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-datalab google-cloud-sdk-app-engine-java
             echo 'export FIREBASE_SERVICE_ACCOUNT="$FIREBASE_SERVICE_ACCOUNT"' >> $BASH_ENV
             echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode --ignore-garbage > ${HOME}/code/android-app/app/gcloud-service-key.json
-            cat ${HOME}/code/android-app/app/google-services.json
             sudo gcloud auth activate-service-account --key-file ${HOME}/code/android-app/app/gcloud-service-key.json
             sudo gcloud config set project $FIREBASE_PROJECT
       - run:
@@ -32,7 +31,11 @@ jobs:
           key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
       - run:
           name: Run Tests
-          command: cd android-app && ./gradlew lint test
+          command: |
+            echo 'export GOOGLE_SERVICES="$GOOGLE_SERVICES"' >> $BASH_ENV
+            echo $GOOGLE_SERVICES | base64 -- decode -- ignore-garbage >${HOME}/code/android-app/app/google-services.json
+            cd android-app
+            ./gradlew lint test
       - store_artifacts:
           path: android-app/app/build/reports
           destination: reports
