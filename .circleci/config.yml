@@ -19,6 +19,9 @@ jobs:
       - run:
           name: Download Dependencies
           command: cd android-app && ./gradlew androidDependencies
+      - run:
+          name: Sanity Check
+          command: ls ~/ && ls ~/android-app && ls ~/android-app/app
       - save_cache:
           paths:
             - ~/android-app/
