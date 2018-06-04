@@ -47,8 +47,17 @@ public class CourseTest {
   @Test
   public void testFullConstructor() {
     Assert.assertNull(testCourse);
-    HashMap<String, String> testStudents = new HashMap<>();
-    testStudents.put(mockUser1.getUserName(), "0");
+    HashMap<String, HashMap<String, String>> testStudents = new HashMap<>();
+    HashMap<String, String> newStudentEntry1 = new HashMap<>();
+    HashMap<String, String> newStudentEntry2 = new HashMap<>();
+    newStudentEntry1.put("displayName", mockUser1.getDisplayName());
+    newStudentEntry1.put("email", mockUser1.getEmail());
+    newStudentEntry1.put("uri", mockUser1.getURI());
+    newStudentEntry2.put("displayName", mockUser2.getDisplayName());
+    newStudentEntry2.put("email", mockUser2.getEmail());
+    newStudentEntry2.put("uri", mockUser2.getURI());
+    testStudents.put(mockUser1.getUserName(), newStudentEntry1);
+    testStudents.put(mockUser2.getUserName(), newStudentEntry2);
     testCourse = new Course(TEST_DEPARTMENT, TEST_NAME, TEST_NUMBER, TEST_SECTION, testStudents);
   }
 
@@ -105,7 +114,7 @@ public class CourseTest {
     mockUser1.setEmail(MOCK_USER_1_EMAIL);
     testCourse.addStudent(mockUser1);
     Assert.assertFalse(testCourse.getStudents().isEmpty());
-    Assert.assertTrue(testCourse.getStudents().containsKey("ID 0"));
+    Assert.assertTrue(testCourse.getStudents().containsKey(mockUser1.getUserName()));
   }
 
   @Test
@@ -120,7 +129,6 @@ public class CourseTest {
     mockUser2.setEmail(MOCK_USER_2_EMAIL);
     testCourse.addStudent(mockUser2);
     Assert.assertEquals(testCourse.getStudents().isEmpty(), false);
-    Assert.assertEquals(testCourse.getStudents().containsKey("ID 1"), true);
-    Assert.assertEquals(testCourse.getStudents().get("ID 1"), mockUser2.getEmail());
+    Assert.assertTrue(testCourse.getStudents().containsKey(mockUser2.getUserName()));
   }
 }

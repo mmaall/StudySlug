@@ -8,7 +8,7 @@ public class Course {
   private String number;
   private String section;
   private String key;
-  private HashMap<String, String> students;
+  private HashMap<String, HashMap<String, String>> students;
 
   public Course() {
     this.students = new HashMap<>();
@@ -18,7 +18,7 @@ public class Course {
                 String name,
                 String number,
                 String section,
-                HashMap<String, String> students) {
+                HashMap<String, HashMap<String, String>> students) {
     this.department = department;
     this.number = number;
     this.section = section;
@@ -78,28 +78,24 @@ public class Course {
     this.section = section;
   }
 
-  public void addStudent(String student) {
-    String next = "ID " + String.valueOf(students.size());
-    this.students.put(next, student);
-  }
-
   public void addStudent(User student) {
-    String next = "ID " + String.valueOf(students.size());
-    this.students.put(next, student.getEmail()); // TODO: replace getEmail() with something better
+    HashMap<String, String> newStudentEntry = new HashMap<>();
+    newStudentEntry.put("displayName", student.getDisplayName());
+    newStudentEntry.put("email", student.getEmail());
+    newStudentEntry.put("uri", student.getURI());
+    this.students.put(student.getUserName(), newStudentEntry);
   }
 
   public boolean equals(Course other) {
-    return this.department.equals(other.getDepartment()) &&
-           this.number.equals(other.getNumber()) &&
-           this.section.equals(other.getSection());
+    return this.getKey().equals(other.getKey());
   }
 
-  public HashMap<String, String> getStudents() {
-    HashMap<String, String> student_list = new HashMap<>(this.students);
+  public HashMap<String, HashMap<String, String>> getStudents() {
+    HashMap<String, HashMap<String, String>> student_list = new HashMap<>(this.students);
     return student_list;
   }
 
-  public void setStudents(HashMap<String, String> students) {
+  public void setStudents(HashMap<String, HashMap<String, String>> students) {
     if (this.students == null) {
       this.students = new HashMap<>(students);
     } else {
