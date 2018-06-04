@@ -33,7 +33,7 @@ jobs:
           name: Run Tests
           command: |
             echo 'export GOOGLE_SERVICES="$GOOGLE_SERVICES"' >> $BASH_ENV
-            echo $GOOGLE_SERVICES | base64 -- decode -- ignore-garbage >${HOME}/code/android-app/app/google-services.json
+            echo $GOOGLE_SERVICES | base64 --decode --ignore-garbage >${HOME}/code/android-app/app/google-services.json
             cd android-app
             ./gradlew lint test
       - store_artifacts:
