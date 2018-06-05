@@ -178,6 +178,7 @@ public class ProfileActivity extends AppCompatActivity {
                     .signOut();
             Intent backToSplash =
                     new Intent(ProfileActivity.this, SplashActivity.class);
+            backToSplash.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(backToSplash);
         }
 
