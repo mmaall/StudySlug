@@ -75,8 +75,6 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
       } catch (ApiException e) {
         // Google Sign In failed, update UI appropriately
         Log.d(TAG, "Google sign in failed", e);
-        return;
-        // TODO: Figure out something useful to do here
       }
     }
   }
