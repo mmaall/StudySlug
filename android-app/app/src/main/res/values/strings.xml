@@ -47,9 +47,4 @@
     <string name="addclasses_section">Enter section number</string>
     <string name="start_button">Start!</string>
     <string name="cancel_button">Cancel</string>
-    <string name="profile_add_class">ADD A CLASS</string>
-    <string name="profile_find_study_slugs">FIND STUDY SLUGS</string>
-    <string name="profile_add_class">ADD A CLASS</string>
-    <string name="profile_sign_out">SIGN OUT</string>
-    <string name="profile_drop_selected_class">DROP SELECTED CLASS</string>
 </resources>
