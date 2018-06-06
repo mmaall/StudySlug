@@ -1,0 +1,105 @@
+\documentclass[10pt]{article}
+
+    \usepackage{fullpage}
+    \usepackage{graphicx} %for diagrams
+    \usepackage{fancyhdr} %for headers
+    \usepackage{listings}
+    \usepackage{hyperref}
+
+    \begin{document}
+    
+    \begin{center}
+        \Huge{Study Slug} \\
+        \Large{Release Plan}
+    \end{center}
+    \begin{verbatim}
+Release Version/Date:    1.0 / June 8, 2018        
+Revision Number/Date:    1.5 / June 5, 2018
+
+Repository:         https://github.com/pcwilcox/studyslug
+
+Team Members:       Pete Wilcox         pcwilcox@ucsc.edu    
+                    Daniel Williams     daswilli@ucsc.edu  
+                    Michael Lanthier    malanthi@ucsc.edu  
+                    Minghao Liu         mliu40@ucsc.edu
+                    Kian Moghtaderi     kmoghtad@ucsc.edu
+    \end{verbatim}
+    
+    \section{Introduction}
+    \texttt{Study Slug} is an app that will allow students and faculty to coordinate study groups in an intelligent, hassle-free manner.
+    
+    \section{High level goals}
+    The goal of this release is to have an Android application that provides the following:
+    \begin{itemize}
+        \item A user can create a profile and list the courses they are enrolled in.
+        \item A user may initiate a new study group for a course they are enrolled in, and the app will provide suggestions for study partners who are enrolled in the same course.
+        \item A user may request to be notified when new study groups are formed for the courses they are enrolled in.
+        \item A group leader can configure a recurring study group, including features such as scheduling, links to shared documentation, and locations.
+        \item A user can access the app via Android or the website.
+        \item Prototype testing
+        \item Continuous integration
+    \end{itemize}
+    
+    \section{User stories for release}
+
+    \subsection{Sprint 1}
+    April 11 through April 24
+    \begin{enumerate}
+        \item (1) As a developer, I want to be able to share my project contributions with the team.
+        \item (1) As a developer, I want to be able to communicate easily with the team.
+        \item (1) As a developer, I want to be able to easily track the User Stories and Scrum-related items for my project.
+        \item (2) As a team member, I want to be able to present my project to the class.
+        \item (2) As a developer, I want to be able to develop and maintain an Android software project.
+        \item (5) As a team member, I want to learn to develop Android software.
+        \item (15) As a user, I want to be able to open the app.
+        \item (8) As a developer, I want to have a database for storing user profiles.
+        \item (5) As a team member, I want to have a logo for the project.
+    \end{enumerate}
+
+    \subsection{Sprint 2}
+    April 25 through May 8
+    \begin{enumerate}
+        \item (5) As a team member, I want to learn to develop and deploy a Firebase back end system.
+        \item (8) As a developer, I want to have a database for storing user profiles.
+        \item (8) As a user, I want to be able to use the app on my Android phone.
+        \item (5) As a group leader, I want to be able to initiate a study group.
+    \end{enumerate}
+    
+    \subsection{Sprint 3}
+    May 9 through May 22
+    \begin{enumerate}
+        \item (5) As a user, I want to be able to create a profile tied to my CruzID.
+    \end{enumerate}
+
+    \subsection{Sprint 4}
+    May 23 through June 5
+    \begin{enumerate}
+        \item (3) As a user, I want to be able to select from a list of courses.
+        \item (5) As a user, I want to be able to setup my profile with my enrolled courses.
+        \item (5) As a user, I want to be able to set a profile picture.
+    \end{enumerate}
+
+    \section{Product Backlog}
+    \begin{itemize}
+        \item As a user, I want to be able to put useful information in my profile.
+        \item As a group leader, I want to be able to coordinate recurring study groups.
+        \item As a group leader, I want to be able to create a profile for my study group.
+        \item As a leader, I want to have study partners suggested to me.
+        \item As a leader, I want to be able to set my study group to a location.
+        \item As a user, I want to be able to rate others based on my experience.
+        \item As a user, I want to have the study sessions integrate into my calendar.
+        \item As a user, I want to be able to use the app from the web.
+        \item As a user, I want to be able to use the app on my iPhone.
+        \item As a user, I want google docs integration so I can easily share study documents.
+        \item As a student, I want to be notified when others initiate study groups.
+        \item As a student, I want to be notified when others form study groups near my location.
+        \item As a user, I want to configure the notifications I receive.
+        \item As a user, I want to be able to join an open study group.
+        \item As a UCSC student, I want to be matched with other students at my college.
+        \item As a user, I want to be able to use the app to reserve a study room.
+        \item As a developer, I want to see student grades so I can correlate good study habits with good grades.
+        \item As a non-native English speaker, I would like to connect with other students who speak my language.
+        \item As a professor, I want to be able to organize large study groups.
+        \item As a professor, I want to be able to organize batches of study groups.
+    \end{itemize}    
+\end{document}
