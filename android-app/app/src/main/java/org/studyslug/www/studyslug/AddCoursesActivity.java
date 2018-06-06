@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +16,6 @@ import android.content.Intent;
 import android.util.Log;
 
 import java.lang.reflect.Field;
-
-import java.util.List;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,9 +33,8 @@ public class AddCoursesActivity extends AppCompatActivity {
   private String dropdownText = "";
   private String searchText = "";
   private ImageButton searchButton;
-  private ImageButton imageButton;
-  private Spinner departmentSpinner;
   private ImageButton userPhoto;
+  private Spinner departmentSpinner;
   // Output
   private RecyclerView resultList;
 
@@ -113,7 +109,6 @@ public class AddCoursesActivity extends AppCompatActivity {
     departmentSpinner = findViewById(R.id.add_courses_department_spinner);
     userPhoto = findViewById(R.id.add_courses_icon_button);
     searchButton = findViewById(R.id.add_courses_big_magnifying_glass);
-    imageButton = findViewById(R.id.add_courses_icon_button);
     resultList = findViewById(R.id.result_list_courses);
     resultList.setHasFixedSize(true);
 
