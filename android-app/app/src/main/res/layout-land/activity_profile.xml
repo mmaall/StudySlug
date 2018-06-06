@@ -91,7 +91,7 @@
         android:text="@string/profile_find_study_slugs" />
 
     <Button
-        android:id="@+id/sign_out_button"
+        android:id="@+id/signout_button"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"

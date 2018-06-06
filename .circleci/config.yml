@@ -45,7 +45,7 @@ jobs:
           name: Build
           command: |
             cd android-app
-            ./gradlew clean assembleDebug --no-daemon --stacktrace
+            ./gradlew clean assembleRelease --no-daemon --stacktrace
       - store_artifacts:
           path: android-app/app/build/outputs/apk/
           destination: apks/
