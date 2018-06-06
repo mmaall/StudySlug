@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,10 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference dbUserReference;
     private DatabaseReference dbCourseReference;
     private FirebaseAuth auth;
+    private Button removeCourse;
+    private Button addCourse;
+    private Button findPeople;
+    private Button signOut;
     private ImageView userProfile;
     private Spinner classSpinner;
     private String UserName,UserEmail;
@@ -125,9 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-              Log.d(TAG, "Database error");
-              databaseError.toException().printStackTrace();
+            public void onCancelled(DatabaseError databaseError) { // TODO Something here?
             }
         });
 
@@ -148,18 +152,18 @@ public class ProfileActivity extends AppCompatActivity {
     private void configureLayoutElements() {
         setContentView(R.layout.activity_profile);
         classSpinner = findViewById(R.id.user_classes_spinner);
-        TextView UserName = findViewById(R.id.user_name);
-        TextView UserEmail = findViewById(R.id.user_email);
-        try {
-          UserName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-          UserEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        } catch (Exception e) {
-          Log.d(TAG, "null user");
-          e.printStackTrace();
-        }
+        removeCourse = findViewById(R.id.drop_button);
+        userProfile = findViewById(R.id.user_picture);
+        findPeople = findViewById(R.id.find_people_button);
+        addCourse = findViewById(R.id.add_courses_button);
+        TextView UserName = (TextView) findViewById(R.id.user_name);
+        UserName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        TextView UserEmail = (TextView) findViewById(R.id.user_email);
+        UserEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         Uri userPhotoURL = Uri.parse(currentUser.getURI());
         if(userPhotoURL != null)
         {
+//        userPhoto.setImageURI(null);
             new ASyncTaskLoadImage(userProfile).execute(userPhotoURL.toString());
         }
         else
@@ -169,7 +173,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void signOut(View itemView){
-        if(itemView.getId() == R.id.sign_out_button) {
+        if(itemView.getId() == R.id.signout_button) {
             FirebaseAuth.getInstance()
                     .signOut();
             Intent backToSplash =

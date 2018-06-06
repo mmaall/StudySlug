@@ -67,7 +67,7 @@
         android:background="@drawable/layout_bg"
         android:backgroundTint="#9c4e4e"
         android:onClick="onClickRemove"
-        android:text="@string/profile_drop_selected_class" />
+        android:text="DROP SELECTED CLASS" />
 
     <Button
         android:id="@+id/add_courses_button"
@@ -79,7 +79,7 @@
         android:background="@drawable/layout_bg"
         android:backgroundTint="@android:color/holo_green_dark"
         android:onClick="onClickAddCourse"
-        android:text="@string/profile_add_class" />
+        android:text="ADD A CLASS" />
 
     <Button
         android:id="@+id/find_people_button"
@@ -91,10 +91,10 @@
         android:background="@drawable/layout_bg"
         android:backgroundTint="@color/colorAccent"
         android:onClick="onClickFindPeople"
-        android:text="@string/profile_find_study_slugs" />
+        android:text="FIND STUDY SLUGS" />
 
     <Button
-        android:id="@+id/sign_out_button"
+        android:id="@+id/signout_button"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
@@ -103,7 +103,7 @@
         android:background="@drawable/layout_bg"
         android:backgroundTint="#9c4e4e"
         android:onClick="onClickSignOut"
-        android:text="@string/profile_sign_out" />
+        android:text="SIGN OUT" />
 
 
 </RelativeLayout>
