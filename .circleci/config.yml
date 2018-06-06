@@ -24,7 +24,7 @@ jobs:
           command: cd android-app && ./gradlew androidDependencies
       - run:
           name: Sanity Check
-          command: find
+          command: cat ${home}/code/android-app/app/src/main/res/values/strings.xml
       - save_cache:
           paths:
             - android-app/
