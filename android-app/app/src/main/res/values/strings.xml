@@ -14,7 +14,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="addClassesMessgae">Select Your Classes</string>
+    <string name="add_courses_message">Select Your Classes</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -42,14 +42,13 @@
     <string name="nav_schedule">Schedule</string>
     <string name="nav_maps">Maps</string>
     <string name="nav_settings">Settings</string>
-    <string name="addclasses_dept">Enter department</string>
-    <string name="addclasses_number">Enter course number</string>
-    <string name="addclasses_section">Enter section number</string>
+    <string name="add_courses_dept">Enter department</string>
+    <string name="add_courses_number">Enter course number</string>
+    <string name="add_courses_section">Enter section number</string>
     <string name="start_button">Start!</string>
     <string name="cancel_button">Cancel</string>
     <string name="profile_add_class">ADD A CLASS</string>
     <string name="profile_find_study_slugs">FIND STUDY SLUGS</string>
-    <string name="profile_add_class">ADD A CLASS</string>
     <string name="profile_sign_out">SIGN OUT</string>
     <string name="profile_drop_selected_class">DROP SELECTED CLASS</string>
 </resources>
