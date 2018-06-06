@@ -8,8 +8,8 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-#      - restore_cache:
-#          key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
+      - restore_cache:
+          key: jars-{{ checksum "android-app/build.gradle" }}-{{ checksum  "android-app/app/build.gradle" }}
       - run:
           name: Authenticate
           command: |
